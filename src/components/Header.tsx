@@ -85,22 +85,22 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="absolute top-[calc(100%+12px)] left-0 w-full bg-[#1A1A1A]/90 backdrop-blur-[40px] border border-[#FFFFFF10] rounded-[1.5rem] p-3 shadow-card-hover origin-top animate-fade-in md:hidden before:absolute before:inset-0 before:bg-noise before:rounded-[1.5rem] before:opacity-50">
-          <nav className="flex flex-col gap-2 relative z-10">
+        <div className="absolute top-[calc(100%+12px)] left-0 w-full bg-white border border-gray-100 rounded-[1.5rem] p-3 shadow-lg origin-top animate-fade-in md:hidden">
+          <nav className="flex flex-col gap-2">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-3 py-3 px-4 rounded-xl text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
+                className="flex items-center gap-3 py-3 px-4 rounded-xl text-sm font-medium text-gray-600 hover:text-foreground hover:bg-gray-50 transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
-                <div className="p-2 rounded-lg bg-white/5">
+                <div className="p-2 rounded-lg bg-primary/10">
                   <item.icon size={18} className="text-primary" />
                 </div>
                 {item.label}
               </a>
             ))}
-            <div className="h-px bg-white/10 my-1 mx-2" />
+            <div className="h-px bg-gray-100 my-1 mx-2" />
             <a href="#booking" onClick={() => setMobileOpen(false)}>
               <Button className="rounded-xl w-full py-6 text-base bg-primary hover:bg-primary/90">
                 Start Your Journey

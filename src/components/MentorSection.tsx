@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Users, Globe, Play, Award, BookOpen, Heart, GraduationCap, MapPin } from "lucide-react";
+import { Star, Users, Globe, Play, Award, BookOpen, Heart, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const credentials = [
@@ -11,18 +11,18 @@ const credentials = [
         year: "2023-Present"
     },
     {
-        icon: GraduationCap,
-        title: "Samsung Dream Class Mentor",
-        detail: "Educational Excellence",
-        description: "Selected for the prestigious Samsung Dream Class, mentoring students in Korean language and culture.",
-        year: "2023"
+        icon: Globe,
+        title: "Overseas Volunteer Educator",
+        detail: "Outstanding Member Award",
+        description: "Volunteered in Vietnam and Japan to teach Korean culture and language. Selected as an Outstanding Member for exceptional dedication.",
+        year: "2024-2025"
     },
     {
-        icon: Globe,
+        icon: Users,
         title: "Global Language Lead",
         detail: "Cultural Exchange Expert",
-        description: "Head of Korean language programs for international learners in Vietnam and beyond.",
-        year: "2024-2025"
+        description: "President of the university Cultural Exchange Club (2023-2025) and head of multiple international language programs.",
+        year: "2023-2025"
     },
     {
         icon: Award,
