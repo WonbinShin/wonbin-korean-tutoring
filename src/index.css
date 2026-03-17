@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 48 40% 98%;
+    /* #FDFCF8 */
+    --background: 48 60% 98.4%;
+    /* Soft Cream #FDFCF8 */
+    --foreground: 220 30% 15%;
+    /* Near Black for high contrast */
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 12%;
+
+    --primary: 258 89% 66%;
+    /* Energetic Violet #8B5CF6 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 158 64% 52%;
+    /* Friendly Mint #34D399 */
+    --secondary-foreground: 220 30% 15%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 15% 40%;
+
+    --accent: 258 89% 66%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 15% 92%;
+    --input: 220 15% 92%;
+    --ring: 258 89% 66%;
+
+    --radius: 2rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 10% 12%;
+    --sidebar-primary: 259 94% 66%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 48 20% 94%;
+    --sidebar-accent-foreground: 240 10% 12%;
+    --sidebar-border: 240 10% 90%;
+    --sidebar-ring: 259 94% 66%;
+
+    /* Custom tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(259 94% 66% / 0.1), hsl(158 64% 52% / 0.1), hsl(259 94% 66% / 0.05));
+    --coral-glow: 0 20px 60px hsl(259 94% 66% / 0.15);
+    --card-shadow: 0 10px 30px -10px hsl(0 0% 0% / 0.1);
+    --card-shadow-hover: 0 20px 40px -15px hsl(0 0% 0% / 0.15);
+
+    --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+    --shadow-card-hover: 0 20px 50px -10px rgba(139, 92, 246, 0.15);
+    --gradient-primary: linear-gradient(135deg, #8B5CF6 0%, #34D399 100%);
+  }
+
+  /* Dark mode hidden for this transformation as it's meant to be a bright theme */
+  .dark {
+    --background: 48 40% 98%;
+    --foreground: 240 10% 12%;
+    /* ... keeping it simple by making dark theme match light for now if user forces it */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans selection:bg-primary selection:text-white;
+    font-family: 'Inter', 'Pretendard', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight;
+    font-family: 'Inter', 'Pretendard', sans-serif;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #8B5CF6 0%, #34D399 100%);
+  }
+
+  .bg-hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .shadow-card {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-card:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .glow-coral {
+    box-shadow: var(--coral-glow);
+  }
+
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  /* GPU Acceleration and Performance Optimization */
+  .gpu-accelerated {
+    transform: translate3d(0, 0, 0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}
