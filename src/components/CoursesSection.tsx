@@ -439,9 +439,9 @@ export default function CoursesSection() {
                   <h4 className="text-xs font-black uppercase tracking-[0.2em] text-primary">What's Included</h4>
                   <div className="grid gap-4">
                     {selectedProduct.features.map((feat) => (
-                      <div key={feat} className="flex items-center gap-4 p-5 rounded-3xl bg-gray-50 border border-gray-100 group/feat transition-colors hover:bg-white hover:border-primary/20">
-                        <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center shadow-sm group-hover/feat:bg-primary group-hover/feat:text-white transition-colors">
-                          <Check size={14} />
+                      <div key={feat} className="flex items-center gap-4 p-5 rounded-3xl bg-gray-50 border border-gray-100">
+                        <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center shadow-sm shrink-0">
+                          <Check size={14} className="text-white" />
                         </div>
                         <span className="text-sm font-bold text-foreground/80">{feat}</span>
                       </div>
