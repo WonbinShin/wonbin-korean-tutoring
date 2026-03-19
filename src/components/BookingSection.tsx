@@ -32,7 +32,7 @@ export default function BookingSection() {
                   <Zap size={14} className="animate-pulse" />
                   Limited Time Availability
                 </div>
-                <h2 className="text-4xl sm:text-6xl font-black text-foreground tracking-tighter leading-[0.9] mb-6">
+                <h2 className="text-4xl sm:text-6xl font-black text-foreground tracking-tight leading-[0.9] mb-6">
                   Experience Your <br />
                   <span className="text-secondary text-gradient-primary">First Lesson Free</span>
                 </h2>

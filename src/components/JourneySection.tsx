@@ -59,9 +59,9 @@ export default function JourneySection() {
             >
               <div>
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-4 block">Proven Excellence</span>
-                <h2 className="text-4xl sm:text-6xl font-black text-foreground tracking-tighter leading-[0.9] mb-6">
+                <h2 className="text-4xl sm:text-6xl font-black text-foreground tracking-tight leading-[0.9] mb-6">
                   Your Friendly <br />
-                  <span className="text-primary tracking-[-0.05em]">Korean Mentor</span>
+                  <span className="text-primary tracking-tight">Korean Mentor</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-lg font-medium">
                   I combine modern educational psychology with practical, real-world context to help you master Korean naturally.
@@ -120,7 +120,7 @@ export default function JourneySection() {
                     <div className="w-16 h-16 rounded-full bg-primary/5 flex items-center justify-center mb-6">
                       <stat.icon size={32} className="text-primary" />
                     </div>
-                    <span className="text-4xl font-black text-foreground mb-2 tracking-tighter">{stat.value}</span>
+                    <span className="text-4xl font-black text-foreground mb-2 tracking-tight">{stat.value}</span>
                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 text-center">{stat.label}</span>
                   </motion.div>
                 ))}

@@ -256,7 +256,7 @@ export default function CoursesSection() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl sm:text-7xl font-black text-foreground tracking-tighter leading-[0.85]"
+            className="text-4xl sm:text-7xl font-black text-foreground tracking-tight leading-[0.85]"
           >
             Select Your <br />
             <span className="text-primary italic">Learning Path.</span>
@@ -412,7 +412,7 @@ export default function CoursesSection() {
                   <div className="w-16 h-16 rounded-[1.5rem] bg-primary/10 flex items-center justify-center">
                     {selectedProduct.isPremium ? <Zap size={32} className="text-primary" /> : <Layers size={32} className="text-primary" />}
                   </div>
-                  <h3 className="text-4xl font-black text-foreground tracking-tighter leading-none">{selectedProduct.title}</h3>
+                  <h3 className="text-4xl font-black text-foreground tracking-tight leading-none">{selectedProduct.title}</h3>
 
                   <div className="flex flex-wrap items-center gap-4">
                     <span className="text-3xl font-black text-primary">{selectedProduct.priceDisplay}</span>

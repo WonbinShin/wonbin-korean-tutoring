@@ -98,7 +98,7 @@ export default function MentorSection() {
                                 <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.4em]">
                                     Your Korean Friend: Wonbin Ssem
                                 </div>
-                                <h2 className="text-5xl sm:text-7xl font-black text-foreground tracking-tighter leading-[0.85] [text-wrap:balance]">
+                                <h2 className="text-5xl sm:text-7xl font-black text-foreground tracking-tight leading-[0.85] [text-wrap:balance]">
                                     Your Personal <br />
                                     <span className="text-primary italic">Korean Mentor.</span>
                                 </h2>
@@ -145,7 +145,7 @@ export default function MentorSection() {
                                 className="gpu-accelerated"
                             >
                                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-4 block">Professional Journey</span>
-                                <h3 className="text-4xl font-black text-foreground tracking-tighter leading-none mb-6">Proven Excellence</h3>
+                                <h3 className="text-4xl font-black text-foreground tracking-tight leading-none mb-6">Proven Excellence</h3>
                                 <p className="text-muted-foreground font-medium max-w-md">
                                     A track record of excellence in educational psychology and global cultural leadership.
                                 </p>
@@ -200,7 +200,7 @@ export default function MentorSection() {
                                         <div className="w-16 h-16 rounded-full bg-primary/5 flex items-center justify-center mb-6">
                                             <stat.icon size={32} className="text-primary" />
                                         </div>
-                                        <span className="text-4xl md:text-6xl font-black text-foreground mb-2 tracking-tighter">{stat.value}</span>
+                                        <span className="text-4xl md:text-6xl font-black text-foreground mb-2 tracking-tight">{stat.value}</span>
                                         <span className="text-xs md:text-sm font-black uppercase tracking-[0.2em] text-primary/60 leading-tight whitespace-normal max-w-[180px]">{stat.label}</span>
                                     </motion.div>
                                 ))}

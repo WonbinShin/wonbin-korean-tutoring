@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-white"
+      className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-white pt-32 pb-20"
     >
       {/* Cinematic Background Architecture */}
       <div className="absolute inset-0 z-0">
@@ -39,10 +39,10 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[12vw] sm:text-[8vw] md:text-[7rem] font-black leading-[0.85] tracking-tighter text-foreground gpu-accelerated"
+              className="text-[12vw] sm:text-[8vw] md:text-[7rem] font-black leading-[0.9] tracking-[-0.02em] text-foreground gpu-accelerated"
             >
               Master Korean <br />
-              <span className="text-secondary italic text-gradient-primary">Naturally.</span>
+              <span className="text-secondary italic text-gradient-primary tracking-[0.02em]">Naturally.</span>
             </motion.h1>
 
             <motion.div
