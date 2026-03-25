@@ -258,16 +258,18 @@ export default function CoursesSection() {
         {/* Header Area */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
             className="text-xs font-black uppercase tracking-[0.3em] text-primary"
           >
             Tailored for You
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl sm:text-7xl font-black text-foreground tracking-tight leading-[0.85]"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-4xl sm:text-7xl font-black text-foreground tracking-tight leading-none pb-4"
           >
             Select Your <br />
             <span className="text-primary italic">Learning Path.</span>

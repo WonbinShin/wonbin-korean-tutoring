@@ -163,13 +163,14 @@ export default function UsefulKoreanSection() {
                     transition: { duration: 0.4 }
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className={`absolute inset-0 bg-white rounded-[3.5rem] p-10 border border-gray-100 shadow-2xl flex flex-col justify-between overflow-hidden group gpu-accelerated
+                  className={`absolute inset-0 bg-white rounded-[3.5rem] p-10 border border-gray-100 shadow-2xl flex flex-col justify-between overflow-hidden group gpu-accelerated select-none touch-none
                     ${isTop ? "active:cursor-grabbing" : "pointer-events-none"}`}
+                  draggable={false}
                 >
                   {/* Internal Decorative Glass */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl" />
 
-                  <div className="relative space-y-8">
+                  <div className="relative space-y-8 select-none pointer-events-none">
                     <div className={`w-16 h-16 rounded-2xl ${card.color} flex items-center justify-center`}>
                       <MessageCircle size={32} className="text-primary" />
                     </div>
@@ -183,7 +184,7 @@ export default function UsefulKoreanSection() {
                     </div>
                   </div>
 
-                  <div className="space-y-6 pt-6 border-t border-gray-50">
+                  <div className="space-y-6 pt-6 border-t border-gray-50 select-none pointer-events-none">
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
                         <Zap size={18} fill="currentColor" />
