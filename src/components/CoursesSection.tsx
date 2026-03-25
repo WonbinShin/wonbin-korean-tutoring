@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLenis } from "@studio-freight/react-lenis";
 import {
   BookOpen,
   ChevronRight,
@@ -217,6 +218,7 @@ function PayPalButton({ hostedButtonId, isSubscription }: { hostedButtonId: stri
 export default function CoursesSection() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null);
+  const lenis = useLenis();
 
   // Set default variant if product has them
   useEffect(() => {
@@ -231,13 +233,22 @@ export default function CoursesSection() {
   useEffect(() => {
     if (selectedProduct) {
       document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+      document.documentElement.style.overflow = "hidden";
+      lenis?.stop();
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+      document.documentElement.style.overflow = "";
+      lenis?.start();
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+      document.documentElement.style.overflow = "";
+      lenis?.start();
     };
-  }, [selectedProduct]);
+  }, [selectedProduct, lenis]);
 
   return (
     <section id="courses" className="py-32 relative min-h-screen bg-[#FDFCF8] overflow-hidden">
@@ -377,35 +388,39 @@ export default function CoursesSection() {
       {/* Progressive Disclosure Panel */}
       <AnimatePresence>
         {selectedProduct && (
-          <>
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" style={{ outline: 'none' }}>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProduct(null)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-md z-[100]"
+              className="absolute inset-0 bg-black/40 backdrop-blur-md"
             />
             <motion.div
-              initial={{ x: "100%", opacity: 0.5 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: "100%", opacity: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed inset-y-0 right-0 w-full md:w-[600px] bg-white z-[101] shadow-2xl flex flex-col gpu-accelerated"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-[700px] max-h-[90vh] bg-white rounded-[2rem] shadow-2xl z-10 flex flex-col overflow-hidden gpu-accelerated"
             >
               {/* Sticky Header with Close */}
-              <div className="shrink-0 p-8 md:px-16 md:pt-16 pb-4 flex justify-end border-b border-gray-50 bg-white relative z-20 sticky top-0">
+              <div className="shrink-0 p-6 flex justify-between items-center border-b border-gray-100 bg-white z-20">
+                <span className="font-black text-lg text-foreground px-2">Program Details</span>
                 <button
                   onClick={() => setSelectedProduct(null)}
-                  className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors bg-white shadow-sm"
+                  className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 bg-white transition-colors"
                 >
                   <X size={20} />
                 </button>
               </div>
 
-              {/* Scrollable Content */}
-              <div
-                className="flex-1 overflow-y-auto p-8 md:p-16 pt-8 space-y-12 overscroll-contain"
-                style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'thin' }}
+              {/* Content */}
+              <div 
+                className="flex-1 min-h-0 overflow-y-auto p-6 md:p-10 pt-6 space-y-12 force-scrollbar bg-white"
+                data-lenis-prevent="true"
+                style={{ overscrollBehavior: 'none' }}
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
               >
                 {/* Header Information */}
                 <div className="space-y-6">
@@ -508,16 +523,16 @@ export default function CoursesSection() {
                   )}
 
                   {selectedProduct.id === "the-group" || selectedProduct.id === "the-daily" || (selectedProduct.id === "the-private") ? (
-                    <div className="pt-4 flex justify-center">
+                    <div className="pt-4 flex justify-center pb-8">
                       <a href="https://calendly.com/eorn6796/new-meeting" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs font-black text-muted-foreground hover:text-primary transition-colors uppercase tracking-[0.2em]">
                         <CalendarDays size={14} /> Questions? Book Private Consultation
                       </a>
                     </div>
-                  ) : null}
+                  ) : <div className="pb-8"/>}
                 </div>
               </div>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
     </section>

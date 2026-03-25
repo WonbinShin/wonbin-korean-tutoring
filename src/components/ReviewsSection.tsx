@@ -1,6 +1,7 @@
 import { Star, Quote, Zap, ShieldCheck, X, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence, useMotionValue } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
+import { useLenis } from "@studio-freight/react-lenis";
 
 interface Review {
   name: string;
@@ -314,18 +315,28 @@ export default function ReviewsSection() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const lenis = useLenis();
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
     if (selectedReview) {
       document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+      document.documentElement.style.overflow = "hidden";
+      lenis?.stop();
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+      document.documentElement.style.overflow = "";
+      lenis?.start();
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+      document.documentElement.style.overflow = "";
+      lenis?.start();
     };
-  }, [selectedReview]);
+  }, [selectedReview, lenis]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
@@ -517,7 +528,7 @@ export default function ReviewsSection() {
       {/* Review Details Modal */}
       <AnimatePresence>
         {selectedReview && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" style={{ outline: 'none' }}>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -533,8 +544,8 @@ export default function ReviewsSection() {
               className="relative w-full max-w-[600px] max-h-[85vh] bg-white rounded-[2rem] shadow-2xl z-10 flex flex-col overflow-hidden gpu-accelerated"
             >
               {/* Sticky Header with Close Button */}
-              <div className="shrink-0 p-6 flex justify-between items-center border-b border-gray-100 bg-white sticky top-0 z-20">
-                <h3 className="font-black text-lg text-foreground">Review Details</h3>
+              <div className="shrink-0 p-6 flex justify-between items-center border-b border-gray-100 bg-white z-20">
+                <h3 className="font-black text-lg text-foreground px-2">Review Details</h3>
                 <button
                   onClick={() => setSelectedReview(null)}
                   className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-muted-foreground hover:bg-gray-100 transition-colors"
@@ -543,13 +554,13 @@ export default function ReviewsSection() {
                 </button>
               </div>
 
-              {/* Scrollable Content */}
-              <div
-                className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-8 overscroll-contain"
-                style={{
-                  WebkitOverflowScrolling: 'touch',
-                  scrollbarWidth: 'thin', /* ensure scrollbar shows down the trackpad */
-                }}
+              {/* Content */}
+              <div 
+                className="flex-1 min-h-0 overflow-y-auto p-6 sm:p-8 space-y-8 force-scrollbar bg-white"
+                data-lenis-prevent="true"
+                style={{ overscrollBehavior: 'none' }}
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
               >
                 {/* Student Review */}
                 <div className="space-y-4 pt-2">
