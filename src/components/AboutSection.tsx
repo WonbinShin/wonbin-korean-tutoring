@@ -1,6 +1,7 @@
 import { Play, Star, Globe, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
 
 export default function AboutSection() {
   return (
@@ -81,14 +82,31 @@ export default function AboutSection() {
               transition={{ duration: 0.6, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="gpu-accelerated"
             >
-              <a href="https://youtu.be/1L50rv1xrCE" target="_blank" rel="noreferrer">
-                <Button variant="outline" className="h-[4.5rem] rounded-full px-12 border-gray-100 shadow-sm hover:bg-white hover:shadow-card-hover hover:border-primary/20 flex items-center gap-5 transition-all group">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                    <Play size={20} fill="currentColor" className="ml-1" />
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="h-[4.5rem] rounded-full px-12 border-gray-100 shadow-sm hover:bg-white hover:shadow-card-hover hover:border-primary/20 flex items-center gap-5 transition-all group">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                      <Play size={20} fill="currentColor" className="ml-1" />
+                    </div>
+                    <span className="text-sm font-black uppercase tracking-[0.2em] text-foreground">Watch My Story</span>
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[800px] p-0 overflow-hidden bg-transparent border-none shadow-none">
+                  <DialogTitle className="sr-only">Wonbin Ssem Story Video</DialogTitle>
+                  <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl">
+                    <iframe 
+                      width="100%" 
+                      height="100%" 
+                      src="https://www.youtube.com/embed/wvTeALc6DF4?autoplay=1" 
+                      title="Wonbin Ssem Story" 
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen 
+                      className="w-full h-full"
+                    />
                   </div>
-                  <span className="text-sm font-black uppercase tracking-[0.2em] text-foreground">Watch My Story</span>
-                </Button>
-              </a>
+                </DialogContent>
+              </Dialog>
             </motion.div>
 
           </div>
