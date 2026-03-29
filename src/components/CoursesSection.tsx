@@ -129,21 +129,21 @@ const mainServices: Product[] = [
 const additionalResources: Product[] = [
   {
     id: "hangul-pack",
-    title: "Hangul Starter Pack",
-    description: "Visual mnemonic guide to master the alphabet.",
+    title: "Learn Hangul in 1 Hour",
+    description: "Master reading Korean in just 1 hour—it's like magic.",
     priceDisplay: "FREE",
-    longDescription: "A curated visual mnemonic guide to mastering the Korean alphabet. No boring repetition—just patterns that stick.",
+    longDescription: "Unlock the magic of reading any Korean word in just one hour. No boring repetition—just an intuitive and engaging guide that makes learning Hangul effortless and fun.",
     features: ["Mnemonic Visuals", "Stroke Order Guide", "Pronunciation Files"],
     isPremium: false,
     category: "resource",
-    link: "https://docs.google.com/document/d/1AHNQlS1My8UFtCaezUbQ3oU3uqnoC422QoFRz-XjeIE/edit?usp=sharing"
+    link: "https://drive.google.com/file/d/1ICE_KjQtH5z8HXt1Yi33IPlzuW_h7UK9/view?usp=sharing"
   },
   {
     id: "travel-phrases",
-    title: "Travel Survival Kit",
-    description: "Speak like a local on your first trip.",
+    title: "Zero Grammar Fast-Track Korean",
+    description: "Fast-track your travel Korean without learning any grammar.",
     priceDisplay: "FREE",
-    longDescription: "100+ essential phrases for dining, shopping, and navigating Korea. Zero grammar, pure survival.",
+    longDescription: "The ultimate crash course for your Korea trip. Learn essential phrases to survive and thrive without studying a single grammar rule.",
     features: ["Map of Phrases", "Offline Access", "Ordering Tips"],
     isPremium: false,
     category: "resource",
