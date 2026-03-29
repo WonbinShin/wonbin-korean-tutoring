@@ -15,7 +15,7 @@ const credentials = [
         icon: Globe,
         title: "Overseas Volunteer Educator",
         detail: "Outstanding Member Award",
-        description: "Volunteered in Vietnam and Japan to teach Korean culture and language. Selected as an Outstanding Member for exceptional dedication.",
+        description: "Volunteered in Vietnam and Indonesia to teach Korean culture and language. Selected as an Outstanding Member for exceptional dedication.",
         year: "2024-2025"
     },
     {
