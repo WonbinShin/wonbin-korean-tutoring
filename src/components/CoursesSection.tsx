@@ -30,6 +30,7 @@ type ProductVariant = {
   title: string;
   price: string;
   paypalId: string | null;
+  link?: string;
   isSubscription?: boolean;
 };
 
@@ -73,14 +74,12 @@ const mainServices: Product[] = [
     title: "The Group: Small Class Intensive",
     description: "Speaking-focused program with high interaction.",
     priceDisplay: "$130 (Launch Special)",
-    longDescription: "This class prioritizes active communication over textbook memorization. You practice real-life roleplays in a relaxed environment. I provide exclusive AI-generated visual aids to help you remember expressions forever.",
+    longDescription: "This is a 4-week program with a fixed weekly schedule. To ensure the best learning experience, I match students with similar proficiency levels.",
     features: [
-      "4-week program (1x 60-min live session/week)",
-      "Limited to 2 or 3 students per class",
-      "Speaking-focused (no boring grammar)",
-      "AI-generated visual mnemonic aids"
+      "4-week program with fixed schedule",
+      "Level-matched learning experience",
+      "Custom group sessions available"
     ],
-    paypalId: "YTB4VUSB3XTE6", // Placeholder for group, using Master Pack for now
     isPremium: true,
     category: "service",
     tag: "High Interaction",
@@ -99,9 +98,9 @@ const mainServices: Product[] = [
       "Flexible scheduling & high-performance roadmap"
     ],
     variants: [
-      { id: "single", title: "Single Session ($35 Launch)", price: "$35", paypalId: "Z564W438HLQWW" },
-      { id: "bundle-5", title: "5-Session Bundle ($165)", price: "$165", paypalId: "EKHV4UWHBNH86" },
-      { id: "master-pack", title: "Master Pack (10 Sessions - $300)", price: "$300", paypalId: "YTB4VUSB3XTE6" }
+      { id: "single", title: "Single Session", price: "$35", paypalId: null, link: "https://calendly.com/wonbinssem/new-meeting" },
+      { id: "bundle-5", title: "5-Session Bundle", price: "$165", paypalId: "EKHV4UWHBNH86" },
+      { id: "bundle-10", title: "10-Session Bundle", price: "$300", paypalId: "YTB4VUSB3XTE6" }
     ],
     isPremium: true,
     category: "service",
@@ -110,19 +109,19 @@ const mainServices: Product[] = [
   },
   {
     id: "the-free-trial",
-    title: "The Free Trial: Intro Session",
-    description: "Experience my teaching style before you commit.",
-    priceDisplay: "FREE",
-    longDescription: "Meet your tutor and discuss your learning goals. This is a short consultation to find the best program for you. No credit card is required for this session.",
+    title: "The Intro: 25-Min Session",
+    description: "Experience my teaching style at exactly 50% of the regular rate.",
+    priceDisplay: "$17.50 USD",
+    longDescription: "Meet your tutor, evaluate your current proficiency, and discuss your learning goals. This 25-minute session provides an in-depth consultation.\n\n🎁 Risk-Free Refund Offer:\nThe $17.50 fee is fully refundable if you decide to enroll in a 1:1 Private Lesson after the trial. Essentially, your trial becomes completely FREE when you continue your journey!",
     features: [
-      "20-minute consultation",
-      "Level testing & goal setting",
-      "Personalized learning roadmap"
+      "25-minute introductory consultation",
+      "Current proficiency & goal evaluation",
+      "Trial fee fully refunded upon enrollment"
     ],
     isPremium: false,
     category: "service",
-    link: "https://calendly.com/eorn6796/new-meeting",
-    duration: "20 Min"
+    link: "https://calendly.com/wonbinssem/30min",
+    duration: "25 Min"
   }
 ];
 
@@ -443,95 +442,172 @@ export default function CoursesSection() {
                   </div>
                 </div>
 
-                {/* Description */}
-                <div className="space-y-6">
-                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-primary">Overview</h4>
-                  <p className="text-lg text-foreground font-medium leading-relaxed">
-                    {selectedProduct.longDescription}
-                  </p>
-                </div>
-
-                {/* Features */}
-                <div className="space-y-6">
-                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-primary">What's Included</h4>
-                  <div className="grid gap-4">
-                    {selectedProduct.features.map((feat) => (
-                      <div key={feat} className="flex items-center gap-4 p-5 rounded-3xl bg-gray-50 border border-gray-100">
-                        <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center shadow-sm shrink-0">
-                          <Check size={14} className="text-white" />
-                        </div>
-                        <span className="text-sm font-bold text-foreground/80">{feat}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Refund Policy (for services) */}
-                {selectedProduct.category === "service" && (
-                  <div className="p-6 rounded-[2rem] bg-amber-50/50 border border-amber-100/50 space-y-3">
-                    <div className="flex items-center gap-2 text-amber-700 text-xs font-black uppercase tracking-wider">
-                      <ShieldCheck size={14} /> Refund & Cancellation Policy
-                    </div>
-                    <ul className="text-[11px] text-amber-800/70 font-bold space-y-1 ml-6 list-disc">
-                      <li>100% refund if cancelled 24 hours prior</li>
-                      <li>No refunds for cancellations within 24 hours</li>
-                      <li>Monthly subscriptions can be terminated at any time</li>
-                    </ul>
-                  </div>
-                )}
-
-                {/* Action Area */}
-                <div className="pt-8 space-y-6">
-                  {/* Variant Selector for Private Lessons */}
-                  {selectedProduct.variants && (
-                    <div className="space-y-4">
-                      <h4 className="text-xs font-black uppercase tracking-[0.2em] text-primary text-center">Select Your Tier</h4>
-                      <div className="flex flex-col gap-2">
-                        {selectedProduct.variants.map((v) => (
-                          <button
-                            key={v.id}
-                            onClick={() => setSelectedVariant(v)}
-                            className={`p-4 rounded-2xl border text-sm font-black transition-all text-left flex justify-between items-center ${selectedVariant?.id === v.id
-                              ? 'bg-primary/5 border-primary text-primary shadow-sm'
-                              : 'bg-white border-gray-100 text-foreground hover:bg-gray-50'
-                              }`}
-                          >
-                            {v.title}
-                            {selectedVariant?.id === v.id && <Check size={16} />}
-                          </button>
+                {selectedProduct.id === "the-group" ? (
+                  <div className="space-y-8 pb-8">
+                    {/* How to Join */}
+                    <div className="space-y-6">
+                      <h4 className="text-xs font-black uppercase tracking-[0.2em] text-primary">How to Join</h4>
+                      <div className="grid gap-4">
+                        {[
+                          "This is a 4-week program with a fixed weekly schedule.",
+                          "To ensure the best learning experience, I match students with similar proficiency levels.",
+                          "Please send an inquiry first to check for available spots in your level.",
+                          "I will reply to your email with the current schedule and group status."
+                        ].map((text, idx) => (
+                          <div key={idx} className="flex items-start gap-4 p-5 rounded-3xl bg-gray-50 border border-gray-100">
+                            <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center shadow-sm shrink-0">
+                              <Check size={14} className="text-white" />
+                            </div>
+                            <span className="text-sm font-bold text-foreground/80 leading-relaxed pt-1.5">{text}</span>
+                          </div>
                         ))}
                       </div>
                     </div>
-                  )}
 
-                  {/* Payment / Link Button */}
-                  {selectedProduct.isPremium ? (
-                    <div className="space-y-6">
-                      <PayPalButton
-                        hostedButtonId={selectedVariant ? selectedVariant.paypalId! : selectedProduct.paypalId!}
-                        isSubscription={(selectedProduct as any).isSubscription}
-                      />
-                      <p className="text-[10px] text-center font-black uppercase tracking-[0.2em] text-muted-foreground">
-                        Transaction Secured by PayPal Node Protocol
+                    {/* Pro Tip */}
+                    <div className="p-6 rounded-[2rem] bg-indigo-50/50 border border-indigo-100/50 space-y-3">
+                      <div className="flex items-center gap-2 text-indigo-700 text-xs font-black uppercase tracking-wider">
+                        <Sparkles size={14} /> Pro Tip: Bring a Friend
+                      </div>
+                      <p className="text-sm text-indigo-800/80 font-bold leading-relaxed">
+                        Do you have a friend who wants to learn Korean too? You can apply together with a friend or colleague. This allows you to skip the waiting list and start your custom group sessions right away.
                       </p>
                     </div>
-                  ) : (
-                    <a href={selectedProduct.link} target="_blank" rel="noreferrer" className="block">
-                      <Button className="w-full h-16 rounded-2xl bg-primary text-white text-lg font-black tracking-tight hover:scale-[1.02] transition-all shadow-xl shadow-primary/20">
-                        {selectedProduct.id === "the-free-trial" ? "Schedule Your Consultation" : "Secure Download Now"}
-                        <ArrowRight className="ml-2" size={20} />
-                      </Button>
-                    </a>
-                  )}
 
-                  {selectedProduct.id === "the-group" || selectedProduct.id === "the-daily" || (selectedProduct.id === "the-private") ? (
-                    <div className="pt-4 flex justify-center pb-8">
-                      <a href="https://calendly.com/eorn6796/new-meeting" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs font-black text-muted-foreground hover:text-primary transition-colors uppercase tracking-[0.2em]">
-                        <CalendarDays size={14} /> Questions? Book Private Consultation
+                    {/* Action Area */}
+                    <div className="pt-4 space-y-6">
+                      <a href="mailto:wonbinssem@gmail.com" className="block">
+                        <Button className="w-full h-16 rounded-2xl bg-primary text-white text-lg font-black tracking-tight hover:scale-[1.02] transition-all shadow-xl shadow-primary/20">
+                          Send an Inquiry
+                          <ArrowRight className="ml-2" size={20} />
+                        </Button>
                       </a>
                     </div>
-                  ) : <div className="pb-8"/>}
-                </div>
+                  </div>
+                ) : (
+                  <>
+                    {/* Description */}
+                    <div className="space-y-6">
+                      <h4 className="text-xs font-black uppercase tracking-[0.2em] text-primary">Overview</h4>
+                      <p className="text-lg text-foreground font-medium leading-relaxed whitespace-pre-wrap">
+                        {selectedProduct.longDescription}
+                      </p>
+                    </div>
+
+                    {/* Features */}
+                    <div className="space-y-6">
+                      <h4 className="text-xs font-black uppercase tracking-[0.2em] text-primary">What's Included</h4>
+                      <div className="grid gap-4">
+                        {selectedProduct.features.map((feat) => (
+                          <div key={feat} className="flex items-center gap-4 p-5 rounded-3xl bg-gray-50 border border-gray-100">
+                            <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center shadow-sm shrink-0">
+                              <Check size={14} className="text-white" />
+                            </div>
+                            <span className="text-sm font-bold text-foreground/80">{feat}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Refund Policy (for services) */}
+                    {selectedProduct.category === "service" && (
+                      <div className="p-6 rounded-[2rem] bg-amber-50/50 border border-amber-100/50 space-y-3">
+                        <div className="flex items-center gap-2 text-amber-700 text-xs font-black uppercase tracking-wider">
+                          <ShieldCheck size={14} /> Refund & Cancellation Policy
+                        </div>
+                        <ul className="text-[11px] text-amber-800/70 font-bold space-y-1 ml-6 list-disc">
+                          <li>100% refund if cancelled 24 hours prior</li>
+                          <li>No refunds for cancellations within 24 hours</li>
+                          <li>Monthly subscriptions can be terminated at any time</li>
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Booking Process Note (for intro session) */}
+                    {selectedProduct.id === "the-free-trial" && (
+                      <div className="p-6 rounded-[2rem] bg-indigo-50/50 border border-indigo-100/50 space-y-3">
+                        <div className="flex items-center gap-2 text-indigo-700 text-xs font-black uppercase tracking-wider">
+                          <Sparkles size={14} /> Claiming Your Refund
+                        </div>
+                        <p className="text-sm text-indigo-800/80 font-bold leading-relaxed">
+                          After your initial trial, I will send you a private booking link via email. If you use that link to enroll in a 1:1 Private Lesson, your $17.50 intro fee will be fully refunded—making this session <strong className="text-indigo-900 border-b border-indigo-200">100% FREE</strong>! Please ensure you provide a correct and active email address.
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Action Area */}
+                    <div className="pt-8 space-y-6">
+                      {/* Variant Selector for Private Lessons */}
+                      {selectedProduct.variants && (
+                        <div className="space-y-4">
+                          <h4 className="text-xs font-black uppercase tracking-[0.2em] text-primary text-center">Select Your Tier</h4>
+                          <div className="flex flex-col gap-2">
+                            {selectedProduct.variants.map((v) => (
+                              <button
+                                key={v.id}
+                                onClick={() => setSelectedVariant(v)}
+                                className={`p-4 rounded-2xl border text-sm font-black transition-all text-left flex justify-between items-center ${selectedVariant?.id === v.id
+                                  ? 'bg-primary/5 border-primary text-primary shadow-sm'
+                                  : 'bg-white border-gray-100 text-foreground hover:bg-gray-50'
+                                  }`}
+                              >
+                                <div>
+                                  <span className="block">{v.title}</span>
+                                  {v.id !== 'single' && <span className="block text-xs font-normal opacity-60 mt-0.5">{v.price}</span>}
+                                  {v.id === 'single' && <span className="block text-xs font-normal opacity-60 mt-0.5">{v.price} &nbsp;•&nbsp; Schedule Immediately</span>}
+                                </div>
+                                {selectedVariant?.id === v.id && <Check size={16} />}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Bundle Policy (for private bundles) */}
+                      {selectedProduct.id === "the-private" && selectedVariant && (selectedVariant.id === "bundle-5" || selectedVariant.id === "bundle-10") && (
+                        <div className="p-6 rounded-[2rem] bg-indigo-50/50 border border-indigo-100/50 space-y-3">
+                          <div className="flex items-center gap-2 text-indigo-700 text-xs font-black uppercase tracking-wider">
+                            <ShieldCheck size={14} /> Important Policies
+                          </div>
+                          <ul className="text-[11px] text-indigo-800/70 font-bold space-y-1 ml-6 list-disc">
+                            <li>All {selectedVariant.id === "bundle-5" ? "5" : "10"} sessions remain valid for {selectedVariant.id === "bundle-5" ? "3" : "6"} months.</li>
+                            <li>I will send your private booking link to your email within 24 hours.</li>
+                            <li>Each session you book will be deducted from your total balance.</li>
+                            <li>Bundle packages are non-refundable.</li>
+                          </ul>
+                        </div>
+                      )}
+
+                      {/* Payment / Link Button */}
+                      {selectedProduct.isPremium && (!selectedVariant || selectedVariant.paypalId) ? (
+                        <div className="space-y-6">
+                          <PayPalButton
+                            hostedButtonId={selectedVariant ? selectedVariant.paypalId! : selectedProduct.paypalId!}
+                            isSubscription={(selectedProduct as any).isSubscription}
+                          />
+                          <p className="text-[10px] text-center font-black uppercase tracking-[0.2em] text-muted-foreground">
+                            Transaction Secured by PayPal Node Protocol
+                          </p>
+                        </div>
+                      ) : (
+                        <a href={selectedVariant?.link || selectedProduct.link} target="_blank" rel="noreferrer" className="block">
+                          <Button className="w-full h-16 rounded-2xl bg-primary text-white text-lg font-black tracking-tight hover:scale-[1.02] transition-all shadow-xl shadow-primary/20">
+                            {selectedVariant?.link ? "Schedule Your Session" : selectedProduct.id === "the-free-trial" ? "Schedule Your Consultation" : "Secure Download Now"}
+                            <ArrowRight className="ml-2" size={20} />
+                          </Button>
+                        </a>
+                      )}
+
+                      {selectedProduct.id === "the-daily" || selectedProduct.id === "the-private" ? (
+                        <div className="pt-4 flex justify-center pb-8">
+                          <a href="https://calendly.com/wonbinssem/30min" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs font-black text-muted-foreground hover:text-primary transition-colors uppercase tracking-[0.2em]">
+                            <CalendarDays size={14} /> Questions? Book Private Consultation
+                          </a>
+                        </div>
+                      ) : <div className="pb-8"/>}
+                    </div>
+                  </>
+                )}
               </div>
             </motion.div>
           </div>

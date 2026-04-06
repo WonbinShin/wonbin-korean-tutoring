@@ -37,7 +37,7 @@ export default function BookingSection() {
                   <span className="text-secondary text-gradient-primary">First Lesson Free</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
-                  Not sure where to start? Join me for a 20-minute consultation where we'll test your level and build your perfect learning roadmap.
+                  Not sure where to start? Join me for a 25-minute consultation where we'll test your level and build your perfect learning roadmap.
                 </p>
               </motion.div>
 
@@ -81,7 +81,7 @@ export default function BookingSection() {
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-black text-foreground mb-2">20-Min Level Test & Roadmap</h3>
+                    <h3 className="text-2xl font-black text-foreground mb-2">25-Min Level Test & Roadmap</h3>
                     <p className="text-muted-foreground text-sm font-medium">
                       Pick any available slot from the calendar. No credit card required.
                     </p>
@@ -91,13 +91,13 @@ export default function BookingSection() {
 
                   <div className="space-y-4">
                     <a
-                      href="https://calendly.com/eorn6796/new-meeting"
+                      href="https://calendly.com/wonbinssem/30min"
                       target="_blank"
                       rel="noreferrer"
                       className="block"
                     >
                       <Button className="w-full h-16 rounded-2xl bg-primary text-primary-foreground hover:bg-primary/95 text-lg font-black tracking-tight flex items-center justify-center gap-3 transition-all hover:scale-[1.02] shadow-xl shadow-primary/20">
-                        Book Your Free Trial
+                        Book Your Intro Session
                         <ArrowRight size={20} />
                       </Button>
                     </a>
