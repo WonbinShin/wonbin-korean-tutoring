@@ -72,28 +72,29 @@ const mainServices: Product[] = [
   {
     id: "the-group",
     title: "The Group: Small Class Intensive",
-    description: "Speaking-focused program with high interaction.",
-    priceDisplay: "$130 (Launch Special)",
-    longDescription: "This is a 4-week program with a fixed weekly schedule. To ensure the best learning experience, I match students with similar proficiency levels.",
+    description: "Apply together as a custom group of 2-4 friends or colleagues.",
+    priceDisplay: "$80 / person (4 Sessions)",
+    longDescription: "Create a custom group with 2–4 friends or colleagues of similar proficiency levels. Enjoy a 4-week speaking-focused program where everyone gets high interaction at a highly affordable rate of $80 per person.",
     features: [
-      "4-week program with fixed schedule",
-      "Level-matched learning experience",
-      "Custom group sessions available"
+      "4-week program (4x 60-min live sessions)",
+      "Apply together with 2–4 partners",
+      "Highly affordable ($80 USD per person)",
+      "Must be of similar Korean proficiency levels"
     ],
     isPremium: true,
     category: "service",
-    tag: "High Interaction",
-    duration: "4 Weeks / 60 Min"
+    tag: "Custom Groups",
+    duration: "4 Weeks / 4 Sessions"
   },
   {
     id: "the-private",
     title: "The Private: 1:1 Premium Coaching",
     description: "Fully customized roadmap for your language journey.",
     priceDisplay: "From $35",
-    longDescription: "I design every lesson based on your specific goals and interests. I provide custom AI mnemonic cards after every lesson to ensure you never forget what we learned. You receive in-depth feedback and progress tracking to reach your goals faster.",
+    longDescription: "I design every lesson based on your specific goals and interests. I provide custom visual mnemonics, fun memory tricks, and tailored study tips for hard-to-remember words to ensure you remember expressions forever. You receive in-depth feedback and progress tracking to reach your goals faster.",
     features: [
       "50-minute personalized coaching sessions",
-      "Custom AI mnemonic cards after every lesson",
+      "Tailored mnemonic visuals & memory tricks",
       "Detailed progress tracking & feedback",
       "Flexible scheduling & high-performance roadmap"
     ],
@@ -111,7 +112,7 @@ const mainServices: Product[] = [
     id: "the-free-trial",
     title: "The Intro: 25-Min Session",
     description: "Experience my teaching style at exactly 50% of the regular rate.",
-    priceDisplay: "$17.50 USD",
+    priceDisplay: "$17.50 USD (FREE if you enroll)",
     longDescription: "Meet your tutor, evaluate your current proficiency, and discuss your learning goals. This 25-minute session provides an in-depth consultation.\n\n🎁 Risk-Free Refund Offer:\nThe $17.50 fee is fully refundable if you decide to enroll in a 1:1 Private Lesson after the trial. Essentially, your trial becomes completely FREE when you continue your journey!",
     features: [
       "25-minute introductory consultation",
@@ -154,7 +155,7 @@ const additionalResources: Product[] = [
     description: "The top 500 words used in modern Seoul (Included with 1:1 Classes).",
     priceDisplay: "Free with 1:1 Class",
     longDescription: "Stop learning dictionary words. This guide covers the high-frequency vocabulary used in K-Dramas and real life. Provided complimentary to all 1:1 students.",
-    features: ["500+ Word Cards", "AI-Generated Visuals", "Sample Sentences"],
+    features: ["500+ Word Cards", "Visual Mnemonic Cards", "Sample Sentences"],
     isPremium: false,
     category: "resource",
     link: "the-private"
@@ -449,10 +450,10 @@ export default function CoursesSection() {
                       <h4 className="text-xs font-black uppercase tracking-[0.2em] text-primary">How to Join</h4>
                       <div className="grid gap-4">
                         {[
-                          "This is a 4-week program with a fixed weekly schedule.",
-                          "To ensure the best learning experience, I match students with similar proficiency levels.",
-                          "Please send an inquiry first to check for available spots in your level.",
-                          "I will reply to your email with the current schedule and group status."
+                          "Form a custom group of 2–4 friends, classmates, or colleagues.",
+                          "Ensure all group members share a similar level of Korean proficiency.",
+                          "Send a group inquiry using the button below to check available class schedule options.",
+                          "I will reply to your group email with class timing options and setup details."
                         ].map((text, idx) => (
                           <div key={idx} className="flex items-start gap-4 p-5 rounded-3xl bg-gray-50 border border-gray-100">
                             <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center shadow-sm shrink-0">
@@ -467,10 +468,10 @@ export default function CoursesSection() {
                     {/* Pro Tip */}
                     <div className="p-6 rounded-[2rem] bg-indigo-50/50 border border-indigo-100/50 space-y-3">
                       <div className="flex items-center gap-2 text-indigo-700 text-xs font-black uppercase tracking-wider">
-                        <Sparkles size={14} /> Pro Tip: Bring a Friend
+                        <Sparkles size={14} /> Custom Group Notice
                       </div>
                       <p className="text-sm text-indigo-800/80 font-bold leading-relaxed">
-                        Do you have a friend who wants to learn Korean too? You can apply together with a friend or colleague. This allows you to skip the waiting list and start your custom group sessions right away.
+                        Since this program is exclusively for self-formed groups (2–4 people) of similar level, you skip any waiting queues! Gather your study partners, apply together, and start your custom sessions right away.
                       </p>
                     </div>
 

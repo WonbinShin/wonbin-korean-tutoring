@@ -21,7 +21,7 @@ const legalSections = [
             },
             {
                 subtitle: "3. Intellectual Property",
-                text: "All course materials, including AI-generated mnemonics, PDFs, and recordings, are the intellectual property of Wonbin Ssem. These are for your personal use only and may not be redistributed or resold."
+                text: "All course materials, including custom-designed mnemonics, PDFs, and recordings, are the intellectual property of Wonbin Ssem. These are for your personal use only and may not be redistributed or resold."
             }
         ]
     },

@@ -96,7 +96,7 @@ export default function HeroSection() {
           >
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-14">
               {[
-                { label: "Active Students", value: "500+" },
+                { label: "Total Students", value: "150+" },
                 { label: "Countries Reached", value: "30+" },
                 { label: "Success Rate", value: "100%" },
                 { label: "Course Artifacts", value: "50+" },

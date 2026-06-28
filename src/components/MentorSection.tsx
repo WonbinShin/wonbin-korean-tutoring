@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Star, Users, Globe, Play, Award, BookOpen, Heart, MapPin } from "lucide-react";
+import { Star, Users, Globe, Play, Award, BookOpen, Heart, MapPin, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
 
@@ -9,39 +10,48 @@ const credentials = [
         title: "Preply Supertutor",
         detail: "Top 1% Global Ranking",
         description: "Recognized for high-quality 1:1 Korean coaching and exceptional student satisfaction.",
-        year: "2023-Present"
+        year: "2023-Present",
+        images: [], // User can add paths here later, e.g. ["/lovable-uploads/preply-profile.jpg"]
+        detailedInfo: "Achieved the prestigious Supertutor status on Preply within the first few months, maintaining a stellar 5.0-star rating across hundreds of reviews. Features custom-tailored curriculum, high-retention mnemonic tools, and consistent student success track records."
     },
     {
         icon: Globe,
         title: "Overseas Volunteer Educator",
         detail: "Outstanding Member Award",
         description: "Volunteered in Vietnam and Indonesia to teach Korean culture and language. Selected as an Outstanding Member for exceptional dedication.",
-        year: "2024-2025"
+        year: "2024-2025",
+        images: [], // User can add paths here later
+        detailedInfo: "Conducted immersive cultural and language programs for local university students and communities. Developed interactive teaching resources that bridged cultural gaps and made learning enjoyable, receiving recognition for volunteer leadership."
     },
     {
         icon: Users,
         title: "Global Language Lead",
         detail: "Cultural Exchange Expert",
         description: "President of the university Cultural Exchange Club (2023-2025) and head of multiple international language programs.",
-        year: "2023-2025"
+        year: "2023-2025",
+        images: [], // User can add paths here later
+        detailedInfo: "Led the university Cultural Exchange Club, designing and executing language exchange cafes, cultural festivals, and peer mentoring programs for over 300 international learners."
     },
     {
         icon: Award,
         title: "World Culture Contest",
         detail: "1st Place Winner",
         description: "Awarded for excellence in promoting global cultural awareness and language education.",
-        year: "2024"
+        year: "2024",
+        images: [], // User can add paths here later
+        detailedInfo: "Participated and won 1st place in the World Culture Contest, presenting innovative methods of teaching Korean culture and making language acquisition highly interactive."
     },
 ];
 
 const stats = [
-    { label: "Active Students", value: "500+", icon: Users },
+    { label: "Total Students", value: "150+", icon: Users },
     { label: "Countries Reached", value: "30+", icon: MapPin },
     { label: "Success Rate", value: "100%", icon: Heart },
     { label: "Course Artifacts", value: "50+", icon: BookOpen }
 ];
 
 export default function MentorSection() {
+    const [isPlayingStory, setIsPlayingStory] = useState(false);
     return (
         <section id="about" className="py-32 md:py-48 bg-[#FDFCF8] relative overflow-hidden">
             {/* Cinematic Background elements */}
@@ -119,33 +129,37 @@ export default function MentorSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                                className="flex flex-wrap gap-6 gpu-accelerated"
+                                className="w-full max-w-xl gpu-accelerated"
                             >
-                                <Dialog>
-                                    <DialogTrigger asChild>
-                                        <Button variant="outline" className="h-[4.5rem] rounded-full px-12 border-gray-100 shadow-sm hover:bg-white hover:shadow-card-hover hover:border-primary/20 flex items-center gap-5 transition-all group">
-                                            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                                                <Play size={20} fill="currentColor" className="ml-1" />
-                                            </div>
-                                            <span className="text-sm font-black uppercase tracking-[0.2em] text-foreground">Watch My Story</span>
-                                        </Button>
-                                    </DialogTrigger>
-                                    <DialogContent className="sm:max-w-[800px] p-0 overflow-hidden bg-transparent border-none shadow-none">
-                                        <DialogTitle className="sr-only">Wonbin Ssem Story Video</DialogTitle>
-                                        <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl">
-                                            <iframe 
-                                                width="100%" 
-                                                height="100%" 
-                                                src="https://www.youtube.com/embed/wvTeALc6DF4?autoplay=1" 
-                                                title="Wonbin Ssem Story" 
-                                                frameBorder="0" 
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                                allowFullScreen 
-                                                className="w-full h-full"
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-3 block">My Introduction Story</span>
+                                <div className="relative rounded-[2rem] overflow-hidden aspect-video shadow-2xl border border-gray-100 group bg-black">
+                                    {!isPlayingStory ? (
+                                        <div className="relative w-full h-full cursor-pointer" onClick={() => setIsPlayingStory(true)}>
+                                            <img
+                                                src="https://img.youtube.com/vi/wvTeALc6DF4/maxresdefault.jpg"
+                                                alt="Wonbin Ssem Story Video Thumbnail"
+                                                className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                                             />
+                                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors duration-300" />
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                                    <Play size={24} fill="currentColor" className="ml-1" />
+                                                </div>
+                                            </div>
                                         </div>
-                                    </DialogContent>
-                                </Dialog>
+                                    ) : (
+                                        <iframe 
+                                            width="100%" 
+                                            height="100%" 
+                                            src="https://www.youtube.com/embed/wvTeALc6DF4?autoplay=1" 
+                                            title="Wonbin Ssem Story" 
+                                            frameBorder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowFullScreen 
+                                            className="w-full h-full"
+                                        />
+                                    )}
+                                </div>
                             </motion.div>
                         </div>
                     </div>
@@ -167,34 +181,74 @@ export default function MentorSection() {
                                 <p className="text-muted-foreground font-medium max-w-md">
                                     A track record of excellence in educational psychology and global cultural leadership.
                                 </p>
-                            </motion.div>
-
-                            <div className="space-y-4">
+                            </motion.div>                            <div className="space-y-4">
                                 {credentials.map((item, idx) => (
-                                    <motion.div
-                                        key={item.title}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                        className="group relative p-6 rounded-[2.5rem] bg-white border border-gray-100 hover:border-primary/20 hover:shadow-card-hover transition-all duration-500 cursor-default gpu-accelerated"
-                                    >
-                                        <div className="flex items-start gap-5">
-                                            <div className="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
-                                                <item.icon size={24} className="text-primary" />
-                                            </div>
-                                            <div className="flex-1">
-                                                <div className="flex justify-between items-start mb-1">
-                                                    <h4 className="font-bold text-foreground group-hover:text-primary transition-colors underline-offset-4 decoration-primary/20">{item.title}</h4>
-                                                    <span className="text-[10px] font-black uppercase tracking-widest text-primary/40 leading-none">{item.year}</span>
+                                    <Dialog key={item.title}>
+                                        <DialogTrigger asChild>
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 20 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                                className="group relative p-6 rounded-[2.5rem] bg-white border border-gray-100 hover:border-primary/20 hover:shadow-card-hover transition-all duration-500 cursor-pointer gpu-accelerated"
+                                            >
+                                                <div className="flex items-start gap-5">
+                                                    <div className="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
+                                                        <item.icon size={24} className="text-primary" />
+                                                    </div>
+                                                    <div className="flex-1">
+                                                        <div className="flex justify-between items-start mb-1">
+                                                            <h4 className="font-bold text-foreground group-hover:text-primary transition-colors underline-offset-4 decoration-primary/20">{item.title}</h4>
+                                                            <span className="text-[10px] font-black uppercase tracking-widest text-primary/40 leading-none">{item.year}</span>
+                                                        </div>
+                                                        <p className="text-xs font-bold text-primary/60 uppercase tracking-widest mb-2">{item.detail}</p>
+                                                        <p className="text-sm text-muted-foreground leading-relaxed">
+                                                            {item.description}
+                                                        </p>
+                                                        <div className="mt-3 flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                                                            <span>Click for Details</span>
+                                                            <Sparkles size={10} />
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <p className="text-xs font-bold text-primary/60 uppercase tracking-widest mb-2">{item.detail}</p>
-                                                <p className="text-sm text-muted-foreground leading-relaxed opacity-0 group-hover:opacity-100 h-0 group-hover:h-auto overflow-hidden transition-all duration-500">
-                                                    {item.description}
+                                            </motion.div>
+                                        </DialogTrigger>
+                                        <DialogContent className="sm:max-w-[600px] p-8 rounded-3xl bg-white border-none shadow-2xl overflow-y-auto max-h-[85vh]">
+                                            <DialogTitle className="text-2xl font-black text-foreground tracking-tight">{item.title}</DialogTitle>
+                                            <div className="mt-4 space-y-6">
+                                                <div className="flex items-center justify-between text-xs font-black uppercase tracking-wider text-primary/60 border-b border-gray-100 pb-3">
+                                                    <span>{item.detail}</span>
+                                                    <span>{item.year}</span>
+                                                </div>
+                                                <p className="text-base text-foreground/80 leading-relaxed whitespace-pre-wrap">
+                                                    {(item as any).detailedInfo}
                                                 </p>
+                                                
+                                                {/* Dynamic Photos Section */}
+                                                {(item as any).images && (item as any).images.length > 0 ? (
+                                                    <div className="space-y-4 pt-4 border-t border-gray-50">
+                                                        <h5 className="text-xs font-black uppercase tracking-widest text-primary flex items-center gap-2">
+                                                            <Sparkles size={12} /> Media Gallery
+                                                        </h5>
+                                                        <div className="grid grid-cols-2 gap-4">
+                                                            {(item as any).images.map((imgUrl: string, i: number) => (
+                                                                <div key={i} className="rounded-2xl overflow-hidden aspect-video bg-gray-50 border border-gray-100">
+                                                                    <img src={imgUrl} alt={`${item.title} media ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    <div className="pt-4 border-t border-gray-50">
+                                                        <p className="text-[11px] text-muted-foreground italic flex items-center gap-1.5">
+                                                            <ShieldCheck size={12} className="text-primary/40" />
+                                                            * Verification documents and gallery photos will be uploaded soon.
+                                                        </p>
+                                                    </div>
+                                                )}
                                             </div>
-                                        </div>
-                                    </motion.div>
+                                        </DialogContent>
+                                    </Dialog>
                                 ))}
                             </div>
                         </div>

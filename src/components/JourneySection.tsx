@@ -33,7 +33,7 @@ const credentials = [
 ];
 
 const stats = [
-  { label: "Students Helped", value: "500+", icon: Users },
+  { label: "Total Students", value: "150+", icon: Users },
   { label: "Lessons Taught", value: "2,000+", icon: BookOpen },
   { label: "Positive Reviews", value: "100%", icon: Heart },
   { label: "Countries Reached", value: "30+", icon: MapPin }
