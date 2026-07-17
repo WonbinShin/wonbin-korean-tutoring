@@ -112,7 +112,7 @@ const mainServices: Product[] = [
     id: "the-free-trial",
     title: "The Intro: 25-Min Session",
     description: "Experience my teaching style at exactly 50% of the regular rate.",
-    priceDisplay: "$17.50 USD (FREE if you enroll)",
+    priceDisplay: "$17.50 USD\n(FREE if you enroll)",
     longDescription: "Meet your tutor, evaluate your current proficiency, and discuss your learning goals. This 25-minute session provides an in-depth consultation.\n\n🎁 Risk-Free Refund Offer:\nThe $17.50 fee is fully refundable if you decide to enroll in a 1:1 Private Lesson after the trial. Essentially, your trial becomes completely FREE when you continue your journey!",
     features: [
       "25-minute introductory consultation",
@@ -322,7 +322,7 @@ export default function CoursesSection() {
                     </div>
 
                     <div className="flex items-center justify-between pt-4 border-t border-gray-50">
-                      <span className="text-xl font-black text-foreground">{product.priceDisplay}</span>
+                      <span className="text-xl font-black text-foreground whitespace-pre-wrap">{product.priceDisplay}</span>
                       <div className="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all">
                         View Details <ChevronRight size={14} />
                       </div>
@@ -432,7 +432,7 @@ export default function CoursesSection() {
                   <h3 className="text-4xl font-black text-foreground tracking-tight leading-none">{selectedProduct.title}</h3>
 
                   <div className="flex flex-wrap items-center gap-4">
-                    <span className="text-3xl font-black text-primary">{selectedProduct.priceDisplay}</span>
+                    <span className="text-3xl font-black text-primary whitespace-pre-wrap leading-tight">{selectedProduct.priceDisplay}</span>
                     <div className="h-4 w-px bg-gray-200" />
                     {selectedProduct.duration && (
                       <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-muted-foreground">

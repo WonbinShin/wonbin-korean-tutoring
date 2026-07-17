@@ -11,7 +11,8 @@ const credentials = [
         detail: "Top 1% Global Ranking",
         description: "Recognized for high-quality 1:1 Korean coaching and exceptional student satisfaction.",
         year: "2023-Present",
-        images: [], // User can add paths here later, e.g. ["/lovable-uploads/preply-profile.jpg"]
+        images: [],
+        link: "https://preply.com/ko/tutor/5155100?utm_source=friend_plg&utm_medium=copy_link&utm_campaign=tut_plg_st_all_0_mul_xx_multiplesub_share-your-tutor-6&utm_content=MTQ2ODc2Mzc%3D&adj_t=20yroq7d&adj_campaign=tut_plg_st_all_0_mul_xx_multiplesub_share-your-tutor-6&ts=17828076",
         detailedInfo: "Achieved the prestigious Supertutor status on Preply within the first few months, maintaining a stellar 5.0-star rating across hundreds of reviews. Features custom-tailored curriculum, high-retention mnemonic tools, and consistent student success track records."
     },
     {
@@ -20,7 +21,12 @@ const credentials = [
         detail: "Outstanding Member Award",
         description: "Volunteered in Vietnam and Indonesia to teach Korean culture and language. Selected as an Outstanding Member for exceptional dedication.",
         year: "2024-2025",
-        images: [], // User can add paths here later
+        images: [
+            "/lovable-uploads/volunteer-1.jpg",
+            "/lovable-uploads/volunteer-2.jpg",
+            "/lovable-uploads/volunteer-3.jpg",
+            "/lovable-uploads/volunteer-4.jpg"
+        ],
         detailedInfo: "Conducted immersive cultural and language programs for local university students and communities. Developed interactive teaching resources that bridged cultural gaps and made learning enjoyable, receiving recognition for volunteer leadership."
     },
     {
@@ -182,37 +188,50 @@ export default function MentorSection() {
                                     A track record of excellence in educational psychology and global cultural leadership.
                                 </p>
                             </motion.div>                            <div className="space-y-4">
-                                {credentials.map((item, idx) => (
-                                    <Dialog key={item.title}>
-                                        <DialogTrigger asChild>
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 20 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                viewport={{ once: true }}
-                                                transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                                className="group relative p-6 rounded-[2.5rem] bg-white border border-gray-100 hover:border-primary/20 hover:shadow-card-hover transition-all duration-500 cursor-pointer gpu-accelerated"
-                                            >
-                                                <div className="flex items-start gap-5">
-                                                    <div className="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
-                                                        <item.icon size={24} className="text-primary" />
+                                {credentials.map((item, idx) => {
+                                    const CardContent = (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                            className="group relative p-6 rounded-[2.5rem] bg-white border border-gray-100 hover:border-primary/20 hover:shadow-card-hover transition-all duration-500 cursor-pointer gpu-accelerated"
+                                        >
+                                            <div className="flex items-start gap-5">
+                                                <div className="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
+                                                    <item.icon size={24} className="text-primary" />
+                                                </div>
+                                                <div className="flex-1">
+                                                    <div className="flex justify-between items-start mb-1">
+                                                        <h4 className="font-bold text-foreground group-hover:text-primary transition-colors underline-offset-4 decoration-primary/20">{item.title}</h4>
+                                                        <span className="text-[10px] font-black uppercase tracking-widest text-primary/40 leading-none">{item.year}</span>
                                                     </div>
-                                                    <div className="flex-1">
-                                                        <div className="flex justify-between items-start mb-1">
-                                                            <h4 className="font-bold text-foreground group-hover:text-primary transition-colors underline-offset-4 decoration-primary/20">{item.title}</h4>
-                                                            <span className="text-[10px] font-black uppercase tracking-widest text-primary/40 leading-none">{item.year}</span>
-                                                        </div>
-                                                        <p className="text-xs font-bold text-primary/60 uppercase tracking-widest mb-2">{item.detail}</p>
-                                                        <p className="text-sm text-muted-foreground leading-relaxed">
-                                                            {item.description}
-                                                        </p>
-                                                        <div className="mt-3 flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                                                            <span>Click for Details</span>
-                                                            <Sparkles size={10} />
-                                                        </div>
+                                                    <p className="text-xs font-bold text-primary/60 uppercase tracking-widest mb-2">{item.detail}</p>
+                                                    <p className="text-sm text-muted-foreground leading-relaxed">
+                                                        {item.description}
+                                                    </p>
+                                                    <div className="mt-3 flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                                                        <span>{(item as any).link ? "Click to Visit Preply Profile" : "Click for Details"}</span>
+                                                        <Sparkles size={10} />
                                                     </div>
                                                 </div>
-                                            </motion.div>
-                                        </DialogTrigger>
+                                            </div>
+                                        </motion.div>
+                                    );
+
+                                    if ((item as any).link) {
+                                        return (
+                                            <a key={item.title} href={(item as any).link} target="_blank" rel="noreferrer" className="block">
+                                                {CardContent}
+                                            </a>
+                                        );
+                                    }
+
+                                    return (
+                                        <Dialog key={item.title}>
+                                            <DialogTrigger asChild>
+                                                {CardContent}
+                                            </DialogTrigger>
                                         <DialogContent className="sm:max-w-[600px] p-8 rounded-3xl bg-white border-none shadow-2xl overflow-y-auto max-h-[85vh]">
                                             <DialogTitle className="text-2xl font-black text-foreground tracking-tight">{item.title}</DialogTitle>
                                             <div className="mt-4 space-y-6">
