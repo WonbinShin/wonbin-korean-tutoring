@@ -260,7 +260,8 @@ export default function MentorSection() {
                                             </div>
                                         </DialogContent>
                                     </Dialog>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
 
