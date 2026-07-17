@@ -243,8 +243,7 @@ export default function MentorSection() {
                                                     {(item as any).detailedInfo}
                                                 </p>
                                                 
-                                                {/* Dynamic Photos Section */}
-                                                {(item as any).images && (item as any).images.length > 0 ? (
+                                                {(item as any).images && (item as any).images.length > 0 && (
                                                     <div className="space-y-4 pt-4 border-t border-gray-50">
                                                         <h5 className="text-xs font-black uppercase tracking-widest text-primary flex items-center gap-2">
                                                             <Sparkles size={12} /> Media Gallery
@@ -256,13 +255,6 @@ export default function MentorSection() {
                                                                 </div>
                                                             ))}
                                                         </div>
-                                                    </div>
-                                                ) : (
-                                                    <div className="pt-4 border-t border-gray-50">
-                                                        <p className="text-[11px] text-muted-foreground italic flex items-center gap-1.5">
-                                                            <ShieldCheck size={12} className="text-primary/40" />
-                                                            * Verification documents and gallery photos will be uploaded soon.
-                                                        </p>
                                                     </div>
                                                 )}
                                             </div>
