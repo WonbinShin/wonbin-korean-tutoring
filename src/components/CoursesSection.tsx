@@ -11,8 +11,8 @@ const options = [
     discountPrice: "$140 USD",
     priceSuffix: "per month",
     duration: "50 minutes per session, 4 sessions per month",
-    status: "Open enrollment anytime with flexible schedule options",
-    description: "100% custom-tailored coaching for your personal speed & goals.",
+    status: "Open anytime — pick your schedule",
+    description: "A class made just for you, at your own speed.",
     buttonText: "Apply for 1:1 Private Class",
     buttonLink: "https://docs.google.com/forms/d/e/1FAIpQLScJ_GGJltryp_jyoH237Wc6ONFdUs-iYrjqmjGpBiRtddJJcA/viewform?usp=header"
   },
@@ -24,8 +24,8 @@ const options = [
     discountPrice: "$100 USD",
     priceSuffix: "per person / month",
     duration: "50 minutes per session, 4 sessions per month",
-    status: "Cohort enrollment on a first-come, first-served basis",
-    description: "Learn together with a friend or partner at your level.",
+    status: "First come, first served",
+    description: "Learn with a friend or partner at the same level.",
     buttonText: "Apply for 2:1 Duo Class",
     buttonLink: "https://docs.google.com/forms/d/e/1FAIpQLScJ_GGJltryp_jyoH237Wc6ONFdUs-iYrjqmjGpBiRtddJJcA/viewform?usp=header"
   },
@@ -37,8 +37,8 @@ const options = [
     discountPrice: "$80 USD",
     priceSuffix: "per person / month",
     duration: "50 minutes per session, 4 sessions per month",
-    status: "Cohort enrollment on a first-come, first-served basis",
-    description: "High-interaction small group batch for maximum practice.",
+    status: "First come, first served",
+    description: "Small group class with lots of speaking practice.",
     buttonText: "Apply for 4:1 Group Class",
     buttonLink: "https://docs.google.com/forms/d/e/1FAIpQLScJ_GGJltryp_jyoH237Wc6ONFdUs-iYrjqmjGpBiRtddJJcA/viewform?usp=header"
   }
@@ -52,13 +52,13 @@ export default function CoursesSection() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <p className="text-xs font-black text-primary uppercase tracking-[0.25em]">
-            Pricing & Regular Class Options
+            Class Prices
           </p>
-          <h2 className="text-3xl sm:text-5xl font-black text-foreground tracking-tight [text-wrap:balance] break-keep">
-            Simple, Transparent Pricing
+          <h2 className="text-3xl sm:text-5xl font-black text-foreground tracking-tight">
+            Pick Your Class Type
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground font-medium max-w-xl mx-auto leading-relaxed [text-wrap:balance] break-keep">
-            Choose the format that fits your learning style best. All classes include full Google Drive notes, class recordings, and KakaoTalk feedback!
+          <p className="text-base sm:text-lg text-muted-foreground font-medium max-w-xl mx-auto leading-relaxed">
+            Choose the class size that fits you best. All classes include Google Drive notes and KakaoTalk help!
           </p>
         </div>
 
@@ -73,7 +73,7 @@ export default function CoursesSection() {
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
                   <opt.icon size={28} />
                 </div>
-                <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
+                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
                   <Sparkles size={11} /> Discount Active
                 </span>
               </div>
@@ -130,28 +130,28 @@ export default function CoursesSection() {
         </div>
 
         {/* Option 4: Daily Korean Subscription */}
-        <div className="max-w-4xl mx-auto bg-gradient-to-r from-emerald-900 via-teal-900 to-emerald-950 text-white p-8 sm:p-10 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-8 justify-between shadow-xl relative overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-gradient-to-r from-[#3D5FE6] via-[#4D71FF] to-[#3D5FE6] text-white p-8 sm:p-10 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-8 justify-between shadow-xl relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:24px_24px] opacity-30 pointer-events-none" />
 
           <div className="flex items-start gap-6 flex-1 text-left relative z-10">
-            <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-300 shrink-0 shadow-inner">
+            <div className="w-16 h-16 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center text-white shrink-0 shadow-inner">
               <Flame size={32} />
             </div>
             <div className="space-y-2">
-              <div className="inline-block px-3 py-0.5 rounded-full bg-emerald-400/20 border border-emerald-400/30 text-emerald-200 text-[10px] font-black uppercase tracking-widest">
-                Daily Korean Habit Membership
+              <div className="inline-block px-3 py-0.5 rounded-full bg-white/15 border border-white/25 text-blue-100 text-[10px] font-black uppercase tracking-widest">
+                Daily Korean Membership
               </div>
               <h3 className="text-2xl font-black tracking-tight text-white">Daily Korean Subscription</h3>
-              <p className="text-xs sm:text-sm font-medium text-emerald-100/90 max-w-lg leading-relaxed [text-wrap:balance]">
-                Get daily vocabulary updates, personal life stories from Wonbin Ssem, and quick Korean language tips directly in your inbox & Discord community!
+              <p className="text-xs sm:text-sm font-medium text-blue-100/90 max-w-lg leading-relaxed">
+                Get daily new words, short stories from Wonbin Ssem, and quick Korean tips in your inbox and Discord!
               </p>
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row md:flex-col items-center md:items-end gap-4 shrink-0 w-full md:w-auto justify-between relative z-10">
             <div className="text-center md:text-right">
-              <span className="text-3xl sm:text-4xl font-black text-emerald-300 tracking-tight block leading-none mb-1">$9 USD</span>
-              <span className="text-[10px] font-bold text-emerald-200 uppercase tracking-widest">per month</span>
+              <span className="text-3xl sm:text-4xl font-black text-white tracking-tight block leading-none mb-1">$9 USD</span>
+              <span className="text-[10px] font-bold text-blue-100 uppercase tracking-widest">per month</span>
             </div>
             <a 
               href="https://docs.google.com/forms/d/e/1FAIpQLScJ_GGJltryp_jyoH237Wc6ONFdUs-iYrjqmjGpBiRtddJJcA/viewform?usp=header" 
@@ -159,7 +159,7 @@ export default function CoursesSection() {
               rel="noreferrer"
               className="w-full sm:w-auto"
             >
-              <Button className="w-full sm:w-auto h-12 px-8 rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-black text-sm transition-all shadow-lg shadow-emerald-950/50">
+              <Button className="w-full sm:w-auto h-12 px-8 rounded-full bg-white hover:bg-blue-50 text-[#4D71FF] font-black text-sm transition-all shadow-lg">
                 Join Subscription
               </Button>
             </a>

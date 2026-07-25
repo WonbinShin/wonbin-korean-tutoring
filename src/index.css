@@ -20,18 +20,18 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 12%;
 
-    --primary: 174 78% 30%;
-    /* Deep Teal #0E8579 */
+    --primary: 228 100% 65%;
+    /* Photo Blue #4D71FF */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 162 72% 40%;
-    /* Vibrant Emerald #059669 */
+    --secondary: 228 85% 72%;
+    /* Light Accent Blue #7B96FF */
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 20% 96%;
     --muted-foreground: 220 15% 38%;
 
-    --accent: 174 78% 30%;
+    --accent: 228 100% 65%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -39,28 +39,28 @@
 
     --border: 220 15% 92%;
     --input: 220 15% 92%;
-    --ring: 174 78% 30%;
+    --ring: 228 100% 65%;
 
     --radius: 2rem;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 240 10% 12%;
-    --sidebar-primary: 174 78% 30%;
+    --sidebar-primary: 228 100% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 48 20% 94%;
     --sidebar-accent-foreground: 240 10% 12%;
     --sidebar-border: 240 10% 90%;
-    --sidebar-ring: 174 78% 30%;
+    --sidebar-ring: 228 100% 65%;
 
     /* Custom tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(174 78% 30% / 0.08), hsl(162 72% 40% / 0.08), hsl(174 78% 30% / 0.04));
-    --coral-glow: 0 20px 60px hsl(174 78% 30% / 0.15);
+    --hero-gradient: linear-gradient(135deg, hsl(228 100% 65% / 0.08), hsl(228 85% 72% / 0.08), hsl(228 100% 65% / 0.04));
+    --coral-glow: 0 20px 60px hsl(228 100% 65% / 0.15);
     --card-shadow: 0 10px 30px -10px hsl(0 0% 0% / 0.08);
     --card-shadow-hover: 0 20px 40px -15px hsl(0 0% 0% / 0.12);
 
     --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
-    --shadow-card-hover: 0 20px 50px -10px rgba(14, 133, 121, 0.18);
-    --gradient-primary: linear-gradient(135deg, #0E8579 0%, #10B981 100%);
+    --shadow-card-hover: 0 20px 50px -10px rgba(77, 113, 255, 0.22);
+    --gradient-primary: linear-gradient(135deg, #4D71FF 0%, #7B96FF 100%);
   }
 
   /* Dark mode hidden for this transformation as it's meant to be a bright theme */

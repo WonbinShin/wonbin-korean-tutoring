@@ -1,37 +1,37 @@
 import React from "react";
-import { Coffee, MessagesSquare, MessageCircle, HardDrive, LayoutTemplate, Target } from "lucide-react";
+import { Coffee, MessagesSquare, MessageCircle, FolderCheck, BookOpenCheck, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
 const features = [
   {
     icon: Coffee,
     title: "1. Daily Warm-Up",
-    description: "We start every session with casual catch-up chatter and a quick review of your previous lesson notes to warm up your brain."
+    description: "We start every lesson with friendly casual chatter and a quick review of your previous notes so your brain gets ready."
   },
   {
     icon: MessagesSquare,
-    title: "2. Role-Play Learning",
-    description: "You practice real, natural conversations for everyday situations—ordering food, asking directions, making Korean friends—from day one."
+    title: "2. Role-Play Practice",
+    description: "You practice real conversations for everyday situations—ordering food, asking directions, making Korean friends—from day one."
   },
   {
     icon: MessageCircle,
-    title: "3. KakaoTalk Community",
-    description: "You join our private chat for daily native phrases, quick voice feedback on your homework, and instant Q&A whenever you get stuck."
+    title: "3. KakaoTalk Chat",
+    description: "You join our private chat for daily useful phrases, homework feedback, and quick help whenever you have questions."
   },
   {
-    icon: HardDrive,
+    icon: FolderCheck,
     title: "4. Google Drive Hub",
-    description: "You get 24/7 personal access to organized class notes, custom worksheets, and full HD video recordings of every single session."
+    description: "You get 24/7 personal access to organized class notes and easy study materials anytime you need them."
   },
   {
-    icon: LayoutTemplate,
-    title: "5. Custom Study Decks",
-    description: "You receive original visual mnemonic cheatsheets and pre-made Anki flashcards to effortlessly memorize tricky words forever."
+    icon: BookOpenCheck,
+    title: "5. Custom Vocabulary Sheets",
+    description: "You get fun, visual word lists and memory tips to help you learn tricky new words quickly and easily."
   },
   {
     icon: Target,
-    title: "6. 100% Customized Roadmap",
-    description: "We tailor every single session to your exact goals, interests, and reasons for learning—so you skip textbook fluff and master real Korean you'll actually use!"
+    title: "6. 100% Personal Roadmap",
+    description: "We build every lesson around your goals, so you skip boring textbook stuff and learn Korean you will actually use!"
   }
 ];
 
@@ -40,14 +40,14 @@ export default function HowItWorksSection() {
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <p className="text-xs font-black text-primary uppercase tracking-[0.25em]">
+          <p className="text-xs font-black text-primary uppercase tracking-[0.2em]">
             How My Classes Work
           </p>
-          <h2 className="text-3xl sm:text-5xl font-black text-foreground tracking-tight [text-wrap:balance] break-keep">
-            Designed for Real Spoken Fluency
+          <h2 className="text-3xl sm:text-5xl font-black text-foreground tracking-tight">
+            Easy Steps to Learn Korean
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground font-medium max-w-xl mx-auto leading-relaxed [text-wrap:balance] break-keep">
-            No dry grammar lectures or outdated textbook sentences. Here is how we make learning fast, natural, and addictively fun.
+          <p className="text-base sm:text-lg text-muted-foreground font-medium max-w-xl mx-auto leading-relaxed">
+            No boring lectures. Here is how we make learning simple and fun.
           </p>
         </div>
 
@@ -65,7 +65,7 @@ export default function HowItWorksSection() {
                 <feature.icon size={28} />
               </div>
               <h3 className="text-xl font-black text-foreground mb-3 tracking-tight">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground font-medium leading-relaxed [text-wrap:balance] break-keep">
+              <p className="text-sm text-muted-foreground font-medium leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>
