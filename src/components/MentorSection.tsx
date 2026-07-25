@@ -262,7 +262,7 @@ export default function MentorSection() {
                                                     {item.images && item.images.length > 0 && (
                                                         <div className="space-y-4 pt-4 border-t border-gray-100">
                                                             <h5 className="text-xs font-black uppercase tracking-widest text-primary flex items-center gap-2">
-                                                                <Sparkles size={14} /> Photo Gallery ({item.images.length})
+                                                                <Sparkles size={14} /> Photo Gallery
                                                             </h5>
                                                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                                                                 {item.images.map((imgUrl: string, i: number) => (
@@ -272,6 +272,12 @@ export default function MentorSection() {
                                                                             alt={`${item.title} photo ${i + 1}`} 
                                                                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
                                                                             loading="lazy"
+                                                                            onError={(e) => {
+                                                                                const parent = e.currentTarget.parentElement;
+                                                                                if (parent) {
+                                                                                    parent.style.display = "none";
+                                                                                }
+                                                                            }}
                                                                         />
                                                                     </div>
                                                                 ))}
