@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <img src="/logo-ws.png" alt="Logo" className="w-10 h-10 object-contain" />
+                <img src="/webprofile.jpg" alt="Logo" className="w-10 h-10 object-contain" />
                 <span className="text-xl font-black text-foreground tracking-tighter uppercase tracking-[0.2em]">Wonbin Ssem</span>
               </div>
               <p className="text-lg text-muted-foreground font-medium max-w-sm leading-relaxed">

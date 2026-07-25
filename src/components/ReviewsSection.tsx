@@ -382,7 +382,7 @@ export default function ReviewsSection() {
             <span className="text-secondary italic">Global Community.</span>
           </h2>
           <p className="text-lg text-muted-foreground font-medium max-w-xl mx-auto leading-relaxed">
-            Performance data from global operators who have successfully integrated the Wonbin Ssem framework into their learning roadmap.
+             Real feedback from students learning Korean with Wonbin Ssem
           </p>
         </div>
 

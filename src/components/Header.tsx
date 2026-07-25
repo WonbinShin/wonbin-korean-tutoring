@@ -38,7 +38,7 @@ export default function Header() {
         <div className="px-6 h-16 flex items-center justify-between relative z-10 gap-4">
           <a href="#home" className="flex items-center gap-3 flex-shrink-0 group">
             <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform duration-500 ease-liquid">
-              <img src="/favicon-ws.png" alt="Wonbin Ssem Logo" className="w-full h-full object-contain" />
+              <img src="/webprofile.jpg" alt="Wonbin Ssem Logo" className="w-full h-full object-contain" />
             </div>
             <div className="hidden sm:flex flex-col">
               <span className="text-sm font-black text-foreground tracking-tighter uppercase leading-none mb-0.5">
