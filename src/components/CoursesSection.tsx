@@ -154,7 +154,7 @@ export default function CoursesSection() {
               <span className="text-[10px] font-bold text-blue-100 uppercase tracking-widest">per month</span>
             </div>
             <a 
-              href="https://docs.google.com/forms/d/e/1FAIpQLScJ_GGJltryp_jyoH237Wc6ONFdUs-iYrjqmjGpBiRtddJJcA/viewform?usp=header" 
+              href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-68P32646RX9471605NGJRAYI" 
               target="_blank" 
               rel="noreferrer"
               className="w-full sm:w-auto"

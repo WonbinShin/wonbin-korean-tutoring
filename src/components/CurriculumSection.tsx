@@ -3,9 +3,9 @@ import { Sparkles, ChevronDown, ChevronUp, Check, ArrowRight, ShieldCheck, BookO
 import { Button } from "@/components/ui/button";
 
 export default function CurriculumSection() {
-  const [expandedPack, setExpandedPack] = useState<string | null>("booster");
+  const [expandedPack, setExpandedPack] = useState(null);
 
-  const toggleExpand = (packId: string) => {
+  const toggleExpand = (packId) => {
     setExpandedPack(expandedPack === packId ? null : packId);
   };
 
@@ -27,7 +27,7 @@ export default function CurriculumSection() {
         </div>
 
         {/* 3 Main Packs Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16 items-start">
+        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16 items-stretch">
           
           {/* STARTER */}
           <div className="bg-white border border-gray-100 rounded-[2.5rem] p-8 shadow-sm hover:shadow-card hover:border-primary/30 transition-all flex flex-col h-full">
@@ -77,7 +77,7 @@ export default function CurriculumSection() {
           </div>
 
           {/* BOOSTER */}
-          <div className="bg-white border-2 border-primary/30 rounded-[2.5rem] p-8 shadow-md hover:shadow-card transition-all flex flex-col relative">
+          <div className="bg-white border-2 border-primary/30 rounded-[2.5rem] p-8 shadow-md hover:shadow-card transition-all flex flex-col h-full relative">
             <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-white text-[10px] font-black uppercase tracking-widest shadow-md">
               Most Popular
             </div>
@@ -108,7 +108,7 @@ export default function CurriculumSection() {
               className="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-between text-left hover:bg-gray-100/70 transition-colors mb-4"
             >
               <span className="text-xs font-black uppercase tracking-wider text-foreground flex items-center gap-2">
-                <Sparkles size={14} className="text-primary" /> What You Learn ({expandedPack === "booster" ? "Hide" : "Show"})
+                <Sparkles size={14} className="text-primary" /> What You Learn {expandedPack === "booster" ? "Show Less" : "Show Details"}
               </span>
               {expandedPack === "booster" ? <ChevronUp size={16} className="text-primary" /> : <ChevronDown size={16} className="text-primary" />}
             </button>
@@ -119,7 +119,7 @@ export default function CurriculumSection() {
                   { title: "Self Introduction", desc: "Introduce yourself clearly in real-life settings." },
                   { title: "Tense Patterns", desc: "Learn easy rules for past, present, future, and ongoing actions." },
                   { title: "Two Number Systems", desc: "Know when to use each Korean number for dates, time, and counting." },
-                  { title: "Particles in Speech", desc: "Learn when to use particles—and when Koreans skip them." },
+                  { title: "Particles in Speech", desc: "Learn when to use particles and when Koreans skip them." },
                   { title: "Must-Know Grammar", desc: "Talk about wants, rules, ability, and simple conditions." },
                   { title: "1-Minute Free Talk", desc: "Speak without a script on everyday topics." }
                 ].map((item, i) => (

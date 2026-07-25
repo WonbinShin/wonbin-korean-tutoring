@@ -5,8 +5,8 @@ import { ArrowRight, Sparkles, Zap, Award, Star, Clock, Globe } from "lucide-rea
 const trustBadges = [
   { icon: Star, title: "5.0 Star Rated", desc: "Verified Super Tutor" },
   { icon: Clock, title: "1,000+ Hours", desc: "Teaching Experience" },
-  { icon: Globe, title: "Certified", desc: "Overseas Educator" },
-  { icon: Award, title: "Award-Winning", desc: "Culture & Language Mentor" },
+  { icon: Globe, title: "25+ Countries", desc: "Global Students" },
+  { icon: Award, title: "Certified", desc: "Overseas Educator" },
 ];
 
 export default function HeroSection() {
@@ -45,17 +45,17 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight text-foreground gpu-accelerated"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-foreground gpu-accelerated [text-wrap:balance]"
             >
-              Unlock Your Real Korean{" "}
-              <span className="text-primary italic font-serif tracking-normal whitespace-nowrap">with Wonbin Ssem</span>
+              <span className="inline-block">Unlock Your Real Korean</span>{" "}
+              <span className="text-primary font-black tracking-tight whitespace-nowrap">with Wonbin Ssem</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed gpu-accelerated"
+              className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium max-w-3xl mx-auto leading-relaxed gpu-accelerated [text-wrap:balance]"
             >
               Learn real spoken Korean from lesson one. Read Hangul easily, speak with confidence, and make real Korean friends!
             </motion.p>
@@ -78,13 +78,13 @@ export default function HeroSection() {
               </Button>
             </a>
 
-            <a href="#about" className="w-full sm:w-auto flex-1">
+            <a href="#curriculum" className="w-full sm:w-auto flex-1">
               <Button
                 variant="outline"
                 size="lg"
                 className="w-full h-15 rounded-2xl px-8 border-gray-200 text-foreground text-base sm:text-lg font-black tracking-tight hover:bg-gray-50 transition-all flex items-center justify-center gap-2"
               >
-                Meet Your Tutor
+                Explore Courses
                 <Sparkles size={18} className="text-primary" />
               </Button>
             </a>
@@ -101,12 +101,12 @@ export default function HeroSection() {
               {trustBadges.map((badge) => (
                 <div 
                   key={badge.title} 
-                  className="flex flex-col items-center justify-center p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-primary/30 hover:shadow-card transition-all duration-300 group"
+                  className="flex flex-col items-center justify-center p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-primary/50 hover:shadow-[0_0_25px_rgba(77,113,255,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3 text-primary group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                     <badge.icon size={20} />
                   </div>
-                  <div className="text-lg md:text-xl font-black text-foreground tracking-tight text-center leading-tight mb-1">
+                  <div className="text-lg md:text-xl font-black text-foreground tracking-tight text-center leading-tight mb-1 group-hover:text-primary transition-colors">
                     {badge.title}
                   </div>
                   <div className="text-xs uppercase tracking-wider text-muted-foreground font-bold text-center">
