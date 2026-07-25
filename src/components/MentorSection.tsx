@@ -110,7 +110,7 @@ export default function MentorSection() {
                                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[11px] font-black uppercase tracking-[0.2em]">
                                     Meet Your Tutor: Wonbin Ssem
                                 </div>
-                                <h2 className="text-4xl sm:text-6xl font-black text-foreground tracking-tight leading-[1.05]">
+                                <h2 className="text-4xl sm:text-6xl font-black text-foreground tracking-tight leading-[1.05] [text-wrap:balance]">
                                     Learn Fast, Speak Real, <br />
                                     <span className="text-primary">And Enjoy Korea!</span>
                                 </h2>
@@ -196,10 +196,10 @@ export default function MentorSection() {
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true }}
                                             transition={{ duration: 0.5, delay: idx * 0.08 }}
-                                            className="group relative p-6 rounded-[2rem] bg-white border border-gray-100 hover:border-primary/30 hover:shadow-card transition-all duration-300 cursor-pointer"
+                                            className="group relative p-6 rounded-[2rem] bg-white border border-gray-100 hover:border-primary/50 hover:shadow-[0_0_25px_rgba(77,113,255,0.2)] hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                                         >
                                             <div className="flex items-start gap-4">
-                                                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 text-primary group-hover:scale-105 transition-transform">
+                                                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                                                     <item.icon size={22} />
                                                 </div>
                                                 <div className="flex-1">
@@ -276,12 +276,12 @@ export default function MentorSection() {
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                        className="flex flex-col items-center justify-center p-8 rounded-[2.5rem] bg-white border border-gray-100 shadow-sm hover:shadow-card transition-all duration-300 text-center"
+                                        className="flex flex-col items-center justify-center p-8 rounded-[2.5rem] bg-white border border-gray-100 shadow-sm hover:border-primary/50 hover:shadow-[0_0_25px_rgba(77,113,255,0.2)] hover:-translate-y-1 transition-all duration-300 text-center group cursor-pointer"
                                     >
-                                        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                                        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                                             <stat.icon size={28} />
                                         </div>
-                                        <span className="text-3xl md:text-5xl font-black text-foreground mb-1 tracking-tight">{stat.value}</span>
+                                        <span className="text-3xl md:text-5xl font-black text-foreground mb-1 tracking-tight group-hover:text-primary transition-colors">{stat.value}</span>
                                         <span className="text-xs font-black uppercase tracking-wider text-muted-foreground">{stat.label}</span>
                                     </motion.div>
                                 ))}
