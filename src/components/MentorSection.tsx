@@ -1,3 +1,19 @@
+요청하신대로 `time1.jpg` ~ `time39.jpg` (총 39장)와 **`prize1.jpg` ~ `prize9.jpg` (총 9장)** 사진이 각각의 팝업 창에 깔끔한 갤러리 형태로 뜨도록 완성했습니다.
+
+### 💡 주요 개선 사항
+
+1. **깔끔한 자동 그리드(Grid) 레이아웃:** 사진 개수가 많아도(39장) 보기 답답하지 않게 팝업 창 내에서 모바일 2열 / PC 3열의 정갈한 바둑판 배열로 자동 정렬됩니다.
+2. **비율 및 크기 통일:** 정방형/가로형 상관없이 모든 사진이 동일한 `4:3` 깔끔한 비율(`aspect-[4/3]`)과 둥근 테두리로 정제되어 표시됩니다.
+3. **로딩 최적화:** 39장의 많은 이미지를 불러올 때 웹사이트가 느려지지 않도록 `loading="lazy"`(지연 로딩) 옵션을 적용했습니다.
+4. **사진 수 표시:** Photo Gallery 옆에 전체 사진 개수가 표시됩니다. (예: `Photo Gallery (39)`)
+
+---
+
+### 📄 `src/components/MentorSection.tsx` 전체 코드 (전체 복사해서 덮어쓰기)
+
+`src/components/MentorSection.tsx` 파일 내 전체 내용을 지우고 아래 코드를 그대로 붙여넣고 저장(Commit)하시면 됩니다.
+
+```tsx
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Users, Globe, Play, Award, BookOpen, Heart, MapPin, Sparkles, Compass } from "lucide-react";
@@ -13,6 +29,12 @@ interface CredentialItem {
     link?: string;
     detailedInfo?: string;
 }
+
+// time1.jpg부터 time39.jpg까지 자동 경로 생성
+const timeImages = Array.from({ length: 39 }, (_, i) => `/lovable-uploads/time${i + 1}.jpg`);
+
+// prize1.jpg부터 prize9.jpg까지 자동 경로 생성
+const prizeImages = Array.from({ length: 9 }, (_, i) => `/lovable-uploads/prize${i + 1}.jpg`);
 
 const credentials: CredentialItem[] = [
     {
@@ -45,7 +67,7 @@ const credentials: CredentialItem[] = [
         detail: "Cultural Exchange Expert",
         description: "President of the university Cultural Exchange Club and leader of international language programs.",
         year: "2023-2025",
-        images: [],
+        images: timeImages,
         detailedInfo: "Led language exchange cafes, cultural events, and peer mentoring programs for over 300 international learners."
     },
     {
@@ -54,7 +76,7 @@ const credentials: CredentialItem[] = [
         detail: "1st Place Winner",
         description: "1st place award for excellence in global culture and language education.",
         year: "2024",
-        images: [],
+        images: prizeImages,
         detailedInfo: "Won 1st place in the World Culture Contest with creative and fun ways to teach Korean culture and speaking skills."
     },
 ];
@@ -245,7 +267,7 @@ export default function MentorSection() {
                                             <DialogTrigger asChild>
                                                 {CardContent}
                                             </DialogTrigger>
-                                            <DialogContent className="sm:max-w-[600px] p-8 rounded-3xl bg-white border-none shadow-2xl overflow-y-auto max-h-[85vh]">
+                                            <DialogContent className="sm:max-w-[700px] p-6 sm:p-8 rounded-3xl bg-white border-none shadow-2xl overflow-y-auto max-h-[85vh]">
                                                 <DialogTitle className="text-2xl font-black text-foreground tracking-tight">{item.title}</DialogTitle>
                                                 <div className="mt-4 space-y-6">
                                                     <div className="flex items-center justify-between text-xs font-black uppercase tracking-wider text-primary/60 border-b border-gray-100 pb-3">
@@ -257,14 +279,19 @@ export default function MentorSection() {
                                                     </p>
                                                     
                                                     {item.images && item.images.length > 0 && (
-                                                        <div className="space-y-4 pt-4 border-t border-gray-50">
+                                                        <div className="space-y-4 pt-4 border-t border-gray-100">
                                                             <h5 className="text-xs font-black uppercase tracking-widest text-primary flex items-center gap-2">
-                                                                <Sparkles size={12} /> Photo Gallery
+                                                                <Sparkles size={14} /> Photo Gallery ({item.images.length})
                                                             </h5>
-                                                            <div className="grid grid-cols-2 gap-4">
+                                                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                                                                 {item.images.map((imgUrl: string, i: number) => (
-                                                                    <div key={i} className="rounded-2xl overflow-hidden aspect-video bg-gray-50 border border-gray-100">
-                                                                        <img src={imgUrl} alt={`${item.title} media ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                                                                    <div key={i} className="rounded-2xl overflow-hidden aspect-[4/3] bg-gray-50 border border-gray-100 shadow-sm">
+                                                                        <img 
+                                                                            src={imgUrl} 
+                                                                            alt={`${item.title} photo ${i + 1}`} 
+                                                                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                                                                            loading="lazy"
+                                                                        />
                                                                     </div>
                                                                 ))}
                                                             </div>
@@ -306,3 +333,5 @@ export default function MentorSection() {
         </section>
     );
 }
+
+```
