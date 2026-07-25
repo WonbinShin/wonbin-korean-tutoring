@@ -41,8 +41,8 @@ export default function HeroSection() {
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="text-[12vw] sm:text-[8vw] md:text-[7rem] font-black leading-[0.9] tracking-[-0.02em] text-foreground gpu-accelerated"
             >
-              Master Korean <br />
-              <span className="text-secondary italic text-gradient-primary tracking-[0.02em]">Naturally.</span>
+              Unlock Your Real Korean <br />
+              <span className="text-secondary italic text-gradient-primary tracking-[0.02em]">with Wonbin Ssem</span>
             </motion.h1>
 
             <motion.div
@@ -52,8 +52,8 @@ export default function HeroSection() {
               className="gpu-accelerated"
             >
               <p className="text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed">
-                The high-performance roadmap to native fluency. <br />
-                Skip the textbooks. Speak the culture.
+                Learn authentic spoken Korean, master Hangul from session one, <br className="hidden sm:block" />
+                and speak with confidence.
               </p>
             </motion.div>
           </div>
@@ -94,17 +94,17 @@ export default function HeroSection() {
             transition={{ duration: 1, delay: 0.8 }}
             className="pt-16 pb-48 border-t border-gray-100/50 w-full max-w-5xl mx-auto gpu-accelerated"
           >
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-14">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
               {[
-                { label: "Total Students", value: "150+" },
-                { label: "Countries Reached", value: "30+" },
-                { label: "Success Rate", value: "100%" },
-                { label: "Course Artifacts", value: "50+" },
+                { title: "5.0 Star", desc: "Verified Super Tutor" },
+                { title: "950+ Hours", desc: "Teaching Experience" },
+                { title: "Certified", desc: "Overseas Teacher in VN & ID" },
+                { title: "Award-Winning", desc: "Culture & Language Educator" },
               ].map((stat) => (
-                <div key={stat.label} className="text-center space-y-2.5">
-                  <div className="text-4xl md:text-6xl font-black text-foreground tracking-tighter">{stat.value}</div>
-                  <div className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground font-black leading-tight">
-                    {stat.label}
+                <div key={stat.title} className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gray-50 border border-gray-100/50 hover:bg-primary/5 transition-colors duration-300">
+                  <div className="text-2xl md:text-3xl font-black text-foreground tracking-tight mb-2 text-center">{stat.title}</div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground font-bold text-center">
+                    {stat.desc}
                   </div>
                 </div>
               ))}
