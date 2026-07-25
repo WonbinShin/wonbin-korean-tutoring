@@ -1,16 +1,20 @@
-원래 디자인과 배경색, 원래 텍스트 내용을 그대로 유지하도록 코드를 원복했습니다.
-
-우측 4개 수치 박스에만 마우스를 올렸을 때 좌측 카드와 동일한 푸른색 테두리 불빛, 상단 이동 모션, 아이콘 색상 변경 효과를 추가했습니다.
-
-`src/components/MentorSection.jsx` 파일의 전체 내용을 지우고 아래 코드를 그대로 붙여넣으시면 됩니다.
-
-```jsx
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Users, Globe, Play, Award, BookOpen, Heart, MapPin, Sparkles, Compass } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
 
-const credentials = [
+interface CredentialItem {
+    icon: any;
+    title: string;
+    detail: string;
+    description: string;
+    year: string;
+    images?: string[];
+    link?: string;
+    detailedInfo?: string;
+}
+
+const credentials: CredentialItem[] = [
     {
         icon: Star,
         title: "Preply Supertutor",
@@ -64,6 +68,7 @@ const stats = [
 
 export default function MentorSection() {
     const [isPlayingStory, setIsPlayingStory] = useState(false);
+
     return (
         <section id="about" className="py-24 md:py-36 bg-[#FDFCF8] relative overflow-hidden">
             {/* Background elements */}
@@ -219,7 +224,7 @@ export default function MentorSection() {
                                                         {item.description}
                                                     </p>
                                                     <div className="mt-2.5 flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                                                        <span>{(item as any).link ? "Visit Preply Profile" : "View Details"}</span>
+                                                        <span>{item.link ? "Visit Preply Profile" : "View Details"}</span>
                                                         <Sparkles size={10} />
                                                     </div>
                                                 </div>
@@ -227,9 +232,9 @@ export default function MentorSection() {
                                         </motion.div>
                                     );
 
-                                    if ((item as any).link) {
+                                    if (item.link) {
                                         return (
-                                            <a key={item.title} href={(item as any).link} target="_blank" rel="noreferrer" className="block">
+                                            <a key={item.title} href={item.link} target="_blank" rel="noreferrer" className="block">
                                                 {CardContent}
                                             </a>
                                         );
@@ -248,16 +253,16 @@ export default function MentorSection() {
                                                         <span>{item.year}</span>
                                                     </div>
                                                     <p className="text-base text-foreground/80 leading-relaxed whitespace-pre-wrap">
-                                                        {(item as any).detailedInfo}
+                                                        {item.detailedInfo}
                                                     </p>
                                                     
-                                                    {(item as any).images && (item as any).images.length > 0 && (
+                                                    {item.images && item.images.length > 0 && (
                                                         <div className="space-y-4 pt-4 border-t border-gray-50">
                                                             <h5 className="text-xs font-black uppercase tracking-widest text-primary flex items-center gap-2">
                                                                 <Sparkles size={12} /> Photo Gallery
                                                             </h5>
                                                             <div className="grid grid-cols-2 gap-4">
-                                                                {(item as any).images.map((imgUrl: string, i: number) => (
+                                                                {item.images.map((imgUrl: string, i: number) => (
                                                                     <div key={i} className="rounded-2xl overflow-hidden aspect-video bg-gray-50 border border-gray-100">
                                                                         <img src={imgUrl} alt={`${item.title} media ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                                                                     </div>
@@ -301,5 +306,3 @@ export default function MentorSection() {
         </section>
     );
 }
-
-```
