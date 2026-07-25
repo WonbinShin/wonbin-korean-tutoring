@@ -248,7 +248,10 @@ export default function MentorSection() {
                                             <DialogTrigger asChild>
                                                 {CardContent}
                                             </DialogTrigger>
-                                            <DialogContent className="sm:max-w-[700px] p-6 sm:p-8 rounded-3xl bg-white border-none shadow-2xl overflow-y-auto max-h-[85vh]">
+                                            <DialogContent 
+                                                className="sm:max-w-[700px] p-6 sm:p-8 rounded-3xl bg-white border-none shadow-2xl overflow-y-auto max-h-[85vh] overscroll-contain"
+                                                onWheel={(e) => e.stopPropagation()}
+                                            >
                                                 <DialogTitle className="text-2xl font-black text-foreground tracking-tight">{item.title}</DialogTitle>
                                                 <div className="mt-4 space-y-6">
                                                     <div className="flex items-center justify-between text-xs font-black uppercase tracking-wider text-primary/60 border-b border-gray-100 pb-3">
