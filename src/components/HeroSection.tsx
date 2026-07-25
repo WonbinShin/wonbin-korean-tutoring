@@ -1,110 +1,116 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Award, Star, Clock, Globe } from "lucide-react";
+
+const trustBadges = [
+  { icon: Star, title: "5.0 Star Rated", desc: "Verified Super Tutor" },
+  { icon: Clock, title: "1,000+ Hours", desc: "Teaching Experience" },
+  { icon: Globe, title: "Certified Overseas", desc: "Educator in VN & ID" },
+  { icon: Award, title: "Award-Winning", desc: "Culture & Language Mentor" },
+];
 
 export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-white pt-32 pb-20"
+      className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-[#FDFCF8] pt-28 pb-16"
     >
-      {/* Cinematic Background Architecture */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 rounded-full blur-[150px]" style={{ animationDelay: '2s' }} />
-
-        {/* Subtle geometric lines */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '100px 100px' }}
+      {/* Background Decorative Auras */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-5%] left-[15%] w-[45vw] h-[45vw] max-w-[500px] max-h-[500px] bg-primary/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-5%] right-[15%] w-[45vw] h-[45vw] max-w-[500px] max-h-[500px] bg-secondary/15 rounded-full blur-[140px]" />
+        <div 
+          className="absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: 'radial-gradient(#0E8579 1.5px, transparent 1.5px)', backgroundSize: '32px 32px' }}
         />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto flex flex-col items-center text-center space-y-12">
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center space-y-10">
 
           {/* High-Contrast Badge */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-[10px] font-black uppercase tracking-[0.3em] mb-4 gpu-accelerated"
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-black uppercase tracking-[0.25em] gpu-accelerated"
           >
-            <Zap size={14} className="animate-pulse" />
-            Zero-Barrier Learning Experience
+            <Zap size={14} className="animate-pulse text-primary" />
+            Zero-Fluff, Real-World Korean Coaching
           </motion.div>
 
-          {/* Epic Typography */}
-          <div className="space-y-4">
+          {/* Headline & Subtitle */}
+          <div className="space-y-6 w-full">
             <motion.h1
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[12vw] sm:text-[8vw] md:text-[7rem] font-black leading-[0.9] tracking-[-0.02em] text-foreground gpu-accelerated"
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight text-foreground [text-wrap:balance] break-keep gpu-accelerated"
             >
               Unlock Your Real Korean <br />
-              <span className="text-secondary italic text-gradient-primary tracking-[0.02em]">with Wonbin Ssem</span>
+              <span className="text-primary italic font-serif tracking-normal">with Wonbin Ssem</span>
             </motion.h1>
 
-            <motion.div
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="gpu-accelerated"
+              transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed [text-wrap:balance] break-keep gpu-accelerated"
             >
-              <p className="text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed">
-                Learn authentic spoken Korean, master Hangul from session one, <br className="hidden sm:block" />
-                and speak with confidence.
-              </p>
-            </motion.div>
+              Learn authentic spoken Korean from session one. Master Hangul effortlessly, speak with natural confidence, and discover real Korean culture!
+            </motion.p>
           </div>
 
-          {/* High-Action CTAs */}
+          {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col sm:flex-row items-center gap-6 pt-8 w-full justify-center gpu-accelerated"
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 w-full max-w-md mx-auto gpu-accelerated"
           >
-            <a href="#booking" className="w-full sm:w-auto">
+            <a href="#courses" className="w-full sm:w-auto flex-1">
               <Button
                 size="lg"
-                className="w-full h-16 rounded-[2rem] px-10 bg-primary text-primary-foreground text-lg font-black tracking-tight hover:scale-105 transition-all shadow-2xl shadow-primary/20 flex items-center gap-3"
+                className="w-full h-15 rounded-2xl px-8 bg-primary text-primary-foreground text-base sm:text-lg font-black tracking-tight hover:scale-[1.02] transition-all shadow-xl shadow-primary/25 flex items-center justify-center gap-2"
               >
-                Book Free Trial
-                <ArrowRight size={20} />
+                View Classes & Prices
+                <ArrowRight size={18} />
               </Button>
             </a>
 
-            <a href="#courses" className="w-full sm:w-auto">
+            <a href="#about" className="w-full sm:w-auto flex-1">
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full h-16 rounded-[2rem] px-10 border-gray-200 text-foreground text-lg font-black tracking-tight hover:bg-gray-50 transition-all flex items-center gap-3"
+                className="w-full h-15 rounded-2xl px-8 border-gray-200 text-foreground text-base sm:text-lg font-black tracking-tight hover:bg-gray-50 transition-all flex items-center justify-center gap-2"
               >
-                Explore Paths
-                <Sparkles size={20} className="text-primary" />
+                Meet Your Mentor
+                <Sparkles size={18} className="text-primary" />
               </Button>
             </a>
           </motion.div>
 
-          {/* Social Proof / Stats Hook - Polished & Balanced Sizing */}
+          {/* Trust Badges Bar */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="pt-16 pb-48 border-t border-gray-100/50 w-full max-w-5xl mx-auto gpu-accelerated"
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="pt-12 w-full max-w-4xl mx-auto gpu-accelerated"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
-              {[
-                { title: "5.0 Star", desc: "Verified Super Tutor" },
-                { title: "950+ Hours", desc: "Teaching Experience" },
-                { title: "Certified", desc: "Overseas Teacher in VN & ID" },
-                { title: "Award-Winning", desc: "Culture & Language Educator" },
-              ].map((stat) => (
-                <div key={stat.title} className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gray-50 border border-gray-100/50 hover:bg-primary/5 transition-colors duration-300">
-                  <div className="text-2xl md:text-3xl font-black text-foreground tracking-tight mb-2 text-center">{stat.title}</div>
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground font-bold text-center">
-                    {stat.desc}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+              {trustBadges.map((badge) => (
+                <div 
+                  key={badge.title} 
+                  className="flex flex-col items-center justify-center p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-primary/30 hover:shadow-card transition-all duration-300 group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3 text-primary group-hover:scale-110 transition-transform">
+                    <badge.icon size={20} />
+                  </div>
+                  <div className="text-lg md:text-xl font-black text-foreground tracking-tight text-center leading-tight mb-1">
+                    {badge.title}
+                  </div>
+                  <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-bold text-center">
+                    {badge.desc}
                   </div>
                 </div>
               ))}
@@ -113,17 +119,6 @@ export default function HeroSection() {
 
         </div>
       </div>
-
-      {/* High-End Scroll Indicator - Lowered to avoid overlap */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground mb-4">Initialize Scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent" />
-      </motion.div>
     </section>
   );
 }

@@ -20,18 +20,18 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 12%;
 
-    --primary: 258 89% 66%;
-    /* Energetic Violet #8B5CF6 */
+    --primary: 174 78% 30%;
+    /* Deep Teal #0E8579 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 158 64% 52%;
-    /* Friendly Mint #34D399 */
-    --secondary-foreground: 220 30% 15%;
+    --secondary: 162 72% 40%;
+    /* Vibrant Emerald #059669 */
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 210 20% 96%;
-    --muted-foreground: 220 15% 40%;
+    --muted-foreground: 220 15% 38%;
 
-    --accent: 258 89% 66%;
+    --accent: 174 78% 30%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -39,28 +39,28 @@
 
     --border: 220 15% 92%;
     --input: 220 15% 92%;
-    --ring: 258 89% 66%;
+    --ring: 174 78% 30%;
 
     --radius: 2rem;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 240 10% 12%;
-    --sidebar-primary: 259 94% 66%;
+    --sidebar-primary: 174 78% 30%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 48 20% 94%;
     --sidebar-accent-foreground: 240 10% 12%;
     --sidebar-border: 240 10% 90%;
-    --sidebar-ring: 259 94% 66%;
+    --sidebar-ring: 174 78% 30%;
 
     /* Custom tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(259 94% 66% / 0.1), hsl(158 64% 52% / 0.1), hsl(259 94% 66% / 0.05));
-    --coral-glow: 0 20px 60px hsl(259 94% 66% / 0.15);
-    --card-shadow: 0 10px 30px -10px hsl(0 0% 0% / 0.1);
-    --card-shadow-hover: 0 20px 40px -15px hsl(0 0% 0% / 0.15);
+    --hero-gradient: linear-gradient(135deg, hsl(174 78% 30% / 0.08), hsl(162 72% 40% / 0.08), hsl(174 78% 30% / 0.04));
+    --coral-glow: 0 20px 60px hsl(174 78% 30% / 0.15);
+    --card-shadow: 0 10px 30px -10px hsl(0 0% 0% / 0.08);
+    --card-shadow-hover: 0 20px 40px -15px hsl(0 0% 0% / 0.12);
 
     --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
-    --shadow-card-hover: 0 20px 50px -10px rgba(139, 92, 246, 0.15);
-    --gradient-primary: linear-gradient(135deg, #8B5CF6 0%, #34D399 100%);
+    --shadow-card-hover: 0 20px 50px -10px rgba(14, 133, 121, 0.18);
+    --gradient-primary: linear-gradient(135deg, #0E8579 0%, #10B981 100%);
   }
 
   /* Dark mode hidden for this transformation as it's meant to be a bright theme */
