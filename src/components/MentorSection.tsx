@@ -1,5 +1,3 @@
-
-```tsx
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Users, Globe, Play, Award, BookOpen, Heart, MapPin, Sparkles, Compass } from "lucide-react";
@@ -16,8 +14,15 @@ interface CredentialItem {
     detailedInfo?: string;
 }
 
-const timeImages = Array.from({ length: 39 }, (_, i) => `/lovable-uploads/time${i + 1}.jpg`);
-const prizeImages = Array.from({ length: 9 }, (_, i) => `/lovable-uploads/prize${i + 1}.jpg`);
+const timeImages: string[] = [];
+for (let i = 1; i <= 39; i++) {
+    timeImages.push("/lovable-uploads/time" + i + ".jpg");
+}
+
+const prizeImages: string[] = [];
+for (let i = 1; i <= 9; i++) {
+    prizeImages.push("/lovable-uploads/prize" + i + ".jpg");
+}
 
 const credentials: CredentialItem[] = [
     {
@@ -308,5 +313,3 @@ export default function MentorSection() {
         </section>
     );
 }
-
-```
