@@ -1,16 +1,10 @@
-이 오류는 이전 답변의 설명 글(‘요청하신대로...’ 문장)이 `src/components/MentorSection.tsx` 파일 맨 윗줄(1번째 줄)에 함께 복사되어 붙여넣어졌기 때문에 발생한 에러입니다.
+이번에도 답변 상단 설명글인 "이 오류는 이전 답변의..."라는 한글 설명 문장이 코드 상자 외부에서 함께 복사되어 파일 최상단에 붙여넣어진 상태입니다.
 
-`.tsx` 파일에는 코드 외의 일반 한글 설명글이 들어가면 빌드 에러가 납니다.
+해결하는 절차입니다.
 
----
-
-### 🛠️ 해결 방법
-
-`src/components/MentorSection.tsx` 파일 내용을 **전부 지운 후**, 오직 아래의 코드 상자 내용만 **처음부터 끝까지 그대로 복사해서 붙여넣기(Ctrl+A -> Ctrl+V)** 해주세요.
-
----
-
-### 📄 `src/components/MentorSection.tsx` 순수 코드 (전체 복사해서 붙여넣기)
+1. GitHub 리포지토리의 `src/components/MentorSection.tsx` 파일 수정 창으로 들어갑니다.
+2. 현재 파일 안에 있는 모든 내용을 선택하여 완전히 삭제합니다.
+3. 아래 코드 상자 내부 내용만 복사하여 복사한 코드를 그대로 붙여넣고 저장합니다.
 
 ```tsx
 import { useState } from "react";
@@ -29,10 +23,7 @@ interface CredentialItem {
     detailedInfo?: string;
 }
 
-// time1.jpg부터 time39.jpg까지 자동 경로 생성
 const timeImages = Array.from({ length: 39 }, (_, i) => `/lovable-uploads/time${i + 1}.jpg`);
-
-// prize1.jpg부터 prize9.jpg까지 자동 경로 생성
 const prizeImages = Array.from({ length: 9 }, (_, i) => `/lovable-uploads/prize${i + 1}.jpg`);
 
 const credentials: CredentialItem[] = [
@@ -92,17 +83,14 @@ export default function MentorSection() {
 
     return (
         <section id="about" className="py-24 md:py-36 bg-[#FDFCF8] relative overflow-hidden">
-            {/* Background elements */}
             <div className="absolute inset-0 bg-[radial-gradient(#4D71FF08_2px,transparent_2px)] [background-size:60px_60px] opacity-40 gpu-accelerated" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-primary/5 rounded-full blur-[140px] opacity-20 -z-10" />
 
             <div className="container mx-auto px-4 md:px-8">
                 <div className="max-w-7xl mx-auto space-y-24">
 
-                    {/* Part 1: Persona & Vision */}
                     <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
 
-                        {/* Visual Portrait */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -118,7 +106,6 @@ export default function MentorSection() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
 
-                                {/* Identity Tag */}
                                 <div className="absolute bottom-5 left-5 right-5 p-5 rounded-3xl bg-black/40 backdrop-blur-xl border border-white/20 flex items-center justify-between">
                                     <div>
                                         <p className="text-white text-lg font-black tracking-tight">Wonbin Ssem</p>
@@ -131,7 +118,6 @@ export default function MentorSection() {
                             </div>
                         </motion.div>
 
-                        {/* Content Side */}
                         <div className="lg:w-1/2 space-y-8 text-left">
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
@@ -164,7 +150,6 @@ export default function MentorSection() {
                                 </div>
                             </motion.div>
 
-                            {/* Introduction Video Player */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -205,7 +190,6 @@ export default function MentorSection() {
                         </div>
                     </div>
 
-                    {/* Part 2: Credentials */}
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                         <div className="space-y-8 text-left">
                             <motion.div
@@ -304,7 +288,6 @@ export default function MentorSection() {
                             </div>
                         </div>
 
-                        {/* Stats Grid */}
                         <div className="pt-6 lg:pt-16 w-full max-w-xl mx-auto">
                             <div className="grid grid-cols-2 gap-4 sm:gap-6">
                                 {stats.map((stat, idx) => (
