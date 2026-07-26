@@ -30,7 +30,7 @@ const credentials: CredentialItem[] = [
         title: "Preply Supertutor",
         detail: "Top 1% Global Ranking",
         description: "Recognized for high-quality 1:1 Korean coaching and top student satisfaction.",
-        year: "2023-Present",
+        year: "2024-Present",
         images: [],
         link: "https://preply.com/ko/tutor/5155100?utm_source=friend_plg&utm_medium=copy_link&utm_campaign=tut_plg_st_all_0_mul_xx_multiplesub_share-your-tutor-6&utm_content=MTQ2ODc2Mzc%3D&adj_t=20yroq7d&adj_campaign=tut_plg_st_all_0_mul_xx_multiplesub_share-your-tutor-6&ts=17828076",
         detailedInfo: "Achieved Supertutor status on Preply, maintaining a 5.0-star rating across hundreds of reviews with custom lessons and fun study tools."
@@ -42,6 +42,8 @@ const credentials: CredentialItem[] = [
         description: "Taught Korean culture and language overseas. Awarded for exceptional dedication.",
         year: "2024-2025",
         images: [
+            "/lovable-uploads/vt1.jpg",
+            "/lovable-uploads/vt2.jpg",
             "/lovable-uploads/volunteer-1.jpg",
             "/lovable-uploads/volunteer-2.jpg",
             "/lovable-uploads/volunteer-3.jpg",
@@ -54,7 +56,7 @@ const credentials: CredentialItem[] = [
         title: "Global Language Lead",
         detail: "Cultural Exchange Expert",
         description: "President of the university Cultural Exchange Club and leader of international language programs.",
-        year: "2023-2025",
+        year: "2023-2026",
         images: timeImages,
         detailedInfo: "Led language exchange cafes, cultural events, and peer mentoring programs for over 300 international learners."
     },
@@ -63,7 +65,7 @@ const credentials: CredentialItem[] = [
         title: "World Culture Contest",
         detail: "1st Place Winner",
         description: "1st place award for excellence in global culture and language education.",
-        year: "2024",
+        year: "2024-2026",
         images: prizeImages,
         detailedInfo: "Won 1st place in the World Culture Contest with creative and fun ways to teach Korean culture and speaking skills."
     },
