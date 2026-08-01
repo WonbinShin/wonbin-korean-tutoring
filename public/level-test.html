@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Korean Level Test · wonbinssem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#152D47;
+    --body:#4C4C4D;
+    --accent:#2150FE;
+    --peri:#CCD7FF;
+    --warm:#F2EEEE;
+    --divider:#D8D4D4;
+    --faint:#E7E6E6;
+    --white:#FFFFFF;
+    --good:#1F9D62;
+    --bad:#D64545;
+    --lat:'Nunito','Arial Rounded MT Bold',sans-serif;
+    --kor:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+    --shadow:0 10px 40px rgba(21,45,71,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:var(--lat);
+    color:var(--body);
+    background:
+      radial-gradient(1200px 600px at 100% -10%, #EEF2FF 0%, transparent 55%),
+      radial-gradient(1000px 500px at -10% 110%, #F5F1F1 0%, transparent 55%),
+      var(--white);
+    background-attachment:fixed;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:24px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .kr{font-family:var(--kor);}
+  .card{
+    width:100%;
+    max-width:680px;
+    margin:auto;   /* centers when short, but never clips the top when tall */
+    background:var(--white);
+    border:1px solid var(--faint);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    padding:38px 40px 30px;
+    position:relative;
+    overflow:hidden;
+  }
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--peri);
+    color:var(--navy);
+    font-weight:800;
+    font-size:12px;
+    letter-spacing:.04em;
+    padding:7px 14px;
+    border-radius:999px;
+  }
+  .badge .lvl{color:var(--accent);}
+  .brand{
+    position:absolute;top:22px;right:26px;
+    font-weight:800;font-size:13px;color:var(--navy);
+    opacity:.9;
+  }
+  .brand span{color:var(--accent);}
+  h1{
+    color:var(--navy);
+    font-weight:800;
+    font-size:33px;
+    line-height:1.15;
+    margin:18px 0 8px;
+    letter-spacing:-.01em;
+  }
+  .sub{font-size:15px;color:var(--body);line-height:1.55;max-width:92%;}
+  .meta-row{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 26px;}
+  .chip{
+    background:var(--warm);
+    border:1px solid var(--divider);
+    border-radius:12px;
+    padding:11px 14px;
+    font-size:12.5px;
+    color:var(--body);
+    font-weight:700;
+    display:flex;align-items:center;gap:7px;
+  }
+  .chip b{color:var(--navy);}
+  .btn{
+    appearance:none;border:none;cursor:pointer;
+    font-family:var(--lat);font-weight:800;
+    background:var(--accent);color:#fff;
+    padding:15px 26px;border-radius:14px;
+    font-size:16px;letter-spacing:.01em;
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    box-shadow:0 8px 20px rgba(33,80,254,.28);
+  }
+  .btn:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(33,80,254,.34);}
+  .btn:active{transform:translateY(0);}
+  .btn.secondary{
+    background:var(--white);color:var(--navy);
+    border:1.5px solid var(--divider);
+    box-shadow:none;
+  }
+  .btn.secondary:hover{border-color:var(--accent);color:var(--accent);}
+  .btn.small{padding:11px 18px;font-size:14px;}
+
+  /* progress */
+  .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+  .qcount{font-size:12.5px;font-weight:800;color:var(--body);letter-spacing:.03em;}
+  .qcount b{color:var(--accent);}
+  .bar{height:8px;background:var(--faint);border-radius:99px;overflow:hidden;margin:6px 0 26px;}
+  .bar > i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .35s ease;}
+
+  .qlevel{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;}
+  .qtext{
+    font-family:var(--kor);
+    color:var(--navy);
+    font-weight:700;
+    font-size:22px;
+    line-height:1.5;
+    margin-bottom:22px;
+  }
+  .qtext .blank{color:var(--accent);font-weight:700;}
+  .options{display:flex;flex-direction:column;gap:12px;}
+  .opt{
+    text-align:left;
+    background:var(--white);
+    border:1.5px solid var(--divider);
+    border-radius:14px;
+    padding:15px 18px;
+    cursor:pointer;
+    font-family:var(--kor);
+    font-size:17px;font-weight:500;color:var(--navy);
+    display:flex;align-items:center;gap:14px;
+    transition:border-color .12s ease, background .12s ease, transform .08s ease;
+  }
+  .opt:hover{border-color:var(--accent);background:#F7F9FF;}
+  .opt:active{transform:scale(.995);}
+  .opt .key{
+    flex:0 0 auto;
+    width:28px;height:28px;border-radius:8px;
+    background:var(--warm);color:var(--navy);
+    font-family:var(--lat);font-weight:800;font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .opt:hover .key{background:var(--peri);}
+
+  /* result */
+  .result-badge{
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    background:linear-gradient(160deg,#EEF2FF 0%, #FFFFFF 70%);
+    border:1px solid var(--peri);
+    border-radius:18px;
+    padding:30px 24px 26px;
+    margin:6px 0 22px;
+  }
+  .result-badge .lv{
+    font-family:var(--lat);font-weight:800;color:var(--accent);
+    font-size:15px;letter-spacing:.14em;text-transform:uppercase;
+  }
+  .result-badge .num{
+    font-family:var(--lat);font-weight:800;color:var(--navy);
+    font-size:62px;line-height:1;margin:6px 0 4px;
+  }
+  .result-badge .name{font-family:var(--kor);font-weight:700;color:var(--navy);font-size:20px;}
+  .result-badge .desc{font-size:14px;color:var(--body);line-height:1.55;margin-top:12px;max-width:440px;}
+  .score-line{text-align:center;font-size:13px;color:var(--body);font-weight:700;margin-bottom:22px;}
+  .score-line b{color:var(--accent);}
+
+  .rev-title{
+    font-family:var(--lat);font-weight:800;color:var(--navy);font-size:15px;
+    display:flex;align-items:center;gap:8px;margin:26px 0 14px;
+  }
+  .rev-title:before{content:"";width:4px;height:16px;background:var(--accent);border-radius:3px;display:inline-block;}
+  .rev{
+    border:1px solid var(--divider);
+    border-radius:14px;
+    padding:16px 18px;
+    margin-bottom:12px;
+    background:var(--white);
+  }
+  .rev.correct{border-left:4px solid var(--good);}
+  .rev.wrong{border-left:4px solid var(--bad);}
+  .rev .rq{font-family:var(--kor);color:var(--navy);font-weight:700;font-size:15.5px;line-height:1.5;margin-bottom:10px;}
+  .rev .rtag{
+    display:inline-block;font-family:var(--lat);font-weight:800;font-size:10.5px;
+    padding:3px 9px;border-radius:99px;letter-spacing:.04em;margin-bottom:9px;
+  }
+  .rtag.ok{background:#E4F5EC;color:var(--good);}
+  .rtag.no{background:#FBE7E7;color:var(--bad);}
+  .rev .row{font-size:13.5px;line-height:1.6;color:var(--body);}
+  .rev .row .lab{font-family:var(--lat);font-weight:800;color:var(--navy);font-size:11.5px;letter-spacing:.02em;margin-right:6px;}
+  .rev .ans-ok{font-family:var(--kor);font-weight:700;color:var(--good);}
+  .rev .ans-no{font-family:var(--kor);font-weight:700;color:var(--bad);text-decoration:line-through;}
+  .rev .exp{margin-top:9px;font-size:13px;color:var(--body);line-height:1.6;background:var(--warm);border-radius:10px;padding:11px 13px;}
+  .rev .exp b{color:var(--navy);}
+
+  .foot{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-top:26px;padding-top:16px;border-top:1px solid var(--faint);
+    flex-wrap:wrap;gap:12px;
+  }
+  .copyright{font-size:12px;color:#B9B6B6;font-weight:700;}
+  .copyright span{color:var(--accent);}
+  .hide{display:none !important;}
+  .fade{animation:fade .3s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  @media (max-width:560px){
+    .card{padding:28px 22px 24px;}
+    h1{font-size:27px;}
+    .qtext{font-size:20px;}
+    .opt{font-size:16px;}
+    .brand{top:18px;right:20px;}
+    .result-badge .num{font-size:52px;}
+  }
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <div class="brand">by <span>wonbinssem</span></div>
+
+  <!-- START -->
+  <section id="start" class="fade">
+    <div class="badge"><span class="lvl">KOREAN</span> · LEVEL TEST</div>
+    <h1>Korean Level Test</h1>
+    <p class="sub">Find out your Korean level in a few minutes. Answer each question by choosing the most natural option. The test adapts as you go &mdash; once it&rsquo;s clear where your level sits, it stops automatically and shows your result with explanations.</p>
+    <div class="meta-row">
+      <div class="chip">📝 <b id="qtotal">25</b>&nbsp;questions max</div>
+      <div class="chip">🎯 Levels <b>1&ndash;5</b></div>
+      <div class="chip">⏱️ ~5&ndash;8 min</div>
+      <div class="chip">💡 With explanations</div>
+    </div>
+    <button class="btn" onclick="TEST.start()">Start the test →</button>
+  </section>
+
+  <!-- QUESTION -->
+  <section id="quiz" class="hide">
+    <div class="top">
+      <div class="qcount">QUESTION <b id="qnow">1</b> <span style="opacity:.5">/</span> <span id="qmax">25</span></div>
+      <div class="qlevel" id="qlevel">Level 1</div>
+    </div>
+    <div class="bar"><i id="progress"></i></div>
+    <div class="qtext kr" id="qtext"></div>
+    <div class="options" id="options"></div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="result" class="hide">
+    <div class="result-badge">
+      <div class="lv">Your Korean Level</div>
+      <div class="num" id="rNum">1</div>
+      <div class="name kr" id="rName"></div>
+      <div class="desc" id="rDesc"></div>
+    </div>
+    <div class="score-line">You answered <b id="rCorrect">0</b> of <b id="rAnswered">0</b> questions correctly.</div>
+
+    <div class="rev-title">Review &amp; Explanations</div>
+    <div id="review"></div>
+
+    <div class="foot">
+      <button class="btn secondary small" onclick="TEST.restart()">↺ Take it again</button>
+      <div class="copyright">©<span>wonbinssem</span></div>
+    </div>
+  </section>
+
+  <div class="foot hide" id="startFoot">
+    <span></span>
+    <div class="copyright">©<span>wonbinssem</span></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   Korean Level Test — by wonbinssem
+   Adaptive: 5 levels × 5 questions. Ordered easy → hard.
+   Stop rule: within a level, a 2nd wrong answer ends the test
+   immediately. Assigned level = number of levels fully cleared
+   (a level is "cleared" with 0 or 1 wrong answers).
+   ============================================================ */
+
+const QUESTIONS = [
+  /* ---------- LEVEL 1 · Absolute Beginner ---------- */
+  { level:1, q:"저는 학생 ___.", opts:["이에요","예요","이예요","에요"], answer:0,
+    exp:"After a noun ending in a <b>consonant</b> (학생), use <b>이에요</b>. Vowel-ending nouns take 예요." },
+  { level:1, q:"저는 사과 ___ 좋아해요.", opts:["을","를","이","가"], answer:1,
+    exp:"사과 ends in a <b>vowel</b>, so the object particle is <b>를</b>. (Consonant-ending nouns take 을.)" },
+  { level:1, q:"책상 위에 책이 세 ___ 있어요.", opts:["명","권","마리","대"], answer:1,
+    exp:"Books are counted with <b>권</b>. 명 = people, 마리 = animals, 대 = machines/vehicles." },
+  { level:1, q:"저는 지금 밥을 ___.", opts:["먹어요","먹었어요","먹을 거예요","먹고"], answer:0,
+    exp:"지금 (now) needs the <b>present tense</b>: <b>먹어요</b>. 먹었어요 = past, 먹을 거예요 = future." },
+  { level:1, q:"저는 의사 ___ 아니에요.", opts:["을","이","가","도"], answer:2,
+    exp:"The pattern is 'N + 이/가 아니에요'. 의사 ends in a vowel → <b>가</b> 아니에요." },
+
+  /* ---------- LEVEL 2 · Beginner ---------- */
+  { level:2, q:"어제 친구하고 영화를 ___.", opts:["봐요","봤어요","볼 거예요","보고"], answer:1,
+    exp:"어제 (yesterday) requires the <b>past tense</b>: 보다 → <b>봤어요</b>." },
+  { level:2, q:"내일 오후에 친구를 ___.", opts:["만났어요","만나요","만날 거예요","만나서"], answer:2,
+    exp:"내일 (tomorrow) points to the <b>future</b>: 만나다 → <b>만날 거예요</b>." },
+  { level:2, q:"목이 말라서 물을 마시 ___.", opts:["고 싶어요","고 있어요","지 마세요","으세요"], answer:0,
+    exp:"To express a wish, use <b>-고 싶다</b>: 마시고 싶어요 = 'I want to drink.'" },
+  { level:2, q:"오늘 너무 바빠서 점심을 ___ 먹었어요.", opts:["안","못","잘","또"], answer:1,
+    exp:"<b>못</b> means 'couldn't' (unable due to circumstances). 안 = simply 'don't/didn't' by choice." },
+  { level:2, q:"여기 의자에 ___.", opts:["앉으세요","앉세요","앉아요","앉읍시다"], answer:0,
+    exp:"Polite requests use -(으)세요. 앉다 ends in a consonant → <b>앉으세요</b>." },
+
+  /* ---------- LEVEL 3 · Elementary+ ---------- */
+  { level:3, q:"배가 ___ 밥을 먹었어요.", opts:["고프면","고파서","고프지만","고프고"], answer:1,
+    exp:"<b>-아/어서</b> gives a reason: 고프다 → 고파서 = 'because I was hungry.'" },
+  { level:3, q:"점심을 ___ 식당에 갔어요.", opts:["먹으러","먹으면","먹어도","먹는데"], answer:0,
+    exp:"<b>-(으)러 가다/오다</b> shows the purpose of going/coming: 먹으러 가다 = 'go in order to eat.'" },
+  { level:3, q:"한국어 공부는 어렵 ___ 재미있어요.", opts:["어서","지만","으면","으니까"], answer:1,
+    exp:"<b>-지만</b> = 'but/although', linking two contrasting ideas: 어렵지만 재미있어요." },
+  { level:3, q:"시간이 ___ 같이 여행을 가요.", opts:["있어서","있지만","있으면","있고"], answer:2,
+    exp:"<b>-(으)면</b> = 'if/when' (condition): 있으면 = 'if there is (time).'" },
+  { level:3, q:"어제 공원에 ___ 사람이 정말 많았어요.", opts:["가는데","갔는데","가면","가려고"], answer:1,
+    exp:"<b>-는데</b> sets background; with a past event use the past form 갔<b>는데</b> = 'I went, and (found that)...'." },
+
+  /* ---------- LEVEL 4 · Intermediate ---------- */
+  { level:4, q:"선생님께서 학생들에게 숙제를 ___ 하셨어요.", opts:["한다고","하라고","하냐고","하자고"], answer:1,
+    exp:"Reported <b>commands</b> use -(으)라고: 하라고 했어요 = 'told (them) to do it.' 한다고 = statement, 하냐고 = question, 하자고 = suggestion." },
+  { level:4, q:"한국에 살면서 매운 음식을 잘 먹 ___ 되었어요.", opts:["게","고","아서","는데"], answer:0,
+    exp:"<b>-게 되다</b> shows a change that happens over time/circumstance: 먹게 되었어요 = 'came to eat (it) well.'" },
+  { level:4, q:"저는 아침을 자주 거르는 ___ 이에요.", opts:["편","적","줄","뿐"], answer:0,
+    exp:"<b>-는 편이다</b> = 'tend to / rather': 거르는 편이에요 = 'I tend to skip (breakfast).'" },
+  { level:4, q:"우리는 주말에 같이 등산을 하 ___ 했어요.", opts:["기로","려면","자마자","는 대로"], answer:0,
+    exp:"<b>-기로 하다</b> = 'decide/agree to': 하기로 했어요 = 'we decided to do it.'" },
+  { level:4, q:"“왜 어제 안 왔어요?” “일이 너무 ___.”", opts:["많았잖아요","많았거든요","많았더라고요","많았을까요"], answer:1,
+    exp:"<b>-거든요</b> gives a reason as new information the listener didn't know: 많았거든요. -잖아요 is for shared/known facts." },
+
+  /* ---------- LEVEL 5 · Upper-Intermediate ---------- */
+  { level:5, q:"길이 얼어서 하마터면 ___ 뻔했어요.", opts:["넘어진","넘어지는","넘어질","넘어져서"], answer:2,
+    exp:"<b>-(으)ㄹ 뻔하다</b> = 'almost (did)': 넘어질 뻔했어요 = 'I almost fell.' Always takes the -(으)ㄹ form." },
+  { level:5, q:"갑자기 비가 오는 ___ 옷이 다 젖었어요.", opts:["덕분에","바람에","김에","대신에"], answer:1,
+    exp:"<b>-는 바람에</b> = an unexpected (usually negative) cause: 오는 바람에 = 'because it suddenly rained.' 덕분에 is positive ('thanks to')." },
+  { level:5, q:"동생이 아침을 급하게 ___ 지금 배가 아프대요.", opts:["먹으면","먹더니","먹거나","먹느라고"], answer:1,
+    exp:"<b>-더니</b> reports something you observed about another person, leading to a result: 먹더니 배가 아프대요." },
+  { level:5, q:"조금만 더 일찍 ___ 기차를 놓치지 않았을 거예요.", opts:["출발하면","출발하려면","출발했더라면","출발하거나"], answer:2,
+    exp:"<b>-았/었더라면</b> = a counterfactual regret about the past: 출발했더라면 = 'if only I had left (earlier)...'." },
+  { level:5, q:"표가 벌써 매진됐네요. 미리 ___.", opts:["예매할 뻔했어요","예매하곤 했어요","예매할걸 그랬어요","예매하기 마련이에요"], answer:2,
+    exp:"<b>-(으)ㄹ걸 그랬다</b> expresses regret over something not done: 예매할걸 그랬어요 = 'I should have booked in advance.'" },
+];
+
+const LEVEL_INFO = {
+  0: { name:"입문 · Getting Started",
+       desc:"You're just beginning your Korean journey. Focus on Hangul, basic greetings, 이에요/예요, and everyday particles. Every expert started exactly here — you're on your way!" },
+  1: { name:"레벨 1 · Absolute Beginner",
+       desc:"You've got the essentials: the copula 이에요/예요, basic particles, present tense, and counters. Next up: past & future tense and simple wishes with -고 싶다." },
+  2: { name:"레벨 2 · Beginner",
+       desc:"You handle past, future, wishes, and negation comfortably. Your next step is connecting sentences with reasons and conditions (-아서, -(으)면, -지만)." },
+  3: { name:"레벨 3 · Elementary+",
+       desc:"You link ideas smoothly with connectors and background clauses. Now build toward intermediate grammar: reported speech, -게 되다, and -는 편이다." },
+  4: { name:"레벨 4 · Intermediate",
+       desc:"Strong intermediate control — reported speech, changes of state, and nuanced endings like -거든요. Next, master advanced nuance: -는 바람에, -더니, and counterfactuals." },
+  5: { name:"레벨 5 · Upper-Intermediate",
+       desc:"Excellent! You command subtle, advanced grammar — almost-events, unexpected causes, regrets, and counterfactuals. You're ready for authentic content and higher-level study." },
+};
+
+const TEST = (function(){
+  let order = [];        // questions in play order
+  let idx = 0;           // current index
+  let answers = [];      // {question, chosen, correct}
+  let levelWrong = 0;    // wrong answers within current level
+  let curLevel = 1;      // level currently being tested
+  let clearedLevels = 0; // fully cleared levels
+
+  const el = id => document.getElementById(id);
+
+  function start(){
+    order = QUESTIONS.slice();       // already ordered by level, easy → hard
+    idx = 0; answers = []; levelWrong = 0; clearedLevels = 0;
+    curLevel = order.length ? order[0].level : 1;
+    el('qmax').textContent = QUESTIONS.length;
+    show('quiz');
+    render();
+  }
+
+  function render(){
+    const item = order[idx];
+    el('qnow').textContent = idx + 1;
+    el('qlevel').textContent = 'Level ' + item.level;
+    el('progress').style.width = ((idx) / order.length * 100) + '%';
+    // question text — mark the blank visually
+    el('qtext').innerHTML = item.q.replace(/___/g, '<span class="blank">＿＿</span>');
+    const box = el('options');
+    box.innerHTML = '';
+    const keys = ['A','B','C','D'];
+    item.opts.forEach((o, i) => {
+      const b = document.createElement('button');
+      b.className = 'opt';
+      b.innerHTML = '<span class="key">' + keys[i] + '</span><span>' + o + '</span>';
+      b.onclick = () => choose(i);
+      box.appendChild(b);
+    });
+    el('quiz').classList.remove('fade'); void el('quiz').offsetWidth; el('quiz').classList.add('fade');
+  }
+
+  function choose(i){
+    const item = order[idx];
+    const isCorrect = (i === item.answer);
+    answers.push({ item, chosen:i, correct:isCorrect });
+
+    // level tracking
+    if(!isCorrect) levelWrong++;
+
+    // did we finish this level's block, or trigger an early stop?
+    const isLastOfLevel = (idx + 1 >= order.length) || (order[idx + 1].level !== item.level);
+    const secondMistake = levelWrong >= 2;
+
+    if(secondMistake){
+      // stop immediately — level not cleared
+      return finish();
+    }
+    if(isLastOfLevel){
+      // cleared this level (0 or 1 wrong)
+      clearedLevels = item.level;
+      levelWrong = 0;
+    }
+
+    idx++;
+    if(idx >= order.length){
+      return finish();   // cleared everything
+    }
+    render();
+  }
+
+  function finish(){
+    const finalLevel = clearedLevels; // 0..5
+    const correctCount = answers.filter(a => a.correct).length;
+    const info = LEVEL_INFO[finalLevel];
+
+    el('rNum').textContent = finalLevel === 0 ? '0' : finalLevel;
+    el('rName').textContent = info.name;
+    el('rDesc').textContent = info.desc;
+    el('rCorrect').textContent = correctCount;
+    el('rAnswered').textContent = answers.length;
+
+    // review
+    const rev = el('review');
+    rev.innerHTML = '';
+    const keys = ['A','B','C','D'];
+    answers.forEach((a, n) => {
+      const it = a.item;
+      const wrap = document.createElement('div');
+      wrap.className = 'rev ' + (a.correct ? 'correct' : 'wrong');
+      const qHtml = it.q.replace(/___/g, '<span style="color:#2150FE">＿＿</span>');
+      let html = '';
+      html += '<div class="rtag ' + (a.correct ? 'ok">✓ Correct' : 'no">✕ Incorrect') + '</div>';
+      html += '<div class="rq kr"><b style="color:#2150FE;font-family:var(--lat)">Q' + (n+1) + '.</b> ' + qHtml + '</div>';
+      if(!a.correct){
+        html += '<div class="row"><span class="lab">YOUR ANSWER</span>'
+             + '<span class="ans-no kr">' + keys[a.chosen] + '. ' + it.opts[a.chosen] + '</span></div>';
+      }
+      html += '<div class="row"><span class="lab">CORRECT</span>'
+           + '<span class="ans-ok kr">' + keys[it.answer] + '. ' + it.opts[it.answer] + '</span></div>';
+      html += '<div class="exp">' + it.exp + '</div>';
+      wrap.innerHTML = html;
+      rev.appendChild(wrap);
+    });
+
+    show('result');
+  }
+
+  function show(which){
+    ['start','quiz','result'].forEach(s => el(s).classList.add('hide'));
+    el(which).classList.remove('hide');
+    el(which).classList.remove('fade'); void el(which).offsetWidth; el(which).classList.add('fade');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function restart(){ show('start'); }
+
+  return { start, restart };
+})();
+</script>
+</body>
+</html>
