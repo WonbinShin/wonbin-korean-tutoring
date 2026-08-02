@@ -49,7 +49,7 @@ export default function Footer() {
                 {[
                   { label: "Home", href: "#home" },
                   { label: "Courses", href: "#courses" },
-                  { label: "Level Test", href: "#booking" },
+                  { label: "Level Test", href: "#level-test" },
                   { label: "Experience", href: "#about" }
                 ].map((link) => (
                   <a key={link.label} href={link.href} className="text-sm font-black text-foreground hover:text-primary transition-colors flex items-center gap-1 group">
