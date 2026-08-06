@@ -14,7 +14,7 @@ const options = [
     status: "Open anytime — pick your schedule",
     description: "A class made just for you, at your own speed.",
     buttonText: "Apply for 1:1 Private Class",
-    buttonLink: "https://docs.google.com/forms/d/e/1FAIpQLScJ_GGJltryp_jyoH237Wc6ONFdUs-iYrjqmjGpBiRtddJJcA/viewform?usp=header"
+    buttonLink: "https://www.paypal.com/ncp/payment/Z564W438HLQWW"
   },
   {
     id: "duo",
@@ -27,7 +27,7 @@ const options = [
     status: "First come, first served",
     description: "Learn with a friend or partner at the same level.",
     buttonText: "Apply for 2:1 Duo Class",
-    buttonLink: "https://docs.google.com/forms/d/e/1FAIpQLScJ_GGJltryp_jyoH237Wc6ONFdUs-iYrjqmjGpBiRtddJJcA/viewform?usp=header"
+    buttonLink: "https://www.paypal.com/ncp/payment/EKHV4UWHBNH86"
   },
   {
     id: "group",
@@ -40,7 +40,7 @@ const options = [
     status: "First come, first served",
     description: "Small group class with lots of speaking practice.",
     buttonText: "Apply for 4:1 Group Class",
-    buttonLink: "https://docs.google.com/forms/d/e/1FAIpQLScJ_GGJltryp_jyoH237Wc6ONFdUs-iYrjqmjGpBiRtddJJcA/viewform?usp=header"
+    buttonLink: "https://www.paypal.com/ncp/payment/YTB4VUSB3XTE6"
   }
 ];
 
@@ -127,6 +127,21 @@ export default function CoursesSection() {
               </a>
             </div>
           ))}
+        </div>
+
+        {/* How enrollment works (prepaid) */}
+        <div className="max-w-4xl mx-auto mb-12 bg-[#FDFCF8] border border-gray-100 rounded-[2.5rem] p-8">
+          <div className="flex items-center gap-2 mb-5">
+            <Sparkles size={18} className="text-primary" />
+            <h3 className="text-lg font-black text-foreground">How enrollment works</h3>
+          </div>
+          <ul className="space-y-3.5 text-sm text-foreground/80 font-medium leading-relaxed">
+            <li className="flex gap-3"><Check size={16} className="text-primary shrink-0 mt-0.5" /><span><b className="text-foreground">Prepaid.</b> After checkout you're taken to a short form to tailor your lessons &mdash; goals, level, and schedule. Wait a moment after paying and it opens automatically.</span></li>
+            <li className="flex gap-3"><Check size={16} className="text-primary shrink-0 mt-0.5" /><span><b className="text-foreground">Duo (2:1) &amp; Group (4:1) run once a similar-level group is filled.</b> The surest way in is to apply together with a friend at a similar level.</span></li>
+            <li className="flex gap-3"><Check size={16} className="text-primary shrink-0 mt-0.5" /><span><b className="text-foreground">No partner yet?</b> Apply solo and I'll match you &mdash; a spot may just take a little longer until the group fills.</span></li>
+            <li className="flex gap-3"><Check size={16} className="text-primary shrink-0 mt-0.5" /><span><b className="text-foreground">Prepaid &amp; flexible:</b> email me to check if a group is already open at your level &mdash; <a href="mailto:wonbinssem@gmail.com" className="text-primary font-black hover:underline">wonbinssem@gmail.com</a>.</span></li>
+            <li className="flex gap-3"><Check size={16} className="text-primary shrink-0 mt-0.5" /><span><b className="text-foreground">Didn't get redirected after paying?</b> Just email me and I'll send the form right over.</span></li>
+          </ul>
         </div>
 
         {/* Option 4: Daily Korean Subscription */}

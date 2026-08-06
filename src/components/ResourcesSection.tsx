@@ -57,7 +57,7 @@ const materials: Material[] = [
     icon: Plane,
     title: "Travel Korean Guide",
     desc: "Handy phrases for your trip to Korea — ordering, directions, and more.",
-    tag: "free",
+    tag: "paid",
     status: "soon",
   },
   {
@@ -102,22 +102,17 @@ export default function ResourcesSection() {
                   </div>
                   <h3 className="text-2xl font-black tracking-tight text-white">Free Level 1 Lessons</h3>
                   <p className="text-xs sm:text-sm font-medium text-blue-100/90 max-w-lg leading-relaxed">
-                    All Level 1 video lessons are free on my YouTube channel. New lessons are posted
-                    regularly — follow along and learn step by step.
+                    Free Level 1 video lessons are coming to my YouTube channel soon —
+                    subscribe now so you catch the very first drop.
                   </p>
                 </div>
               </div>
-              <a
-                href="https://www.youtube.com/@wonbinssem"
-                target="_blank"
-                rel="noreferrer"
-                className="w-full md:w-auto shrink-0"
+              <Button
+                disabled
+                className="w-full md:w-auto h-12 px-8 rounded-full bg-white/70 text-[#4D71FF]/70 font-black text-sm shadow-lg flex items-center gap-2 cursor-not-allowed"
               >
-                <Button className="w-full md:w-auto h-12 px-8 rounded-full bg-white hover:bg-blue-50 text-[#4D71FF] font-black text-sm shadow-lg flex items-center gap-2">
-                  Watch on YouTube
-                  <ArrowRight size={16} />
-                </Button>
-              </a>
+                <Clock size={16} /> Coming Soon
+              </Button>
             </div>
           </div>
         </div>

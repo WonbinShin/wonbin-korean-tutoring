@@ -8,6 +8,7 @@ import CoursesSection from "@/components/CoursesSection";
 import BookingSection from "@/components/BookingSection";
 import LevelTestSection from "@/components/LevelTestSection";
 import ResourcesSection from "@/components/ResourcesSection";
+import TextbookStore from "@/components/TextbookStore";
 import UsefulKoreanSection from "@/components/MnemonicSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import Footer from "@/components/Footer";
@@ -108,6 +109,7 @@ const Index = () => {
 
         {active === "resources" && (
           <>
+            <TextbookStore />
             <ResourcesSection />
             <UsefulKoreanSection />
           </>
