@@ -74,9 +74,8 @@ export default function ResourcesSection() {
           <h2 className="text-3xl sm:text-5xl font-black text-foreground tracking-tight">
             Learn On Your Own Time
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground font-medium max-w-xl mx-auto leading-relaxed">
-            Free video lessons, downloadable study packs, and real-life expressions. Level 1 is always
-            free — deeper materials are coming soon.
+          <p className="text-base sm:text-lg text-muted-foreground font-medium max-w-xl mx-auto leading-relaxed [text-wrap:balance]">
+            Free video lessons, downloadable study packs, and real-life expressions. Level 1 is always free &mdash; deeper materials are coming soon.
           </p>
         </div>
 

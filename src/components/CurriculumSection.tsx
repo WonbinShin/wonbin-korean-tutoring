@@ -158,7 +158,7 @@ export default function CurriculumSection() {
             </div>
 
             <a href="#courses" className="mt-auto block">
-              <Button variant="outline" className="w-full h-12 rounded-xl text-sm font-black border-gray-200 text-foreground hover:bg-gray-50 transition-all">
+              <Button className="w-full h-12 rounded-xl text-sm font-black bg-primary text-white hover:bg-primary/90 transition-all shadow-md">
                 Apply for Master
               </Button>
             </a>
