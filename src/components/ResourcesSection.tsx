@@ -160,7 +160,7 @@ export default function ResourcesSection() {
                     {m.desc}
                   </p>
                   {isReady ? (
-                    <a href={m.href} target="_blank" rel="noreferrer" className="block">
+                    <a href={m.href} download={`${m.title}.pdf`} target="_blank" rel="noreferrer" className="block">
                       {ButtonInner}
                     </a>
                   ) : (
