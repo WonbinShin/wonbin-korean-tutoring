@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-import TopBanner from "@/components/TopBanner";
 import Header, { TabItem } from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
@@ -86,7 +85,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <TopBanner />
       <Header active={active} onNavigate={go} tabs={TABS} />
       <main>
         {active === "home" && (

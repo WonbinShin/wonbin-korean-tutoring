@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Sparkles, ChevronDown, ChevronUp, Check, ArrowRight, ShieldCheck, BookOpen, Rocket, Crown } from "lucide-react";
+import { Sparkles, ChevronDown, ChevronUp, Check, ShieldCheck, BookOpen, Rocket, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function CurriculumSection() {
@@ -52,27 +52,10 @@ export default function CurriculumSection() {
               Learn to read and write Hangul in your first lesson. We also fix your pronunciation early so you can learn faster later.
             </p>
 
-            {/* Summer Special Callout Card */}
-            <a 
-              href="https://docs.google.com/forms/d/e/1FAIpQLSc0zeUQSB2iRgjD5sSHqOnFgv7_GNBCIaabKRLxQAktqunFlQ/viewform?usp=header"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-auto block p-5 rounded-2xl bg-gradient-to-br from-[#4D71FF] to-[#3D5FE6] text-white shadow-lg hover:scale-[1.02] transition-transform group"
-            >
-              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-blue-200 mb-1">
-                <Sparkles size={12} className="animate-pulse" /> August Special
-              </div>
-              <div className="text-base font-black tracking-tight mb-1 flex items-center justify-between">
-                <span>Beginner Hangul Class</span>
-                <span className="bg-white/20 text-white text-xs px-2 py-0.5 rounded font-black">$60</span>
-              </div>
-              <p className="text-xs text-white/90 font-medium mb-3">
-                One full month for level 0 students. Only 4 spots!
-              </p>
-              <div className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-white group-hover:translate-x-1 transition-transform">
-                <span>Join $60 Class</span>
-                <ArrowRight size={14} />
-              </div>
+            <a href="#courses" className="mt-auto block pt-2">
+              <Button className="w-full h-12 rounded-xl text-sm font-black bg-primary text-white hover:bg-primary/90 transition-all shadow-md">
+                Apply for Starter
+              </Button>
             </a>
           </div>
 
