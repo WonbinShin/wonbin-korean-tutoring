@@ -42,6 +42,7 @@ const ANCHOR_TO_TAB: Record<string, string> = {
   leveltest: "level-test",
   test: "level-test",
   resources: "resources",
+  textbooks: "resources",
   "useful-korean": "resources",
   ebooks: "resources",
   library: "resources",
@@ -109,8 +110,8 @@ const Index = () => {
 
         {active === "resources" && (
           <>
-            <TextbookStore />
             <ResourcesSection />
+            <TextbookStore />
             <UsefulKoreanSection />
           </>
         )}

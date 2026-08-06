@@ -56,6 +56,9 @@ export default function TextbookStore() {
             Real, high-frequency Korean from daily life in Korea — not textbook lines, and <b>not AI-generated</b>.
             Flip through the levels to see exactly what's inside.
           </p>
+          <a href="#level-test" className="inline-flex items-center gap-1.5 text-sm font-black text-primary hover:underline">
+            Not sure of your level? Take the free level test <ArrowRight size={14} />
+          </a>
         </div>
 
         {/* Hero image + stats */}
@@ -121,7 +124,7 @@ export default function TextbookStore() {
             <p className="text-sm text-muted-foreground font-medium mt-2 max-w-lg mx-auto">{lv.cando}</p>
           </div>
 
-          <div className="rounded-[2rem] overflow-hidden border border-gray-100 shadow-card max-w-2xl mx-auto">
+          <div className="rounded-[2rem] overflow-hidden border border-gray-100 shadow-card max-w-3xl mx-auto">
             <img src={lv.img} alt={`Level ${lv.n} contents`} className="w-full block" />
           </div>
         </div>
@@ -182,7 +185,7 @@ export default function TextbookStore() {
           <div className="bg-primary/5 border border-primary/15 rounded-2xl p-5 flex items-center justify-center gap-3 text-center">
             <Gift size={20} className="text-primary shrink-0" />
             <p className="text-sm font-bold text-foreground">
-              Taking a class? Your level's workbook is <span className="text-primary">free</span> — just book a lesson.
+              Taking a class? <span className="text-primary">All 5 level workbooks are free</span> — just book a lesson.
             </p>
           </div>
         </div>

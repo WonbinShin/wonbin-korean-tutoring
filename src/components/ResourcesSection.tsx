@@ -30,6 +30,14 @@ type Material = {
 
 const materials: Material[] = [
   {
+    icon: FileText,
+    title: "Hangul Starter Pack",
+    desc: "Read Korean in under an hour — memory tricks for every letter, plus practice and real-word reading.",
+    tag: "free",
+    status: "ready",
+    href: "/wonbinssem-hangul-starter.pdf",
+  },
+  {
     icon: BookOpen,
     title: "Essential Verbs 100",
     desc: "The 100 most-used Korean verbs — each with a real example, natural pronunciation, and a color-coded sentence breakdown.",
@@ -46,24 +54,9 @@ const materials: Material[] = [
     href: "/wonbinssem-essential-adjectives-100.pdf",
   },
   {
-    icon: FileText,
-    title: "Hangul Starter Pack",
-    desc: "Read Korean in under an hour — memory tricks for every letter, plus practice and real-word reading.",
-    tag: "free",
-    status: "ready",
-    href: "/wonbinssem-hangul-starter.pdf",
-  },
-  {
     icon: Plane,
     title: "Travel Korean Guide",
     desc: "Handy phrases for your trip to Korea — ordering, directions, and more.",
-    tag: "paid",
-    status: "soon",
-  },
-  {
-    icon: GraduationCap,
-    title: "Level 1 Grammar Deep-Dive (PDF)",
-    desc: "The detailed companion PDF to the free Level 1 video lessons.",
     tag: "paid",
     status: "soon",
   },

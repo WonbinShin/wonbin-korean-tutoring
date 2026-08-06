@@ -259,6 +259,7 @@
       <div class="desc" id="rDesc"></div>
     </div>
     <div class="score-line">You answered <b id="rCorrect">0</b> of <b id="rAnswered">0</b> questions correctly.</div>
+    <div id="rRecommend"></div>
 
     <div class="rev-title">Review &amp; Explanations</div>
     <div id="review"></div>
@@ -462,6 +463,17 @@ const TEST = (function(){
       wrap.innerHTML = html;
       rev.appendChild(wrap);
     });
+
+    // recommendation
+    var lvl = finalLevel === 0 ? 1 : finalLevel;
+    el('rRecommend').innerHTML =
+      '<div style="background:#EEF2FE;border:1px solid #D3DEFF;border-radius:16px;padding:20px 22px;margin:20px auto 8px;max-width:470px;text-align:left;">'
+      + '<div style="font-weight:800;color:#152D47;font-size:15px;margin-bottom:6px;">\u{1F3AF} Recommended for you</div>'
+      + '<p style="font-size:14px;color:#4C4C4D;line-height:1.55;margin:0 0 14px;">Based on your result, start around <b style="color:#2150FE">Level ' + lvl + '</b>. Pair a class at your level with the <b>Level ' + lvl + ' workbook</b> and it clicks fast.</p>'
+      + '<div style="display:flex;gap:10px;flex-wrap:wrap;">'
+      + '<a href="/#classes" target="_top" style="background:#2150FE;color:#fff;font-weight:800;font-size:13px;text-decoration:none;padding:11px 17px;border-radius:10px;">Book a class \u2192</a>'
+      + '<a href="/#textbooks" target="_top" style="background:#fff;color:#152D47;font-weight:800;font-size:13px;text-decoration:none;padding:11px 17px;border-radius:10px;border:1px solid #D3DEFF;">Get the Level ' + lvl + ' textbook \u2192</a>'
+      + '</div></div>';
 
     show('result');
   }

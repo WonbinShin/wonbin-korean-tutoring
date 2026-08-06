@@ -60,6 +60,9 @@ export default function CoursesSection() {
           <p className="text-base sm:text-lg text-muted-foreground font-medium max-w-xl mx-auto leading-relaxed">
             Choose the class size that fits you best. All classes include Google Drive notes and KakaoTalk help!
           </p>
+          <a href="#level-test" className="inline-flex items-center gap-1.5 text-sm font-black text-primary hover:underline">
+            Not sure of your level? Take the free level test <ArrowRight size={14} />
+          </a>
         </div>
 
         {/* 3 Main Class Options Grid */}
@@ -114,6 +117,14 @@ export default function CoursesSection() {
                   </div>
                   <span className="text-xs sm:text-sm text-foreground/80 font-medium leading-snug">
                     {opt.status}
+                  </span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0 mt-0.5 text-green-600">
+                    <Check size={12} />
+                  </div>
+                  <span className="text-xs sm:text-sm text-foreground/80 font-bold leading-snug">
+                    🎁 All 5 level workbooks (Levels 1&ndash;5) &mdash; <span className="text-green-600">free</span>
                   </span>
                 </div>
               </div>
