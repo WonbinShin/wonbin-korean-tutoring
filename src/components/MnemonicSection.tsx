@@ -74,6 +74,114 @@ const usefulKoreanCards = [
     context: "Use this when a joke falls flat or a movie is dull. Short, punchy, and very common.",
     example: "이거 진짜 노잼이다... (This is really not funny...)",
     color: "bg-secondary/10",
+  },
+  {
+    id: 9,
+    term: "-아/어 봤어요? (...bwass-eo-yo)",
+    literal: "Have you tried...?",
+    meaning: "Have you ever...?",
+    context: "Add 봤어요 after any verb to ask if someone has ever done something. Perfect for food, places, and experiences.",
+    example: "한국 음식 먹어 봤어요? (Have you tried Korean food?)",
+    color: "bg-primary/10",
+  },
+  {
+    id: 10,
+    term: "__년생이에요 (...nyeon-saeng)",
+    literal: "...-born",
+    meaning: "I'm a '__ baby",
+    context: "The local age secret. Memorize your birth year once and the number NEVER changes. Even Koreans now mix up the new 'manna-i' age system, so everyone just uses birth year. Say it and you sound truly Korean.",
+    example: "저 95년생이에요. (I was born in '95.)",
+    color: "bg-secondary/10",
+  },
+  {
+    id: 11,
+    term: "최애 (Choe-ae)",
+    literal: "Most-loved",
+    meaning: "Absolute Favorite",
+    context: "Your #1 fave — a person, food, idol, anything. K-fans live by this word.",
+    example: "제 최애 배우예요. (He's my all-time favorite actor.)",
+    color: "bg-primary/10",
+  },
+  {
+    id: 12,
+    term: "취저 (Chwi-jeo)",
+    literal: "Taste-sniped",
+    meaning: "Right Up My Alley",
+    context: "Short for 취향 저격. When something hits your taste perfectly, like it was made for you.",
+    example: "이 노래 완전 취저야! (This song is totally my type!)",
+    color: "bg-secondary/10",
+  },
+  {
+    id: 13,
+    term: "취존 (Chwi-jon)",
+    literal: "Respect (your) taste",
+    meaning: "To Each Their Own",
+    context: "Short for 취향 존중. A friendly way to say 'different strokes' without any judgment.",
+    example: "난 별로지만, 취존! (Not my thing, but you do you!)",
+    color: "bg-primary/10",
+  },
+  {
+    id: 14,
+    term: "완전 (Wan-jeon)",
+    literal: "Completely",
+    meaning: "Totally / So",
+    context: "The everyday intensifier. Natives say 완전 far more than textbook 매우 or 굉장히.",
+    example: "완전 맛있어요! (It's SO good!)",
+    color: "bg-secondary/10",
+  },
+  {
+    id: 15,
+    term: "대박 (Dae-bak)",
+    literal: "Jackpot",
+    meaning: "Awesome / No Way!",
+    context: "The all-purpose reaction for anything amazing (or shocking). One of the most-used words in Korea.",
+    example: "대박! 진짜요? (No way! Really?)",
+    color: "bg-primary/10",
+  },
+  {
+    id: 16,
+    term: "-아/어 죽겠어요 (...juk-gess-eo-yo)",
+    literal: "Dying of ~",
+    meaning: "So ~ I Could Die",
+    context: "Add to any feeling for natural, expressive emphasis. Not literal — just very Korean.",
+    example: "배고파 죽겠어요. (I'm starving to death!)",
+    color: "bg-secondary/10",
+  },
+  {
+    id: 17,
+    term: "별로 (Byeol-lo)",
+    literal: "Not particularly",
+    meaning: "Meh / Not Really",
+    context: "The soft 'no'. Politely say something isn't great without sounding harsh.",
+    example: "음... 별로예요. (Hmm, it's not that great.)",
+    color: "bg-primary/10",
+  },
+  {
+    id: 18,
+    term: "국룰 (Guk-rul)",
+    literal: "National rule",
+    meaning: "The Unwritten Rule",
+    context: "Short for 국민 룰 — the thing 'everyone just does.' Great for food combos and daily habits.",
+    example: "치킨엔 맥주가 국룰이죠. (Chicken + beer is basically the law.)",
+    color: "bg-secondary/10",
+  },
+  {
+    id: 19,
+    term: "갓생 (Gat-saeng)",
+    literal: "God-life",
+    meaning: "Living Your Best Life",
+    context: "Trendy word for a super-productive, disciplined lifestyle you're proud of.",
+    example: "요즘 갓생 살고 있어요. (I'm living my best life these days.)",
+    color: "bg-primary/10",
+  },
+  {
+    id: 20,
+    term: "TMI",
+    literal: "Too Much Info",
+    meaning: "Oversharing (jokingly)",
+    context: "Borrowed from English but used constantly in Korea — usually to tee up a random little fact about yourself.",
+    example: "TMI인데, 저 오늘 세 번 넘어졌어요. (TMI, but I fell three times today.)",
+    color: "bg-secondary/10",
   }
 ];
 
@@ -107,7 +215,7 @@ export default function UsefulKoreanSection() {
   };
 
   return (
-    <section id="useful-korean" className="py-32 relative overflow-hidden bg-white">
+    <section id="useful-korean" className="pt-10 pb-32 relative overflow-hidden bg-white">
       {/* Background kinetic element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(#8B5CF603_1px,transparent_1px)] [background-size:40px_40px] opacity-100" />
 

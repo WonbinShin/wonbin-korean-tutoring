@@ -79,35 +79,6 @@ export default function ResourcesSection() {
           </p>
         </div>
 
-        {/* Video Lessons banner */}
-        <div className="max-w-5xl mx-auto mb-16">
-          <div className="bg-gradient-to-r from-[#3D5FE6] via-[#4D71FF] to-[#3D5FE6] text-white p-8 sm:p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:24px_24px] opacity-30 pointer-events-none" />
-            <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 justify-between">
-              <div className="flex items-start gap-5 flex-1 text-left">
-                <div className="w-16 h-16 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0">
-                  <Youtube size={32} />
-                </div>
-                <div className="space-y-2">
-                  <div className="inline-block px-3 py-0.5 rounded-full bg-white/15 border border-white/25 text-blue-100 text-[10px] font-black uppercase tracking-widest">
-                    Video Lessons · YouTube
-                  </div>
-                  <h3 className="text-2xl font-black tracking-tight text-white">Free Level 1 Lessons</h3>
-                  <p className="text-xs sm:text-sm font-medium text-blue-100/90 max-w-lg leading-relaxed">
-                    Free Level 1 video lessons are coming to my YouTube channel soon —
-                    subscribe now so you catch the very first drop.
-                  </p>
-                </div>
-              </div>
-              <Button
-                disabled
-                className="w-full md:w-auto h-12 px-8 rounded-full bg-white/70 text-[#4D71FF]/70 font-black text-sm shadow-lg flex items-center gap-2 cursor-not-allowed"
-              >
-                <Clock size={16} /> Coming Soon
-              </Button>
-            </div>
-          </div>
-        </div>
 
         {/* Materials grid */}
         <div className="max-w-6xl mx-auto">
@@ -192,6 +163,43 @@ export default function ResourcesSection() {
             </a>{" "}
             to get notified.
           </p>
+        </div>
+
+        {/* Coming Soon — moved to the bottom */}
+        <div id="coming-soon" className="max-w-6xl mx-auto mt-20 scroll-mt-28">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-px flex-1 bg-gray-100" />
+            <span className="text-xs font-black uppercase tracking-[0.25em] text-muted-foreground">
+              Coming Soon
+            </span>
+            <div className="h-px flex-1 bg-gray-100" />
+          </div>
+          <div className="bg-gradient-to-r from-[#3D5FE6] via-[#4D71FF] to-[#3D5FE6] text-white p-8 sm:p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:24px_24px] opacity-30 pointer-events-none" />
+            <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 justify-between">
+              <div className="flex items-start gap-5 flex-1 text-left">
+                <div className="w-16 h-16 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0">
+                  <Youtube size={32} />
+                </div>
+                <div className="space-y-2">
+                  <div className="inline-block px-3 py-0.5 rounded-full bg-white/15 border border-white/25 text-blue-100 text-[10px] font-black uppercase tracking-widest">
+                    Video Lessons · YouTube
+                  </div>
+                  <h3 className="text-2xl font-black tracking-tight text-white">Free Level 1 Lessons</h3>
+                  <p className="text-xs sm:text-sm font-medium text-blue-100/90 max-w-lg leading-relaxed">
+                    Free Level 1 video lessons are coming to my YouTube channel soon —
+                    subscribe now so you catch the very first drop.
+                  </p>
+                </div>
+              </div>
+              <Button
+                disabled
+                className="w-full md:w-auto h-12 px-8 rounded-full bg-white/70 text-[#4D71FF]/70 font-black text-sm shadow-lg flex items-center gap-2 cursor-not-allowed"
+              >
+                <Clock size={16} /> Coming Soon
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

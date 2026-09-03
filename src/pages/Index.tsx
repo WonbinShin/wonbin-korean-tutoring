@@ -47,6 +47,7 @@ const ANCHOR_TO_TAB: Record<string, string> = {
   ebooks: "resources",
   library: "resources",
   materials: "resources",
+  "coming-soon": "resources",
   reviews: "reviews",
 };
 
@@ -110,9 +111,32 @@ const Index = () => {
 
         {active === "resources" && (
           <>
-            <ResourcesSection />
-            <TextbookStore />
+            {/* Quick-jump bar (lots to scroll here) */}
+            <div className="pt-28 pb-4 bg-white">
+              <div className="container mx-auto px-4 flex flex-wrap items-center justify-center gap-2">
+                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground mr-1">
+                  Jump to
+                </span>
+                {[
+                  { href: "#useful-korean", label: "Word Cards" },
+                  { href: "#textbooks", label: "Level Textbooks" },
+                  { href: "#resources", label: "Free Materials" },
+                  { href: "#coming-soon", label: "Free Lessons · Soon" },
+                ].map((j) => (
+                  <a
+                    key={j.href}
+                    href={j.href}
+                    className="px-4 py-2 rounded-full bg-gray-50 border border-gray-100 text-foreground text-xs font-black hover:bg-primary hover:text-white hover:border-primary transition-colors"
+                  >
+                    {j.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
             <UsefulKoreanSection />
+            <TextbookStore />
+            <ResourcesSection />
           </>
         )}
 
