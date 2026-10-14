@@ -1,0 +1,19 @@
+{
+  "_readme": "Fallback + overrides for the Watch tab. Normally /api/videos pulls everything from YouTube automatically. This file is used (1) as the full list when the API key is missing or Google is unreachable, and (2) to override `level`, `pdfUrl`, `pdfEmbedUrl` for a given video id even when the API works. Newest first.",
+  "videos": [
+    {
+      "id": "mjgk_wkfZZY",
+      "title": "Slow Korean Vlog | Going for a Run in Korea 🏃‍♂️ | Comprehensible Input (A1–B2)",
+      "level": "A1–B2",
+      "pdfUrl": "https://drive.google.com/file/d/1vWpYkM1B0hXYi9mjBANBplzzz0urOcQ4/view",
+      "pdfEmbedUrl": "https://drive.google.com/file/d/1vWpYkM1B0hXYi9mjBANBplzzz0urOcQ4/preview"
+    },
+    {
+      "id": "o063srRcb3E",
+      "title": "Going to a Cafe in Korea ☕ | Slow Korean · Comprehensible Input (A1–C1)",
+      "level": "A1–C1",
+      "pdfUrl": "https://drive.google.com/file/d/1DiyZ4-tlpRQSxyhItzySbHPgEGpqBC_L/view",
+      "pdfEmbedUrl": "https://drive.google.com/file/d/1DiyZ4-tlpRQSxyhItzySbHPgEGpqBC_L/preview"
+    }
+  ]
+}

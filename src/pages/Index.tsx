@@ -8,6 +8,7 @@ import CoursesSection from "@/components/CoursesSection";
 import BookingSection from "@/components/BookingSection";
 import LevelTestSection from "@/components/LevelTestSection";
 import ResourcesSection from "@/components/ResourcesSection";
+import WatchSection from "@/components/WatchSection";
 import TextbookStore from "@/components/TextbookStore";
 import UsefulKoreanSection from "@/components/MnemonicSection";
 import ReviewsSection from "@/components/ReviewsSection";
@@ -19,6 +20,7 @@ const TABS: TabItem[] = [
   { id: "about", label: "About" },
   { id: "classes", label: "Classes" },
   { id: "level-test", label: "Level Test" },
+  { id: "watch", label: "Watch" },
   { id: "resources", label: "Resources" },
   { id: "reviews", label: "Reviews" },
 ];
@@ -41,6 +43,16 @@ const ANCHOR_TO_TAB: Record<string, string> = {
   "level-test": "level-test",
   leveltest: "level-test",
   test: "level-test",
+  watch: "watch",
+  videos: "watch",
+  video: "watch",
+  youtube: "watch",
+  vlog: "watch",
+  vlogs: "watch",
+  player: "watch",
+  "slow-korean": "watch",
+  "word-hack": "watch",
+  wordhack: "watch",
   resources: "resources",
   textbooks: "resources",
   "useful-korean": "resources",
@@ -109,6 +121,8 @@ const Index = () => {
 
         {active === "level-test" && <LevelTestSection />}
 
+        {active === "watch" && <WatchSection />}
+
         {active === "resources" && (
           <>
             {/* Quick-jump bar (lots to scroll here) */}
@@ -121,7 +135,7 @@ const Index = () => {
                   { href: "#useful-korean", label: "Word Cards" },
                   { href: "#textbooks", label: "Level Textbooks" },
                   { href: "#resources", label: "Free Materials" },
-                  { href: "#coming-soon", label: "Free Lessons · Soon" },
+                  { href: "#coming-soon", label: "Video Lessons" },
                 ].map((j) => (
                   <a
                     key={j.href}

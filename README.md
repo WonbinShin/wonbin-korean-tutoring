@@ -71,3 +71,22 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Watch tab (YouTube + Study Pack PDFs)
+
+The **Watch** tab (`#watch`) embeds the channel's Slow Korean Vlog episodes and shows each
+episode's free Study Pack PDF directly under the player. It updates automatically:
+
+1. `api/videos.js` (Vercel serverless function) reads the channel's uploads with the
+   YouTube Data API v3, drops Shorts (≤ 3 min), and parses the Google Drive / `.pdf` link
+   out of each video description. Cached 1 h at the edge.
+2. `public/videos.json` is the fallback list when the API key is missing, and also lets you
+   override `level` / `pdfUrl` / `pdfEmbedUrl` for a given video id.
+
+**One-time setup:** add `YOUTUBE_API_KEY` in Vercel → Project → Settings → Environment
+Variables (see `.env.example`), then redeploy. Without it the site still works from
+`public/videos.json`.
+
+**Per upload:** nothing — just keep the `👉 https://drive.google.com/file/d/…/view` PDF link in
+the YouTube description and the `(A1–B2)` level in the title. The Drive file must be shared as
+"Anyone with the link" for the inline preview to render.

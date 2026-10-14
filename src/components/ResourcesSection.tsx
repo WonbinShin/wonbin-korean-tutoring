@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 /**
- * Resources tab: free video lessons (YouTube) + downloadable e-books / study packs.
+ * Resources tab: downloadable e-books / study packs (+ a pointer to the Watch tab for videos).
  *
  * TO ADD A REAL DOWNLOAD OR PAYMENT LATER:
  *  - Put the file in /public (e.g. /public/essential-words-100.pdf) and set `href`.
@@ -165,12 +165,12 @@ export default function ResourcesSection() {
           </p>
         </div>
 
-        {/* Coming Soon — moved to the bottom */}
+        {/* Slow Korean Vlog — now live on the Watch tab */}
         <div id="coming-soon" className="max-w-6xl mx-auto mt-20 scroll-mt-28">
           <div className="flex items-center gap-3 mb-8">
             <div className="h-px flex-1 bg-gray-100" />
             <span className="text-xs font-black uppercase tracking-[0.25em] text-muted-foreground">
-              Coming Soon
+              Video Lessons
             </span>
             <div className="h-px flex-1 bg-gray-100" />
           </div>
@@ -183,21 +183,20 @@ export default function ResourcesSection() {
                 </div>
                 <div className="space-y-2">
                   <div className="inline-block px-3 py-0.5 rounded-full bg-white/15 border border-white/25 text-blue-100 text-[10px] font-black uppercase tracking-widest">
-                    Video Lessons · YouTube
+                    Slow Korean Vlog · YouTube
                   </div>
-                  <h3 className="text-2xl font-black tracking-tight text-white">Free Level 1 Lessons</h3>
+                  <h3 className="text-2xl font-black tracking-tight text-white">Free Comprehensible Input Videos</h3>
                   <p className="text-xs sm:text-sm font-medium text-blue-100/90 max-w-lg leading-relaxed">
-                    Free Level 1 video lessons are coming to my YouTube channel soon —
-                    subscribe now so you catch the very first drop.
+                    Slow, clear Korean through real days in Korea &mdash; with CC in 9 languages and a free
+                    Study Pack PDF under every episode. Watch them right here on the site.
                   </p>
                 </div>
               </div>
-              <Button
-                disabled
-                className="w-full md:w-auto h-12 px-8 rounded-full bg-white/70 text-[#4D71FF]/70 font-black text-sm shadow-lg flex items-center gap-2 cursor-not-allowed"
-              >
-                <Clock size={16} /> Coming Soon
-              </Button>
+              <a href="#watch" className="w-full md:w-auto">
+                <Button className="w-full md:w-auto h-12 px-8 rounded-full bg-white text-[#4D71FF] hover:bg-blue-50 font-black text-sm shadow-lg flex items-center gap-2">
+                  <Youtube size={16} /> Watch Episodes <ArrowRight size={14} />
+                </Button>
+              </a>
             </div>
           </div>
         </div>

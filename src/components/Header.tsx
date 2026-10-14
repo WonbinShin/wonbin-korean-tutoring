@@ -13,6 +13,7 @@ const DEFAULT_TABS: TabItem[] = [
   { id: "about", label: "About" },
   { id: "classes", label: "Classes" },
   { id: "level-test", label: "Level Test" },
+  { id: "watch", label: "Watch" },
   { id: "resources", label: "Resources" },
   { id: "reviews", label: "Reviews" },
 ];
@@ -60,7 +61,7 @@ export default function Header({ active = "home", onNavigate, tabs = DEFAULT_TAB
             <div className="w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
               <img src="/webprofile.jpg" alt="Wonbin Ssem Logo" className="w-full h-full object-contain" />
             </div>
-            <span className="hidden sm:block text-sm font-black text-foreground tracking-tighter uppercase leading-none">
+            <span className="hidden sm:block md:hidden lg:block text-sm font-black text-foreground tracking-tighter uppercase leading-none">
               Wonbin Ssem
             </span>
           </button>
