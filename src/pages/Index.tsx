@@ -27,7 +27,7 @@ const TABS: TabItem[] = [
 // Any in-page anchor (e.g. #courses used inside existing sections) maps to the
 // tab that now contains it, so all existing links keep working.
 const ANCHOR_TO_TAB: Record<string, string> = {
-  "": "home",
+  "": "classes",
   home: "home",
   how: "home",
   "how-it-works": "home",
@@ -78,7 +78,8 @@ const Index = () => {
       // otherwise scroll to the top of the page.
       window.setTimeout(() => {
         const el = raw ? document.getElementById(raw) : null;
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        const isTopLevelTab = TABS.some((t) => t.id === raw);
+        if (el && !isTopLevelTab) el.scrollIntoView({ behavior: "smooth", block: "start" });
         else window.scrollTo({ top: 0, behavior: "smooth" });
       }, 60);
     };
