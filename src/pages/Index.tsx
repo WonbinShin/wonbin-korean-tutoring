@@ -12,6 +12,7 @@ import WatchSection from "@/components/WatchSection";
 import TextbookStore from "@/components/TextbookStore";
 import UsefulKoreanSection from "@/components/MnemonicSection";
 import ReviewsSection from "@/components/ReviewsSection";
+import GroupLessonsSection from "@/components/GroupLessonsSection";
 import Footer from "@/components/Footer";
 
 // Top-level tabs shown in the header. Order = display order.
@@ -154,7 +155,12 @@ const Index = () => {
           </>
         )}
 
-        {active === "reviews" && <ReviewsSection />}
+        {active === "reviews" && (
+          <>
+            <GroupLessonsSection />
+            <ReviewsSection />
+          </>
+        )}
       </main>
       <Footer />
     </div>

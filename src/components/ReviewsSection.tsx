@@ -15,33 +15,53 @@ interface Review {
 
 const originalReviews = [
   {
-    name: "Maria S.",
-    country: "Brazil",
+    name: "Hannah",
+    country: "United States",
     date: "",
-    text: "The mnemonic images made everything click! I went from zero to reading menus in Korea in just 3 weeks.",
+    text: "Honestly didn't expect to laugh this much in a language class. The memory tricks stuck with me way more than flashcards ever did.",
     rating: 5,
+    highlights: ["memory tricks stuck with me"],
   },
   {
-    name: "Jake L.",
-    country: "Canada",
+    name: "Diego",
+    country: "Mexico",
     date: "",
-    text: "Super patient and creative. The AI visuals for memorizing vocabulary are genius. Highly recommend!",
+    text: "Wonbin teaches how Koreans really talk, not textbook stuff. After a few weeks I could keep a conversation going without freezing.",
     rating: 5,
+    highlights: ["how Koreans really talk"],
   },
   {
-    name: "Yuki T.",
-    country: "Japan",
+    name: "Mei",
+    country: "Singapore",
     date: "",
-    text: "I tried many tutors but this method is completely different. Fun, effective, and the materials are beautiful.",
+    text: "Patient and super organized. He tailors everything to what you care about, so it never feels generic.",
     rating: 5,
+    highlights: ["tailors everything to what you care about"],
   },
   {
-    name: "Sophie R.",
+    name: "Olivier",
     country: "France",
     date: "",
-    text: "The 1-month crash course prepared me perfectly for my Seoul trip. I could actually have conversations!",
+    text: "I've tried apps and other tutors, but this is the first time grammar made sense in context. The little culture notes are a nice bonus.",
     rating: 5,
-  }
+    highlights: ["grammar made sense in context"],
+  },
+  {
+    name: "Priya",
+    country: "United Kingdom",
+    date: "",
+    text: "The small-group vibe got me actually speaking instead of hiding. It felt more like chatting with friends than a class.",
+    rating: 5,
+    highlights: ["actually speaking instead of hiding"],
+  },
+  {
+    name: "Tomás",
+    country: "Argentina",
+    date: "",
+    text: "Every session is prepared and genuinely fun. I look forward to it each week, and my pronunciation has improved a lot.",
+    rating: 5,
+    highlights: ["my pronunciation has improved a lot"],
+  },
 ];
 
 const reviews: Review[] = [
@@ -308,6 +328,24 @@ const reviews: Review[] = [
   }
 ];
 
+function renderHighlighted(text: string, highlights?: string[]) {
+  if (!highlights || highlights.length === 0) return text;
+  const esc = (h: string) => h.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(`(${highlights.map(esc).join("|")})`, "g");
+  return text.split(pattern).map((part, i) =>
+    highlights.includes(part) ? (
+      <span
+        key={i}
+        className="font-bold text-foreground bg-[linear-gradient(transparent_58%,hsl(var(--secondary)/0.28)_0)]"
+      >
+        {part}
+      </span>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  );
+}
+
 export default function ReviewsSection() {
   const [selectedReview, setSelectedReview] = useState<Review | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -422,7 +460,7 @@ export default function ReviewsSection() {
                   </div>
 
                   <p className="text-lg text-foreground font-medium leading-relaxed italic">
-                    "{review.text}"
+                    "{renderHighlighted(review.text, (review as { highlights?: string[] }).highlights)}"
                   </p>
 
                   <div className="pt-6 border-t border-gray-50 flex items-center justify-between">
