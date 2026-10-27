@@ -16,8 +16,8 @@ import { Button } from "@/components/ui/button";
  * Buy buttons open PayPal checkout (PayPal "no-code" payment links).
  * Swap these two URLs if the PayPal item IDs ever change.
  */
-const SINGLE_URL = "https://www.paypal.com/ncp/payment/DNGBW8JXNGL4Q"; // $3.99 — pick level at checkout
-const BUNDLE_URL = "https://www.paypal.com/ncp/payment/6LLDL6FSQ47UG"; // $14.99 — all 5 levels
+const SINGLE_URL = "https://www.paypal.com/ncp/payment/DNGBW8JXNGL4Q"; // $2.99 — pick level at checkout
+const BUNDLE_URL = "https://www.paypal.com/ncp/payment/6LLDL6FSQ47UG"; // $12.99 — all 5 levels
 
 const LEVELS = [
   { n: 1, name: "Survival", band: "Beginner", img: "/learn-level1.png",
@@ -138,7 +138,7 @@ export default function TextbookStore() {
             </div>
             <h3 className="text-xl font-black text-foreground">Single Level</h3>
             <p className="text-sm text-muted-foreground font-medium mt-1">Any one level (1–5)</p>
-            <div className="text-4xl font-black text-foreground mt-4">$3.99</div>
+            <div className="text-4xl font-black text-foreground mt-4">$2.99</div>
             <ul className="text-left text-sm font-medium text-foreground/80 my-6 space-y-2">
               <li className="flex gap-2"><Check size={16} className="text-primary shrink-0 mt-0.5" /> One full level workbook (PDF)</li>
               <li className="flex gap-2"><Check size={16} className="text-primary shrink-0 mt-0.5" /> Examples, rules, quizzes & dialogues</li>
@@ -146,7 +146,7 @@ export default function TextbookStore() {
             </ul>
             <a href={SINGLE_URL} target="_blank" rel="noreferrer" className="mt-auto block">
               <Button className="w-full h-12 rounded-xl text-sm font-black bg-foreground text-white hover:bg-primary transition-all flex items-center justify-center gap-2">
-                Buy a Level — $3.99 <ArrowRight size={16} />
+                Buy a Level — $2.99 <ArrowRight size={16} />
               </Button>
             </a>
             <p className="text-[11px] text-muted-foreground font-medium mt-2">Pick your level at checkout</p>
@@ -163,8 +163,8 @@ export default function TextbookStore() {
             <h3 className="text-xl font-black text-foreground">Complete Bundle · Levels 1–5</h3>
             <p className="text-sm text-muted-foreground font-medium mt-1">Beginner → Fluency</p>
             <div className="mt-4">
-              <span className="text-base text-muted-foreground line-through mr-2">$19.95</span>
-              <span className="text-4xl font-black text-foreground">$14.99</span>
+              <span className="text-base text-muted-foreground line-through mr-2">$14.95</span>
+              <span className="text-4xl font-black text-foreground">$12.99</span>
             </div>
             <ul className="text-left text-sm font-medium text-foreground/80 my-6 space-y-2">
               <li className="flex gap-2"><Check size={16} className="text-primary shrink-0 mt-0.5" /> All 5 level workbooks (PDF)</li>
@@ -173,10 +173,10 @@ export default function TextbookStore() {
             </ul>
             <a href={BUNDLE_URL} target="_blank" rel="noreferrer" className="mt-auto block">
               <Button className="w-full h-12 rounded-xl text-sm font-black bg-primary text-white hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
-                Get all 5 — $14.99 <ArrowRight size={16} />
+                Get all 5 — $12.99 <ArrowRight size={16} />
               </Button>
             </a>
-            <p className="text-[11px] text-muted-foreground font-medium mt-2">Save $5 vs. buying separately</p>
+            <p className="text-[11px] text-muted-foreground font-medium mt-2">Save $2 vs. buying separately</p>
           </div>
         </div>
 

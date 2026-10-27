@@ -1,212 +1,242 @@
-import { Star, Users, MessageCircle, Brain, MapPin, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ArrowRight, Lock } from "lucide-react";
 
-/* Soft highlight for key phrases inside quotes */
-const Hl = ({ children }: { children: React.ReactNode }) => (
-  <span className="font-semibold text-foreground bg-[linear-gradient(transparent_58%,hsl(var(--secondary)/0.28)_0)]">
-    {children}
-  </span>
-);
+const FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSe_ScaxP9AizeY7nVN9S7JvvttFdOFvOHdQ331LD_4yz_QV4Q/viewform";
+const EMAIL = "wonbinssem@gmail.com";
 
-interface GReview {
-  name: string;
-  tag: string;
-  quote: React.ReactNode;
+type Week = { kr: string; en: string; tip: string };
+type Review = { name: string; quote: string };
+
+interface Cohort {
+  id: string;
+  month: string;
+  theme: string;
+  concept: string;
+  status: "closed" | "open";
+  photos: string[];
+  weeks: Week[];
+  reviews: Review[];
+  note?: string;
 }
 
-const groupReviews: GReview[] = [
+const cohorts: Cohort[] = [
   {
-    name: "Shei",
-    tag: "Season 2 · October",
-    quote: (
-      <>
-        I really enjoyed Wonbin Ssaem's class! He makes Korean easy to understand for foreign
-        learners, <Hl>focusing on real conversations rather than just grammar.</Hl> He teaches
-        useful slang, cultural tips, and how locals actually speak. <Hl>His examples make
-        vocabulary easier to remember,</Hl> and his passion for teaching really shows. Highly
-        recommended for anyone who wants to communicate naturally with locals in Korea!
-      </>
-    ),
+    id: "sep",
+    month: "September",
+    theme: "The basics — intro to particles",
+    concept: "Building the foundation for real sentences, step by step.",
+    status: "closed",
+    photos: ["sep1", "sep2", "sep3", "sep4", "sep5", "sep6"],
+    weeks: [
+      { kr: "저는 ○○이에요 / 예요", en: "Self-introduction & “to be”", tip: "씨 after a full name sounds rude — use 님 or just the first name." },
+      { kr: "몇 년생이에요? · 만 나이", en: "Numbers & age", tip: "Say your birth year (구팔년생) instead of your age — it sounds native." },
+      { kr: "했어요 · 해요 · 할 거예요", en: "Past, present & future tense", tip: "-고 있어요 adds “am ~ing” to any verb." },
+      { kr: "은/는 · 이/가 · 을/를", en: "Essential particles", tip: "In casual speech, dropping the particle sounds more natural." },
+    ],
+    reviews: [
+      { name: "Madi", quote: "I don't think I've ever spent better money on education — I'm not afraid to make mistakes." },
+      { name: "Sam", quote: "The mnemonic techniques are super useful, with real-life examples and fun cultural facts." },
+    ],
   },
   {
-    name: "Madi",
-    tag: "Season 1 · September",
-    quote: (
-      <>
-        <Hl>I don't think I've ever spent better money on education.</Hl> After each class I'm
-        excited to tell my family what I learned. The classes feel comfortable, so <Hl>I'm not
-        afraid to make mistakes</Hl> — and that makes me learn faster. Looking forward to more!
-      </>
-    ),
+    id: "oct",
+    month: "October",
+    theme: "One day in Korea",
+    concept: "Morning to evening, scene by scene — you fill each one with your own life.",
+    status: "closed",
+    photos: ["oct1", "oct2", "oct3", "oct4", "offline", "food"],
+    weeks: [
+      { kr: "잘 지냈어요? · -는데 / -서", en: "Morning meet-up", tip: "밥 먹었어요? usually just means “how are you?” — not about food." },
+      { kr: "맵게 해 주세요 · -는 편이에요", en: "Lunch & ordering", tip: "맵게 / 덜 맵게 해 주세요 to adjust the spice." },
+      { kr: "푹 빠졌어요 · -아/어 봤어요?", en: "Cafe & deeper talk", tip: "푹 빠졌어요 = “totally into” something these days." },
+      { kr: "-(으)ㄹ까요? · -기로 했어요", en: "Evening plans & goodbye", tip: "담에 밥 한번 먹어요 is usually just a friendly goodbye." },
+    ],
+    reviews: [
+      { name: "Shei", quote: "He focuses on real conversations rather than just grammar, and his examples make vocabulary easy to remember." },
+    ],
+    note: "We also met offline in Seoul — a free-talking session and a 칼국수 맛집 tour.",
   },
   {
-    name: "Sam",
-    tag: "Season 1 · September",
-    quote: (
-      <>
-        The session was helpful and fun! <Hl>The mnemonic techniques are super useful,</Hl> and I
-        love the real-life examples plus the <Hl>cultural insights and fun facts.</Hl> You're a
-        great, engaging teacher — I'm definitely in for the next season!
-      </>
-    ),
-  },
-  {
-    name: "Kely",
-    tag: "Season 1 · September",
-    quote: (
-      <>
-        Wonbin keeps every lesson smooth and engaging with <Hl>practical, easygoing methods and
-        real-life examples,</Hl> and adjusts the pace to each student. Above all, his <Hl>patience
-        and encouragement</Hl> make you feel confident and stress-free. Learning actually becomes
-        enjoyable!
-      </>
-    ),
+    id: "nov",
+    month: "November",
+    theme: "Tell your story",
+    concept: "Talk about your whole life — childhood to the future. A Beginner class opens too.",
+    status: "open",
+    photos: [],
+    weeks: [
+      { kr: "-대요 / -았대요 · 닮다", en: "Baby & childhood", tip: "-았대요 = “I heard…” — great for stories you don't remember." },
+      { kr: "-곤 했어요 · 되고 싶었어요", en: "Teenage years", tip: "-곤 했어요 = “used to”." },
+      { kr: "-아/어졌어요 · -(으)ㄴ 지 ~됐어요", en: "Right now", tip: "한국어 배운 지 1년 됐어요 = “it's been a year since…”." },
+      { kr: "-았으면 좋겠어요", en: "The future you", tip: "-았으면 좋겠어요 = “I hope / I wish”." },
+    ],
+    reviews: [],
   },
 ];
 
-const features = [
-  { icon: Users, title: "Real talk, not drills", desc: "You practice with classmates every week." },
-  { icon: Brain, title: "Memory-hook method", desc: "Vocabulary that actually sticks." },
-  { icon: MessageCircle, title: "KakaoTalk group", desc: "Questions & feedback between classes." },
-];
+const reveal = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
+};
 
 export default function GroupLessonsSection() {
-  return (
-    <section id="group-classes" className="py-20 sm:py-28 bg-white">
-      <div className="container mx-auto px-6 max-w-5xl">
-        {/* Header */}
-        <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.25em]">
-            <Users size={14} /> Group Lessons
-          </span>
-          <h2 className="mt-5 text-4xl sm:text-6xl font-black text-foreground tracking-tighter leading-[0.95]">
-            Learn Korean <span className="text-secondary italic">together.</span>
-          </h2>
-          <p className="mt-5 text-base sm:text-lg text-muted-foreground font-medium leading-relaxed">
-            Small-group classes — online and offline — where you actually <b className="text-foreground">speak</b>.
-            Real conversation over textbook drills, memory-hook vocabulary, and a private group chat between sessions.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {["3 seasons run", "Online + offline", "Groups A & B monthly", "Season 3 enrolling"].map((s) => (
-              <span key={s} className="text-xs font-bold text-primary bg-gray-50 border border-gray-100 rounded-full px-3.5 py-2">
-                {s}
-              </span>
-            ))}
-          </div>
-        </div>
+  const [open, setOpen] = useState<Cohort | null>(null);
 
-        {/* Features */}
-        <div className="mt-10 grid gap-3 sm:grid-cols-3">
-          {features.map((f) => (
-            <div key={f.title} className="flex sm:flex-col items-start gap-4 sm:gap-3 bg-gray-50 rounded-2xl p-5">
-              <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <f.icon size={20} />
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  return (
+    <section id="group-classes" className="py-20 sm:py-24 bg-white">
+      <div className="container mx-auto px-6 max-w-2xl">
+        <motion.div {...reveal} className="mb-8">
+          <p className="text-xs font-black text-primary uppercase tracking-[0.22em]">Group Classes</p>
+          <h2 className="mt-3 text-3xl sm:text-4xl font-black text-foreground tracking-tight">
+            Monthly group seasons
+          </h2>
+          <p className="mt-3 text-[15px] text-muted-foreground">
+            Small groups, live on Google Meet. New theme every month.
+          </p>
+        </motion.div>
+
+        <div className="space-y-3">
+          {cohorts.map((c) => (
+            <motion.button
+              key={c.id}
+              {...reveal}
+              onClick={() => setOpen(c)}
+              className={`w-full text-left rounded-2xl border px-5 py-4 flex items-center gap-4 transition-all hover:shadow-sm ${
+                c.status === "open"
+                  ? "border-primary/40 bg-primary/[0.03]"
+                  : "border-gray-200 hover:border-primary/30"
+              }`}
+            >
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-black uppercase tracking-[0.15em] text-muted-foreground">
+                    {c.month}
+                  </span>
+                  {c.status === "closed" ? (
+                    <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-wider text-gray-500 bg-gray-100 rounded-full px-2 py-0.5">
+                      <Lock size={9} /> Closed
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-wider text-white bg-primary rounded-full px-2 py-0.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Enrolling
+                    </span>
+                  )}
+                </div>
+                <h3 className="mt-1 text-lg font-black text-foreground tracking-tight">
+                  {c.month} Group Class
+                </h3>
+                <p className="text-sm text-muted-foreground truncate">{c.theme}</p>
               </div>
-              <div>
-                <p className="font-bold text-foreground text-[15px]">{f.title}</p>
-                <p className="text-sm text-muted-foreground mt-0.5">{f.desc}</p>
-              </div>
-            </div>
+              <ArrowRight size={18} className="text-primary shrink-0" />
+            </motion.button>
           ))}
         </div>
+      </div>
 
-        {/* Timeline */}
-        <div className="mt-16">
-          <span className="text-[10px] font-black uppercase tracking-[0.25em] text-secondary">What we've run</span>
-          <h3 className="mt-2 text-2xl sm:text-3xl font-black text-foreground tracking-tight">Three seasons &amp; counting</h3>
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {/* Season 1 */}
-            <div className="rounded-3xl border border-gray-100 p-6 bg-white shadow-sm">
-              <span className="text-[10px] font-black uppercase tracking-[0.18em] text-primary bg-primary/5 rounded-full px-3 py-1.5">
-                Sep · Season 1 · Groups A·B
-              </span>
-              <h4 className="mt-3 text-xl font-black text-foreground tracking-tight">Small-Talk Korean: The Building Blocks</h4>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                Self-introduction &amp; <span className="text-secondary font-semibold">이에요/예요</span>, numbers &amp; age,
-                past·present·future tense formulas, and essential particles — the foundation for real sentences.
-              </p>
-            </div>
-
-            {/* Season 2 */}
-            <div className="rounded-3xl border border-gray-100 overflow-hidden bg-white shadow-sm">
-              <img src="/group/online.jpg" alt="October online group class on Google Meet" className="w-full aspect-[16/10] object-cover" />
-              <div className="p-6">
-                <span className="text-[10px] font-black uppercase tracking-[0.18em] text-primary bg-primary/5 rounded-full px-3 py-1.5">
-                  Oct · Season 2 · Groups A·B
-                </span>
-                <h4 className="mt-3 text-xl font-black text-foreground tracking-tight">Real Korean Small-Talk: One Day in Korea</h4>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  Morning meet-up → lunch → cafe → evening. Each week follows the real flow of a Korean day, and you swap in your own life.
-                </p>
+      {/* Detail modal */}
+      <AnimatePresence>
+        {open && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setOpen(null)}
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.97, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.97, y: 16 }}
+              transition={{ type: "spring", damping: 28, stiffness: 320 }}
+              className="relative w-full max-w-[560px] max-h-[86vh] bg-white rounded-3xl shadow-2xl z-10 flex flex-col overflow-hidden"
+            >
+              <div className="shrink-0 px-6 pt-6 pb-4 flex items-start justify-between">
+                <div>
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-primary">{open.month}</p>
+                  <h3 className="text-xl font-black text-foreground tracking-tight">{open.month} Group Class</h3>
+                  <p className="text-sm text-muted-foreground mt-0.5">{open.concept}</p>
+                </div>
+                <button
+                  onClick={() => setOpen(null)}
+                  className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-muted-foreground hover:bg-gray-200 transition-colors shrink-0"
+                >
+                  <X size={16} />
+                </button>
               </div>
-            </div>
 
-            {/* Offline meetup */}
-            <div className="sm:col-span-2 rounded-3xl border border-gray-100 overflow-hidden bg-white shadow-sm sm:grid sm:grid-cols-2">
-              <div className="grid grid-cols-2 gap-[3px]">
-                <img src="/group/offline.jpg" alt="Offline free-talking class in Seoul" className="w-full h-full aspect-square sm:aspect-auto object-cover" />
-                <img src="/group/food.jpg" alt="Korean restaurant tour with students" className="w-full h-full aspect-square sm:aspect-auto object-cover" />
-              </div>
-              <div className="p-6">
-                <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-secondary bg-secondary/10 rounded-full px-3 py-1.5">
-                  <MapPin size={12} /> Oct 18 · Offline meetup · Seoul
-                </span>
-                <h4 className="mt-3 text-xl font-black text-foreground tracking-tight">Free-talking + a 맛집 tour</h4>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  An in-person session for upper-intermediate learners — a free-talking class at the whiteboard, then out for a
-                  real Korean <span className="text-secondary font-semibold">칼국수</span> 맛집 tour together. Learning the language, then living it.
-                </p>
-              </div>
-            </div>
+              <div className="flex-1 min-h-0 overflow-y-auto px-6 pb-6" data-lenis-prevent="true">
+                {/* Weeks */}
+                <div className="divide-y divide-gray-100 border-y border-gray-100">
+                  {open.weeks.map((w, i) => (
+                    <div key={i} className="py-3.5 flex gap-4">
+                      <span className="text-sm font-black text-primary/40 w-7 shrink-0">0{i + 1}</span>
+                      <div className="min-w-0">
+                        <p className="text-sm font-bold text-foreground">{w.en}</p>
+                        <p className="text-[15px] text-primary font-semibold mt-0.5 leading-snug">{w.kr}</p>
+                        <p className="text-xs text-muted-foreground mt-1 leading-snug">💡 {w.tip}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
-            {/* Season 3 — live */}
-            <div className="sm:col-span-2 rounded-3xl border-2 border-primary/30 bg-gradient-to-b from-primary/5 to-white p-6 sm:p-8">
-              <span className="text-[10px] font-black uppercase tracking-[0.18em] text-primary bg-primary/10 rounded-full px-3 py-1.5">
-                Nov · Season 3 · Now enrolling
-              </span>
-              <h4 className="mt-3 text-2xl font-black text-foreground tracking-tight">Tell Your Story: A Life in Korean 🍂</h4>
-              <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl">
-                Talk about your whole life — childhood to the future you dream of — and keep real conversations going.
-                A new <b className="text-foreground">Beginner class</b> (start from zero) opens this month too.
-              </p>
-              <a
-                href="#classes"
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground font-bold text-sm px-6 py-3.5 hover:bg-primary/90 transition-colors"
-              >
-                Join Season 3 <ArrowRight size={16} />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Group reviews */}
-        <div className="mt-16">
-          <span className="text-[10px] font-black uppercase tracking-[0.25em] text-secondary">Group lesson reviews</span>
-          <h3 className="mt-2 text-2xl sm:text-3xl font-black text-foreground tracking-tight">What learners say</h3>
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {groupReviews.map((r) => (
-              <figure key={r.name} className="rounded-3xl border border-gray-100 bg-white shadow-sm p-6 sm:p-7">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-black">
-                    {r.name[0]}
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground text-[15px] leading-tight">{r.name}</p>
-                    <p className="text-[11px] text-muted-foreground uppercase tracking-wider">{r.tag}</p>
-                  </div>
-                  <div className="ml-auto flex gap-0.5 text-secondary">
-                    {Array.from({ length: 5 }).map((_, j) => (
-                      <Star key={j} size={13} className="fill-secondary text-secondary" />
+                {/* Photos */}
+                {open.photos.length > 0 && (
+                  <div className="grid grid-cols-2 gap-2 mt-5">
+                    {open.photos.map((p) => (
+                      <img
+                        key={p}
+                        src={`/group/${p}.jpg`}
+                        alt=""
+                        loading="lazy"
+                        className="w-full aspect-[4/3] object-cover rounded-xl"
+                      />
                     ))}
                   </div>
-                </div>
-                <blockquote className="mt-4 text-[15px] text-foreground/80 leading-relaxed">{r.quote}</blockquote>
-              </figure>
-            ))}
+                )}
+                {open.note && (
+                  <p className="text-xs text-muted-foreground mt-3">{open.note}</p>
+                )}
+
+                {/* Reviews */}
+                {open.reviews.map((r, i) => (
+                  <figure key={i} className="mt-4 rounded-2xl bg-gray-50 p-4">
+                    <p className="text-sm text-foreground/80 leading-relaxed">“{r.quote}”</p>
+                    <figcaption className="text-xs font-bold text-foreground mt-2">— {r.name}</figcaption>
+                  </figure>
+                ))}
+
+                {/* CTA */}
+                {open.status === "open" && (
+                  <div className="mt-6">
+                    <a href={FORM_URL} target="_blank" rel="noreferrer">
+                      <button className="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-black text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+                        Apply <ArrowRight size={16} />
+                      </button>
+                    </a>
+                    <p className="text-center text-xs text-muted-foreground mt-2">
+                      With a friend it's cheaper —{" "}
+                      <a href={`mailto:${EMAIL}`} className="text-primary font-bold hover:underline">
+                        email me
+                      </a>
+                    </p>
+                  </div>
+                )}
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

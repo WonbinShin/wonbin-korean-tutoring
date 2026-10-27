@@ -3,9 +3,7 @@ import Header, { TabItem } from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import MentorSection from "@/components/MentorSection";
-import CurriculumSection from "@/components/CurriculumSection";
 import CoursesSection from "@/components/CoursesSection";
-import BookingSection from "@/components/BookingSection";
 import LevelTestSection from "@/components/LevelTestSection";
 import ResourcesSection from "@/components/ResourcesSection";
 import WatchSection from "@/components/WatchSection";
@@ -114,9 +112,8 @@ const Index = () => {
 
         {active === "classes" && (
           <>
-            <CurriculumSection />
             <CoursesSection />
-            <BookingSection />
+            <GroupLessonsSection />
           </>
         )}
 
@@ -155,12 +152,7 @@ const Index = () => {
           </>
         )}
 
-        {active === "reviews" && (
-          <>
-            <GroupLessonsSection />
-            <ReviewsSection />
-          </>
-        )}
+        {active === "reviews" && <ReviewsSection />}
       </main>
       <Footer />
     </div>
