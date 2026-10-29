@@ -49,7 +49,8 @@ const thumbOf = (v: WatchVideo) => v.thumbnail || `https://i.ytimg.com/vi/${v.id
 
 /** "Slow Korean Vlog | Going for a Run 🏃 | Comprehensible Input (A1–B2)" → "Going for a Run 🏃" */
 function shortTitle(title: string) {
-  let t = title.replace(/\s*\((?:A|B|C)[12](?:\s*[–-]\s*(?:A|B|C)[12])?\)\s*$/, "");
+  let t = title.replace(/\s*\((?:EASY|BEGINNER)\)\s*$/i, "");
+  t = t.replace(/\s*\((?:A|B|C)[12](?:\s*[–-]\s*(?:A|B|C)[12])?\)\s*$/, "");
   t = t.replace(/\s*[|·]\s*Comprehensible Input\s*$/i, "");
   t = t.replace(/^Slow Korean Vlog\s*[|·]\s*/i, "");
   t = t.replace(/\s*[|·]\s*Slow Korean\s*$/i, "");

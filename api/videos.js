@@ -52,7 +52,10 @@ function findPdf(description) {
 }
 
 function parseLevel(title) {
-  const m = /\(((?:A|B|C)[12](?:\s*[–-]\s*(?:A|B|C)[12])?)\)/.exec(title || "");
+  const t = title || "";
+  const easy = /\((EASY|BEGINNER)\)/i.exec(t);
+  if (easy) return easy[1].toUpperCase();
+  const m = /\(((?:A|B|C)[12](?:\s*[–-]\s*(?:A|B|C)[12])?)\)/.exec(t);
   return m ? m[1].replace(/\s*[–-]\s*/, "–") : null;
 }
 
